@@ -40,7 +40,7 @@ Transform:
   - {fileID: 8736147394746935846}
   - {fileID: 8736147394306880826}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8736147392783108679
 MonoBehaviour:
@@ -54,6 +54,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0e919de5d714ab4b9713d2b724b6cbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _capsuleCollider: {fileID: 8736147392783108677}
 --- !u!50 &8736147392783108674
 Rigidbody2D:
   serializedVersion: 4
@@ -113,8 +114,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.019573096, y: 0.32796296}
-  m_Size: {x: 0.4852925, y: 1.1151443}
+  m_Offset: {x: 0.019573096, y: 0.2359293}
+  m_Size: {x: 0.4852925, y: 1.2992103}
   m_Direction: 0
 --- !u!210 &8736147392783108675
 SortingGroup:
@@ -160,8 +161,8 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.025777308, y: 0.093604006}
-  m_Size: {x: 1.1899339, y: 1.594211}
+  m_Offset: {x: 0.004538725, y: 0.1431607}
+  m_Size: {x: 1.6005455, y: 1.8915488}
   m_Direction: 0
 --- !u!1 &8736147393679145789
 GameObject:

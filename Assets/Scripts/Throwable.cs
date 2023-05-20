@@ -4,45 +4,40 @@ using UnityEngine;
 
 public class Throwable : MonoBehaviour
 {
-    private Collider2D[] _colliders;
-    private bool _overSlingshot = false;
+    [SerializeField] private Collider2D _capsuleCollider;
+
+    private bool _isAttachedToSlingShot = false;
+    private bool _isActive = false;
+
     private Rigidbody2D _rb;
+    private Slingshot _slingshot;
 
     private void Awake() {
         _rb = GetComponent<Rigidbody2D>();
-        _colliders = GetComponentsInChildren<CapsuleCollider2D>();
+        _slingshot = FindObjectOfType<Slingshot>();
     }
 
-    public void ToggleCollider(bool value) {
-        foreach (Collider2D col in _colliders)
-        {
-            col.enabled = value;
-        }
+    public void AttachToSlingShot(bool value) {
+        _isAttachedToSlingShot = value;
     }
 
     private void OnMouseDrag() {
+        if (_isAttachedToSlingShot) { return; }
+
+        _isActive = true;
         Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         mousePosition.z = 0;
-
         transform.position = mousePosition;
     }
 
     private void OnMouseUp() {
-        if (_overSlingshot) {
-            Slingshot.Instance.SetCurrentThrowableItem(this);
-            ToggleCollider(false);
-        }
+        _isActive = false;
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
-        if (other.gameObject.GetComponent<Slingshot>()) {
-            _overSlingshot = true;
+        if (other.gameObject.GetComponent<Slingshot>() && !_isAttachedToSlingShot && _isActive) {
+            _slingshot.SetCurrentThrowableItem(this);
+            _isAttachedToSlingShot = true;
         } 
-    }
-
-    private void OnTriggerExit2D(Collider2D other) {
-        if (other.gameObject.GetComponent<Slingshot>()){
-            _overSlingshot = false;
-        }
     }
 }
