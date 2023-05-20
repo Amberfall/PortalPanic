@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DevilPassiveState : DevilBaseState
 {
-    [SerializeField] float speed = 0.8f;
+    
     private float _timer;
     private int _direction = 0;
     private bool _pathfinding = true;
@@ -15,7 +15,7 @@ public class DevilPassiveState : DevilBaseState
         //devil.GetComponent<DevilStateManager>().currentState = devil.leavingState;
         this._timer = 15;
         this._changeDirectionTimer = Random.Range(1,5);
-        Debug.Log("_changeDirectionTimer: " + _changeDirectionTimer);
+        //Debug.Log("_changeDirectionTimer: " + _changeDirectionTimer);
     }
 
     public override void UpdateState(DevilStateManager devil)
@@ -31,14 +31,14 @@ public class DevilPassiveState : DevilBaseState
             if(_pathfinding){
                 _direction = Random.Range(-1,2);
                 this._changeDirectionTimer = Random.Range(1,5);
-                Debug.Log("_changeDirectionTimer: " + _changeDirectionTimer);
+                //Debug.Log("_changeDirectionTimer: " + _changeDirectionTimer);
                 _pathfinding = false;
             }
         }else{
             // restart pathfinding
             _pathfinding = true;
         }
-        devil.rb2d.velocity = new Vector2(_direction * speed, devil.rb2d.velocity.y);
+        devil.rb2d.velocity = new Vector2(_direction * devil.speed, devil.rb2d.velocity.y);
     }
 
 
