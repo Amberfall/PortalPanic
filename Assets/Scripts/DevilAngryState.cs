@@ -9,11 +9,13 @@ public class DevilAngryState : DevilBaseState
     {
         //devil.GetComponent<DevilStateManager>().currentState = devil.leavingState;
         Debug.Log("Angry State");
+        devil.spriteR.color = Color.red;
     }
 
     public override void UpdateState(DevilStateManager devil)
     {
         //devil.GetComponent<DevilStateManager>().currentState = devil.leavingState;
+        devil.rb2d.velocity = new Vector2(0, 3);
     }
 
     public override void OnCollisionEnter(DevilStateManager devil)

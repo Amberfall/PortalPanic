@@ -5,8 +5,7 @@ using UnityEngine;
 public class DevilPursuitState : DevilBaseState
 {
     // Start is called before the first frame update
-    public override void EnterState(DevilStateManager devil)
-    {
+    public override void EnterState(DevilStateManager devil){
         //devil.GetComponent<DevilStateManager>().currentState = devil.leavingState;
     }
 
