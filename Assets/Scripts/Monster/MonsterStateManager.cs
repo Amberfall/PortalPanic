@@ -75,11 +75,12 @@ public class MonsterStateManager : MonoBehaviour {
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
-        Food food = other.gameObject.GetComponent<Food>();
+        Food food = other.gameObject.GetComponentInParent<Food>();
 
         if (food && food.GetFoodType() == _monsterHunger.GetCurrentFoodHungerType()) {
             _currentState = PursuitState;
             _currentState.EnterState(this);
+            PursuitState.UpdatePursuingTarget(food.transform);
         }
     }
 
