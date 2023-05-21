@@ -41,3 +41,30 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: BG
+    uniqueID: 945693479
+    locked: 0
+  - name: Houses
+    uniqueID: 2564953025
+    locked: 0
+  - name: Bridge
+    uniqueID: 2478653705
+    locked: 0
+  - name: Ground
+    uniqueID: 57344555
+    locked: 0
+  - name: Portal
+    uniqueID: 4079130485
+    locked: 0
+  - name: Slingshot
+    uniqueID: 84195233
+    locked: 0
+  - name: Monsters
+    uniqueID: 1339708417
+    locked: 0
+  - name: People
+    uniqueID: 2220871775
+    locked: 0
+  - name: Animals
+    uniqueID: 3033312693
+    locked: 0
