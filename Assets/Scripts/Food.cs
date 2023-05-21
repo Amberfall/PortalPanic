@@ -8,11 +8,7 @@ public class Food : MonoBehaviour
 
     [SerializeField] private FoodType _foodType;
 
-    private void Start() {
-        
-    }
-
-    private void Update() {
-        
+    public FoodType GetFoodType() {
+        return _foodType;
     }
 }

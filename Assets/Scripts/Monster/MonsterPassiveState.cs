@@ -4,18 +4,18 @@ using UnityEngine;
 
 public class MonsterPassiveState : MonsterBaseState
 {
-    
     private float _timer;
     private int _direction = 0;
     private bool _pathfinding = true;
-    private int _changeDirectionTimer = 10000000;
+    private int _changeDirectionTimer;
 
     public override void EnterState(MonsterStateManager monster)
     {
         //monster.GetComponent<MonsterStateManager>().currentState = monster.leavingState;
-        this._timer = 15;
+        this._timer = Random.Range(1f, 6f);
         this._changeDirectionTimer = Random.Range(1,5);
         //Debug.Log("_changeDirectionTimer: " + _changeDirectionTimer);
+        monster.SpriteR.color = Color.white;
     }
 
     public override void UpdateState(MonsterStateManager monster)
@@ -31,14 +31,13 @@ public class MonsterPassiveState : MonsterBaseState
             if(_pathfinding){
                 _direction = Random.Range(-1,2);
                 this._changeDirectionTimer = Random.Range(1,5);
-                //Debug.Log("_changeDirectionTimer: " + _changeDirectionTimer);
                 _pathfinding = false;
             }
         }else{
             // restart pathfinding
             _pathfinding = true;
         }
-        monster.rb2d.velocity = new Vector2(_direction * monster.speed, monster.rb2d.velocity.y);
+        monster.Rb2d.velocity = new Vector2(_direction * monster.MoveSpeed, monster.Rb2d.velocity.y);
     }
 
 
