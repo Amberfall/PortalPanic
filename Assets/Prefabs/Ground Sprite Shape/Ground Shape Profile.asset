@@ -13,11 +13,26 @@ MonoBehaviour:
   m_Name: Ground Shape Profile
   m_EditorClassIdentifier: 
   m_Angles:
-  - m_Start: -100
-    m_End: 100
+  - m_Start: -45
+    m_End: 45
     m_Order: 0
     m_Sprites:
     - {fileID: 1111140500, guid: 9cc7c9172c6947744b49ca6e419b5915, type: 3}
+  - m_Start: 45
+    m_End: 125
+    m_Order: 0
+    m_Sprites:
+    - {fileID: -1629683421, guid: 9cc7c9172c6947744b49ca6e419b5915, type: 3}
+  - m_Start: 125
+    m_End: 239
+    m_Order: 0
+    m_Sprites:
+    - {fileID: -1797291610, guid: 9cc7c9172c6947744b49ca6e419b5915, type: 3}
+  - m_Start: -121
+    m_End: -45
+    m_Order: 0
+    m_Sprites:
+    - {fileID: -127270043, guid: 9cc7c9172c6947744b49ca6e419b5915, type: 3}
   m_FillTexture: {fileID: 2800000, guid: 88852ecfd11509f49afe6641af430365, type: 3}
   m_CornerSprites:
   - m_CornerType: 0
@@ -45,4 +60,4 @@ MonoBehaviour:
     m_Sprites:
     - {fileID: -2072347862, guid: 9cc7c9172c6947744b49ca6e419b5915, type: 3}
   m_FillOffset: 0
-  m_UseSpriteBorders: 1
+  m_UseSpriteBorders: 0
