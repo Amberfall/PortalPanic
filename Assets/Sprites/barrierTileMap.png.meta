@@ -45,7 +45,7 @@ TextureImporter:
   compressionQuality: 50
   spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 1
+  spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 16
@@ -97,6 +97,18 @@ TextureImporter:
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: 4
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -939,7 +951,6 @@ TextureImporter:
       barrierTileMap_29: -81156624
       barrierTileMap_7: -453322164
       barrierTileMap_9: 884315227
-      barrierTileMap_35: 569731285
       barrierTileMap_16: -1318411162
       barrierTileMap_5: -195198925
       barrierTileMap_6: -840056518
@@ -951,6 +962,7 @@ TextureImporter:
       barrierTileMap_2: 203026923
       barrierTileMap_14: -2072347862
       barrierTileMap_31: 412232029
+      barrierTileMap_4: 1874896070
       barrierTileMap_19: 1786593402
       barrierTileMap_38: -818011763
       barrierTileMap_21: -1320394705
@@ -972,9 +984,9 @@ TextureImporter:
       barrierTileMap_0: 1214941680
       barrierTileMap_18: 1156706318
       barrierTileMap_23: 479697774
+      barrierTileMap_35: 569731285
       barrierTileMap_1: 1111140500
       barrierTileMap_26: -1255468854
-      barrierTileMap_4: 1874896070
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
