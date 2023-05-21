@@ -123,7 +123,7 @@ Transform:
   - {fileID: 8923741985845791284}
   - {fileID: 187957170425413717}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!70 &2776847053856087239
 CapsuleCollider2D:
@@ -157,8 +157,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.028037507, y: 0.02829819}
-  m_Size: {x: 1.6834543, y: 2.5105553}
+  m_Offset: {x: -0.042574827, y: 0.02829819}
+  m_Size: {x: 2.1195705, y: 2.5105553}
   m_Direction: 0
 --- !u!212 &2776847053856087232
 SpriteRenderer:

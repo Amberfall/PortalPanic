@@ -31,6 +31,5 @@ public class MonsterPursuitState : MonsterBaseState
 
     public void UpdatePursuingTarget(Transform target) {
         _currentPursuingTarget = target;
-        Debug.Log(_currentPursuingTarget.name);
     }
 }

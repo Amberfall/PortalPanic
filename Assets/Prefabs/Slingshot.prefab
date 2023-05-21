@@ -177,7 +177,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6404343810201848703}
-  - component: {fileID: 6404343810201848697}
   - component: {fileID: 6404343810201848699}
   - component: {fileID: 6404343810201848698}
   m_Layer: 0
@@ -206,20 +205,8 @@ Transform:
   - {fileID: 798933617}
   - {fileID: 835738992}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!210 &6404343810201848697
-SortingGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6404343810201848700}
-  m_Enabled: 1
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 1
-  m_SortAtRoot: 0
 --- !u!114 &6404343810201848699
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -362,12 +349,12 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 3.5403106, y: 0.31726193}
-      - {x: 0.015847087, y: 0.55628157}
-      - {x: -3.584717, y: 0.19291389}
-      - {x: -2.8264832, y: -0.94130325}
-      - {x: 0.0173769, y: -0.47064126}
-      - {x: 2.7282016, y: -0.9684448}
+    - - {x: -2.9166787, y: -0.37372154}
+      - {x: -0.018810049, y: -0.8581495}
+      - {x: 3.0186532, y: -0.29644704}
+      - {x: 2.4454057, y: 0.5757811}
+      - {x: -0.014566928, y: 1.07332}
+      - {x: -2.3073282, y: 0.5882963}
   m_UseDelaunayMesh: 0
 --- !u!1 &6404343810398251259
 GameObject:
@@ -473,10 +460,10 @@ LineRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 4
   m_Positions:
   - {x: 0, y: 0, z: 0}
-  - {x: 3.5, y: 0.15, z: 0}
+  - {x: 3.364616, y: 0.11131886, z: 0}
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 0.2
@@ -609,10 +596,10 @@ LineRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 4
   m_Positions:
   - {x: 0, y: 0, z: 0}
-  - {x: -3.5, y: 0.15, z: 0}
+  - {x: -3.2582428, y: 0.15967038, z: 0}
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 0.2
@@ -744,7 +731,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 5
   m_Sprite: {fileID: 21300000, guid: a42f928f6fa1a4f40a9e551fdf2b8fca, type: 3}
   m_Color: {r: 0.5943396, g: 0.18783373, b: 0.18783373, a: 1}
   m_FlipX: 0

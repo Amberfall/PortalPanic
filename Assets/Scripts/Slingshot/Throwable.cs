@@ -4,25 +4,30 @@ using UnityEngine;
 
 public class Throwable : MonoBehaviour
 {
-    [SerializeField] private Collider2D _capsuleCollider;
-
-    private bool _isAttachedToSlingShot = false;
+    public bool IsAttachedToSlingShot { get; private set; }
+    
     private bool _isActive = false;
 
+    private Collider2D _col;
     private Rigidbody2D _rb;
     private Slingshot _slingshot;
 
     private void Awake() {
+        _col = GetComponent<Collider2D>();
         _rb = GetComponent<Rigidbody2D>();
         _slingshot = FindObjectOfType<Slingshot>();
     }
 
+    private void Start() {
+        IsAttachedToSlingShot = false;
+    }
+
     public void AttachToSlingShot(bool value) {
-        _isAttachedToSlingShot = value;
+        IsAttachedToSlingShot = value;
     }
 
     private void OnMouseDrag() {
-        if (_isAttachedToSlingShot) { return; }
+        if (IsAttachedToSlingShot) { return; }
 
         _isActive = true;
         Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -35,9 +40,9 @@ public class Throwable : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
-        if (other.gameObject.GetComponent<Slingshot>() && !_isAttachedToSlingShot && _isActive) {
+        if (other.gameObject.GetComponent<Slingshot>() && !IsAttachedToSlingShot && _isActive) {
             _slingshot.SetCurrentThrowableItem(this);
-            _isAttachedToSlingShot = true;
+            IsAttachedToSlingShot = true;
         } 
     }
 }
