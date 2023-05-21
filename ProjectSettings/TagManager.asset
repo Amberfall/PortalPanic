@@ -8,11 +8,11 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Portal
   - Water
   - UI
-  - 
-  - 
+  - Monster
+  - Friendly
   - 
   - 
   - 

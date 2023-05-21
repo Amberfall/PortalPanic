@@ -17,8 +17,9 @@ GameObject:
   - component: {fileID: 1186538116869795223}
   - component: {fileID: 1186538116869795208}
   - component: {fileID: 1186538116869795217}
+  - component: {fileID: 5825454121446016358}
   m_Layer: 0
-  m_Name: Throwable Base Prefab
+  m_Name: Food Base Prefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -246,3 +247,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _foodType: 0
+--- !u!114 &5825454121446016358
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1186538115991453993}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34854c775867da444adaa4b74e802a83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _moveSpeed: 1

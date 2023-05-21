@@ -4,17 +4,32 @@ using UnityEngine;
 
 public class MonsterHunger : MonoBehaviour
 {
-    [SerializeField] private Food.FoodType _currentFoodHungerType;
+    [SerializeField] private SpriteRenderer _currentFoodSpriteRenderer;
+    [SerializeField] private Sprite[] _foodSprites;
+
+    private Food.FoodType _currentFoodHungerType;
+    private MonsterStateManager _monsterStateManager;
+
+    private void Awake() {
+        _monsterStateManager = GetComponentInParent<MonsterStateManager>();
+    }
 
     private void Start() {
-        _currentFoodHungerType = (Food.FoodType)Random.Range(0, 3);
+        ChangeDesiredFoodTyped();
     }
 
-    private void Update() {
-        
+    public void ChangeDesiredFoodTyped() {
+        int randomFoodNum = Random.Range(0, 3);
+
+        _currentFoodHungerType = (Food.FoodType)randomFoodNum;
+        _currentFoodSpriteRenderer.sprite = _foodSprites[randomFoodNum];
     }
 
-    private void OnCollisionEnter2D(Collision2D other) {
+    public Food.FoodType GetCurrentFoodHungerType() {
+        return _currentFoodHungerType;
+    }
+
+    private void OnTriggerEnter2D(Collider2D other) {
         if (other.gameObject.GetComponent<Food>()) {
             if (other.gameObject.GetComponent<Food>().GetFoodType() == _currentFoodHungerType) {
                 EatFood();
@@ -25,5 +40,6 @@ public class MonsterHunger : MonoBehaviour
 
     private void EatFood() {
         Debug.Log(_currentFoodHungerType + " eaten");
+        _monsterStateManager.SwitchState(_monsterStateManager.PassiveState);
     }
 }
