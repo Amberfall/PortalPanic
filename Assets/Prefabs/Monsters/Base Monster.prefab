@@ -1,5 +1,91 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &570709703908733179
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 187957170425413717}
+  - component: {fileID: 2561059626819683403}
+  - component: {fileID: 5286625006241480665}
+  m_Layer: 0
+  m_Name: Monster Hunger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &187957170425413717
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 570709703908733179}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2776847053856087241}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!70 &2561059626819683403
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 570709703908733179}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.024128798, y: 0.018096132}
+  m_Size: {x: 1.8511902, y: 2.4597661}
+  m_Direction: 0
+--- !u!114 &5286625006241480665
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 570709703908733179}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47e4ee30b35971f488fa9602de316fc9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _currentFoodSpriteRenderer: {fileID: 6578752966862056599}
+  _foodSprites:
+  - {fileID: 21300000, guid: 2696cee14bcd8a74d814789c30aae270, type: 3}
+  - {fileID: 21300000, guid: 0878580bca66f7144a492479ddb55269, type: 3}
+  - {fileID: 21300000, guid: 46447abb00a9c574bb8b1231dc62b318, type: 3}
+  - {fileID: 21300000, guid: 44c9ae21c12367b4da808fac696f70d6, type: 3}
 --- !u!1 &2776847053856087240
 GameObject:
   m_ObjectHideFlags: 0
@@ -12,11 +98,10 @@ GameObject:
   - component: {fileID: 2776847053856087239}
   - component: {fileID: 2776847053856087232}
   - component: {fileID: 2776847053856087238}
-  - component: {fileID: 2776847053856087237}
-  - component: {fileID: 2776847053856087234}
   - component: {fileID: 2776847053856087235}
   - component: {fileID: 8253169099433104871}
-  m_Layer: 0
+  - component: {fileID: 2422727936733437986}
+  m_Layer: 6
   m_Name: Base Monster
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36,6 +121,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8923741985845791284}
+  - {fileID: 187957170425413717}
   m_Father: {fileID: 0}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -153,8 +239,33 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!58 &2776847053856087237
-CircleCollider2D:
+--- !u!114 &2776847053856087235
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2776847053856087240}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f58871b099701774f87ee4aa20faf14a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _moveSpeed: 0.8
+--- !u!210 &8253169099433104871
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2776847053856087240}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 7
+  m_SortAtRoot: 1
+--- !u!70 &2422727936733437986
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -186,46 +297,8 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 1.5
---- !u!114 &2776847053856087234
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2776847053856087240}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 47e4ee30b35971f488fa9602de316fc9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _currentFoodHungerType: 0
---- !u!114 &2776847053856087235
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2776847053856087240}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f58871b099701774f87ee4aa20faf14a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _moveSpeed: 0.8
---- !u!210 &8253169099433104871
-SortingGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2776847053856087240}
-  m_Enabled: 1
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 7
-  m_SortAtRoot: 1
+  m_Size: {x: 10.81, y: 4.89}
+  m_Direction: 1
 --- !u!1 &5029372258388437824
 GameObject:
   m_ObjectHideFlags: 0
@@ -236,7 +309,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8923741985845791284}
   - component: {fileID: 3515466215025243609}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Thought Bubble
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -321,7 +394,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3054672131812785171}
   - component: {fileID: 6578752966862056599}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Food Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -336,7 +409,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6118706822199027947}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.505, y: 0.543, z: 0}
+  m_LocalPosition: {x: -0.4, y: 0.82, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -384,14 +457,14 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1622456913, guid: ad63e8431ea585f44aa58683d5562d04, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 4, y: 4}
+  m_Size: {x: 1.125, y: 1.125}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0

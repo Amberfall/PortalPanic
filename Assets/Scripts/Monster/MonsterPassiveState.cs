@@ -11,6 +11,7 @@ public class MonsterPassiveState : MonsterBaseState
 
     public override void EnterState(MonsterStateManager monster)
     {
+        Debug.Log("enter passive");
         //monster.GetComponent<MonsterStateManager>().currentState = monster.leavingState;
         this._timer = Random.Range(1f, 6f);
         this._changeDirectionTimer = Random.Range(1,5);

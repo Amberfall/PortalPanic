@@ -10,7 +10,7 @@ public class MonsterStateManager : MonoBehaviour {
 
     [SerializeField] private float _moveSpeed = 0.8f;
 
-    public Rigidbody2D Rb2d { get; private set; }
+    public Rigidbody2D Rb2d { get; private set; } // I'm only doing it this way so it hides in the inspector
     public SpriteRenderer SpriteR { get; private set; }
 
     public MonsterAngryState AngryState = new MonsterAngryState();
@@ -19,7 +19,8 @@ public class MonsterStateManager : MonoBehaviour {
     public MonsterPursuitState PursuitState = new MonsterPursuitState();
 
     private Color m_NewColor;
-    private MonsterBaseState currentState;
+    private MonsterBaseState _currentState;
+    private MonsterHunger _monsterHunger;
 
     // public MonsterStateManager(){
     //     Debug.Log("MonsterStateManager constructor");
@@ -28,15 +29,16 @@ public class MonsterStateManager : MonoBehaviour {
     private void Awake() {
         Rb2d = GetComponent<Rigidbody2D>();
         SpriteR = GetComponent<SpriteRenderer>();
+        _monsterHunger = GetComponentInChildren<MonsterHunger>();
     }
     
     void Start(){
-        currentState = PassiveState;
-        currentState.EnterState(this);
+        _currentState = PassiveState;
+        _currentState.EnterState(this);
     }
 
     void Update(){
-        currentState.UpdateState(this);
+        _currentState.UpdateState(this);
     }
     
     public void SetActive(bool active){
@@ -46,17 +48,19 @@ public class MonsterStateManager : MonoBehaviour {
     }
     
     public void SwitchState(MonsterBaseState newState){
-        currentState = newState;
+        _currentState = newState;
         newState.EnterState(this);
     }
 
+    // Destroy tile it connects with if in the angry state
     private void OnCollisionEnter2D(Collision2D other)
     {
         Tilemap tilemap = other.gameObject.GetComponent<Tilemap>();
 
-        if (tilemap && currentState == AngryState) {
-            currentState = PassiveState;
-            currentState.EnterState(this);
+        if (tilemap && _currentState == AngryState)
+        {
+            _currentState = PassiveState;
+            _currentState.EnterState(this);
 
             Vector3 collisionPoint = other.GetContact(0).point;
             Vector3Int cellPosition = tilemap.WorldToCell(collisionPoint);
@@ -69,4 +73,15 @@ public class MonsterStateManager : MonoBehaviour {
             }
         }
     }
+
+    private void OnTriggerEnter2D(Collider2D other) {
+        Food food = other.gameObject.GetComponent<Food>();
+
+        if (food && food.GetFoodType() == _monsterHunger.GetCurrentFoodHungerType()) {
+            _currentState = PursuitState;
+            _currentState.EnterState(this);
+        }
+    }
+
+    
 }

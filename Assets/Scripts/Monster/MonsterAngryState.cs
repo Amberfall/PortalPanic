@@ -11,7 +11,7 @@ public class MonsterAngryState : MonsterBaseState
     {
         monster.SpriteR.color = Color.red;
 
-        _angryTimer = .3f;
+        _angryTimer = .5f;
 
         monster.Rb2d.velocity = new Vector2(0, 35f);
     }
