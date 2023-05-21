@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public abstract class MonsterBaseState{   
+public abstract class MonsterBaseState {   
     
     abstract public void EnterState(MonsterStateManager monster);
 

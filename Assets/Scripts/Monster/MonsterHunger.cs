@@ -7,7 +7,7 @@ public class MonsterHunger : MonoBehaviour
     [SerializeField] private Food.FoodType _currentFoodHungerType;
 
     private void Start() {
-        // _currentFoodHungerType = Random
+        _currentFoodHungerType = (Food.FoodType)Random.Range(0, 3);
     }
 
     private void Update() {
@@ -16,11 +16,14 @@ public class MonsterHunger : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other) {
         if (other.gameObject.GetComponent<Food>()) {
-            // if (other.gameObject.GetComponent<Food>().type)
+            if (other.gameObject.GetComponent<Food>().GetFoodType() == _currentFoodHungerType) {
+                EatFood();
+                Destroy(other.gameObject);
+            }
         }
     }
 
     private void EatFood() {
-        // Debug.Log()
+        Debug.Log(_currentFoodHungerType + " eaten");
     }
 }
