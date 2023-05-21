@@ -2,21 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DevilStateManager : MonoBehaviour{
+public class MonsterStateManager : MonoBehaviour{
 
     [SerializeField] public float speed = 0.8f;
     public Rigidbody2D rb2d;
-    DevilBaseState currentState;
-    public DevilAngryState AngryState = new DevilAngryState();
-    public DevilLeavingState LeavingState = new DevilLeavingState();
-    public DevilPassiveState PassiveState = new DevilPassiveState();
-    public DevilPursuitState PursuitState = new DevilPursuitState();
+    MonsterBaseState currentState;
+    public MonsterAngryState AngryState = new MonsterAngryState();
+    public MonsterLeavingState LeavingState = new MonsterLeavingState();
+    public MonsterPassiveState PassiveState = new MonsterPassiveState();
+    public MonsterPursuitState PursuitState = new MonsterPursuitState();
     public SpriteRenderer spriteR;
     Color m_NewColor;
 
-    // public DevilStateManager(){
-    //     Debug.Log("DevilStateManager constructor");
+    // public MonsterStateManager(){
+    //     Debug.Log("MonsterStateManager constructor");
     // }
+    
     void Start(){
         currentState = PassiveState;
         //Debug.Log("Enter Passive State");
@@ -26,7 +27,6 @@ public class DevilStateManager : MonoBehaviour{
         Debug.Log("spriteR: " + spriteR);
     }
 
-    // Update is called once per frame
     void Update(){
         currentState.UpdateState(this);
     }
@@ -35,7 +35,7 @@ public class DevilStateManager : MonoBehaviour{
         Debug.Log("this: " + this);
         this.enabled = active;
     }
-    public void SwitchState(DevilBaseState newState){
+    public void SwitchState(MonsterBaseState newState){
         currentState = newState;
         newState.EnterState(this);
     }
