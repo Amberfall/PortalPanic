@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class Throwable : MonoBehaviour
 {
+    public bool IsActive { get { return _isActive; } set { _isActive = value; } }
+
     public bool IsAttachedToSlingShot { get; private set; }
-    
+
     private bool _isActive = false;
 
     private Collider2D _col;
@@ -22,18 +24,36 @@ public class Throwable : MonoBehaviour
         IsAttachedToSlingShot = false;
     }
 
+    private void Update()
+    {
+        if (IsAttachedToSlingShot) { return; }
+
+        if (_isActive)
+        {
+            Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            mousePosition.z = 0;
+            transform.position = mousePosition;
+
+            if (Input.GetMouseButtonUp(0))
+            {
+                _isActive = false;
+            }
+        }
+       
+    }
+
     public void AttachToSlingShot(bool value) {
         IsAttachedToSlingShot = value;
     }
 
-    private void OnMouseDrag() {
-        if (IsAttachedToSlingShot) { return; }
+    // private void OnMouseDrag() {
+    //     if (IsAttachedToSlingShot) { return; }
 
-        _isActive = true;
-        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        mousePosition.z = 0;
-        transform.position = mousePosition;
-    }
+    //     _isActive = true;
+    //     Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+    //     mousePosition.z = 0;
+    //     transform.position = mousePosition;
+    // }
 
     private void OnMouseUp() {
         _isActive = false;

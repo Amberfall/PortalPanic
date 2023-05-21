@@ -24,6 +24,7 @@ public class Slingshot : MonoBehaviour
     }
 
     private void Update() {
+        // have sling follow throwable item (mouse) that is currently attached
         if (_currentThrowableItem && !_isSlinging && _isAttached) {
             Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             _currentPosition = mousePosition;
@@ -33,9 +34,20 @@ public class Slingshot : MonoBehaviour
             SetStrips(_center.position);
         } 
 
+        // shoot sling if throwable item attached
         if (_currentThrowableItem && Input.GetMouseButtonUp(0) ) {
             _slingStartPosition = _center.position;
+            _currentThrowableItem.IsActive = false;
             StartCoroutine(ShootThrowableRoutine());
+        }
+
+        // Detatch with right click
+        if (_currentThrowableItem && Input.GetMouseButtonDown(1)) {
+            _slingStartPosition = _center.position;
+            _currentThrowableItem.AttachToSlingShot(false);
+            _currentThrowableItem = null;
+            StartCoroutine(ShootThrowableRoutine());
+            // _currentThrowableItem.IsActive = true;
         }
     }
 
@@ -88,9 +100,11 @@ public class Slingshot : MonoBehaviour
             float t = slingTime / duration;
             float curveValue = _curve.Evaluate(t);
             _center.position = Vector3.LerpUnclamped(_slingStartPosition, _idlePosition.position, curveValue);
+
             if (_currentThrowableItem != null) {
                 _currentThrowableItem.transform.position = _center.position;
             }
+
             SetStrips(_center.position);
 
             if (t >= firstKeyTime && !hasThrown)

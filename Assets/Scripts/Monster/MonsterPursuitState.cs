@@ -22,6 +22,15 @@ public class MonsterPursuitState : MonsterBaseState
         }
 
         monster.Rb2d.velocity = new Vector2(_direction * monster.MoveSpeed, monster.Rb2d.velocity.y);
+
+        if (_direction >= 1)
+        {
+            monster.SpriteR.flipX = true;
+        }
+        else
+        {
+            monster.SpriteR.flipX = false;
+        }
     }
 
     public override void OnCollisionEnter(MonsterStateManager monster)
