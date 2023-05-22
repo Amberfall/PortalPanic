@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1186538115991453993, guid: 4f456c5d53657a64fb656909d2fe4cdb, type: 3}
       propertyPath: m_Name
-      value: Human
+      value: Human (2)
       objectReference: {fileID: 0}
     - target: {fileID: 1186538115991453993, guid: 4f456c5d53657a64fb656909d2fe4cdb, type: 3}
       propertyPath: m_Layer
@@ -34,11 +34,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1186538116869795209, guid: 4f456c5d53657a64fb656909d2fe4cdb, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.962
+      value: 12.94
       objectReference: {fileID: 0}
     - target: {fileID: 1186538116869795209, guid: 4f456c5d53657a64fb656909d2fe4cdb, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.239
+      value: 0.37
       objectReference: {fileID: 0}
     - target: {fileID: 1186538116869795209, guid: 4f456c5d53657a64fb656909d2fe4cdb, type: 3}
       propertyPath: m_LocalPosition.z
@@ -88,8 +88,21 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: b7ef11ca33c601149b926e45539b5823, type: 2}
+    - target: {fileID: 5825454121446016358, guid: 4f456c5d53657a64fb656909d2fe4cdb, type: 3}
+      propertyPath: _feetTransforms.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5825454121446016358, guid: 4f456c5d53657a64fb656909d2fe4cdb, type: 3}
+      propertyPath: _feetTransforms.Array.data[0]
+      value: 
+      objectReference: {fileID: 2444096406525365627}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4f456c5d53657a64fb656909d2fe4cdb, type: 3}
+--- !u!4 &2444096406525365627 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6818674391431086244, guid: 4f456c5d53657a64fb656909d2fe4cdb, type: 3}
+  m_PrefabInstance: {fileID: 9172671906825719263}
+  m_PrefabAsset: {fileID: 0}

@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class MonsterHunger : MonoBehaviour
 {
+    
     [SerializeField] private SpriteRenderer _currentFoodSpriteRenderer;
     [SerializeField] private Sprite[] _foodSprites;
+    [SerializeField] private GameObject _thoughtBubble;
 
     private Food.FoodType _currentFoodHungerType;
     private MonsterStateManager _monsterStateManager;
@@ -15,10 +17,11 @@ public class MonsterHunger : MonoBehaviour
     }
 
     private void Start() {
-        ChangeDesiredFoodTyped();
+        Invoke("ChangeDesiredFoodTyped", Random.Range(1f, 3f));
     }
 
     public void ChangeDesiredFoodTyped() {
+        _thoughtBubble.SetActive(true);
         int randomFoodNum = Random.Range(0, 3);
 
         _currentFoodHungerType = (Food.FoodType)randomFoodNum;
@@ -39,7 +42,7 @@ public class MonsterHunger : MonoBehaviour
     }
 
     private void EatFood() {
-        // Debug.Log(_currentFoodHungerType + " eaten");
+        _thoughtBubble.SetActive(false);
         _monsterStateManager.SwitchState(_monsterStateManager.PassiveState);
     }
 }

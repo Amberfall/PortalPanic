@@ -61,6 +61,7 @@ public class Slingshot : MonoBehaviour
     private void Throw() {
         if (!_currentThrowableItem) { return; }
 
+        StartCoroutine(_currentThrowableItem.ThrowDisableColliderRoutine());
         float stretchForceToAdd = Vector3.Distance(_currentPosition, _idlePosition.position);
         _slingShotForce = _slingElasticityStrength * stretchForceToAdd;
         Vector3 throwableForce = (_currentPosition - _idlePosition.position) * -_slingShotForce;

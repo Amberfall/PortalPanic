@@ -5,10 +5,10 @@ using UnityEngine;
 public class Throwable : MonoBehaviour
 {
     public bool IsActive { get { return _isActive; } set { _isActive = value; } }
-
     public bool IsAttachedToSlingShot { get; private set; }
 
     private bool _isActive = false;
+    const string BRIDGE_LAYER_STRING = "Bridge";
 
     private Collider2D _col;
     private Rigidbody2D _rb;
@@ -39,27 +39,23 @@ public class Throwable : MonoBehaviour
                 _isActive = false;
             }
         }
-       
     }
 
     public void AttachToSlingShot(bool value) {
         IsAttachedToSlingShot = value;
     }
 
-    // private void OnMouseDrag() {
-    //     if (IsAttachedToSlingShot) { return; }
-
-    //     _isActive = true;
-    //     Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-    //     mousePosition.z = 0;
-    //     transform.position = mousePosition;
-    // }
+   public IEnumerator ThrowDisableColliderRoutine() {
+        Physics2D.IgnoreLayerCollision(gameObject.layer, LayerMask.NameToLayer(BRIDGE_LAYER_STRING), true);
+        yield return new WaitForSeconds(.4f);
+        Physics2D.IgnoreLayerCollision(gameObject.layer, LayerMask.NameToLayer(BRIDGE_LAYER_STRING), false);
+   }
 
     private void OnMouseUp() {
         _isActive = false;
     }
 
-    private void OnTriggerEnter2D(Collider2D other) {
+    private void OnTriggerStay2D(Collider2D other) {
         if (other.gameObject.GetComponent<Slingshot>() && !IsAttachedToSlingShot && _isActive) {
             _slingshot.SetCurrentThrowableItem(this);
             IsAttachedToSlingShot = true;
