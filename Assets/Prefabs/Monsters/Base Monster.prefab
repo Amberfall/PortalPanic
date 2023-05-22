@@ -82,7 +82,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _currentFoodSpriteRenderer: {fileID: 6578752966862056599}
   _foodSprites:
-  - {fileID: 21300000, guid: 2696cee14bcd8a74d814789c30aae270, type: 3}
   - {fileID: 21300000, guid: 0878580bca66f7144a492479ddb55269, type: 3}
   - {fileID: 21300000, guid: 46447abb00a9c574bb8b1231dc62b318, type: 3}
   - {fileID: 21300000, guid: 44c9ae21c12367b4da808fac696f70d6, type: 3}
@@ -96,15 +95,15 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2776847053856087241}
+  - component: {fileID: 2776847053856087235}
   - component: {fileID: 2776847053856087239}
   - component: {fileID: 2776847053856087232}
   - component: {fileID: 2776847053856087238}
-  - component: {fileID: 2776847053856087235}
   - component: {fileID: 8253169099433104871}
   - component: {fileID: 2422727936733437986}
   m_Layer: 6
   m_Name: Base Monster
-  m_TagString: Untagged
+  m_TagString: Bounceable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -126,6 +125,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2776847053856087235
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2776847053856087240}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f58871b099701774f87ee4aa20faf14a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _monsterType: 0
+  _moveSpeed: 1.3
+  _currentStateName: 
 --- !u!70 &2776847053856087239
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -202,7 +216,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 7
-  m_Sprite: {fileID: 21300000, guid: eafbea63205a1ba439c7c22bec370133, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -210,7 +224,7 @@ SpriteRenderer:
   m_Size: {x: 2.12, y: 2.35}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!50 &2776847053856087238
@@ -240,20 +254,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
---- !u!114 &2776847053856087235
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2776847053856087240}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f58871b099701774f87ee4aa20faf14a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _monsterType: 0
-  _moveSpeed: 1.3
 --- !u!210 &8253169099433104871
 SortingGroup:
   m_ObjectHideFlags: 0

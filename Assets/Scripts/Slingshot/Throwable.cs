@@ -47,7 +47,7 @@ public class Throwable : MonoBehaviour
 
    public IEnumerator ThrowDisableColliderRoutine() {
         Physics2D.IgnoreLayerCollision(gameObject.layer, LayerMask.NameToLayer(BRIDGE_LAYER_STRING), true);
-        yield return new WaitForSeconds(.4f);
+        yield return new WaitForSeconds(.5f);
         Physics2D.IgnoreLayerCollision(gameObject.layer, LayerMask.NameToLayer(BRIDGE_LAYER_STRING), false);
    }
 

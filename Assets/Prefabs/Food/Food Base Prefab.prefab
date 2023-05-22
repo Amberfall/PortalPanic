@@ -19,7 +19,7 @@ GameObject:
   - component: {fileID: 5825454121446016358}
   m_Layer: 0
   m_Name: Food Base Prefab
-  m_TagString: Untagged
+  m_TagString: Bounceable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -224,11 +224,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34854c775867da444adaa4b74e802a83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _groundLayer:
-    serializedVersion: 2
-    m_Bits: 256
-  _feetTransforms: []
-  _groundRaycastDistance: 0.15
   _moveSpeed: 1
 --- !u!1 &1883818582726390989
 GameObject:

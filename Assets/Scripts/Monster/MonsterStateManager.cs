@@ -11,17 +11,18 @@ public class MonsterStateManager : MonoBehaviour {
 
     [SerializeField] private MonsterType _monsterType;
     [SerializeField] private float _moveSpeed = 0.8f;
+    [SerializeField] private string _currentStateName; // just so I can see the monster's state easily in the inspector
 
     public Rigidbody2D Rb2d { get; private set; } // I'm only doing it this way so it hides in the inspector
     public SpriteRenderer SpriteR { get; private set; }
 
+    private MonsterBaseState _currentState;
     public MonsterAngryState AngryState = new MonsterAngryState();
     public MonsterLeavingState LeavingState = new MonsterLeavingState();
     public MonsterPassiveState PassiveState = new MonsterPassiveState();
     public MonsterPursuitState PursuitState = new MonsterPursuitState();
 
     private Color m_NewColor;
-    private MonsterBaseState _currentState;
     private MonsterHunger _monsterHunger;
 
     private void Awake() {
@@ -37,6 +38,7 @@ public class MonsterStateManager : MonoBehaviour {
 
     private void Update(){
         _currentState.UpdateState(this);
+        _currentStateName = _currentState.GetType().Name;
     }
 
     public MonsterType GetMonsterType() {
@@ -107,10 +109,10 @@ public class MonsterStateManager : MonoBehaviour {
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D other) {
+    private void OnTriggerStay2D(Collider2D other) {
         Food food = other.gameObject.GetComponentInParent<Food>();
 
-        if (food && food.GetFoodType() == _monsterHunger.GetCurrentFoodHungerType()) {
+        if (food && (food.GetFoodType() == _monsterHunger.GetCurrentFoodHungerType() || food.GetFoodType() == Food.FoodType.Human)) {
             _currentState = PursuitState;
             _currentState.EnterState(this);
             PursuitState.UpdatePursuingTarget(food.transform);

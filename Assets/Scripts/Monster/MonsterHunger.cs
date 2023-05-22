@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class MonsterHunger : MonoBehaviour
 {
-    
     [SerializeField] private SpriteRenderer _currentFoodSpriteRenderer;
     [SerializeField] private Sprite[] _foodSprites;
     [SerializeField] private GameObject _thoughtBubble;
@@ -22,7 +21,7 @@ public class MonsterHunger : MonoBehaviour
 
     public void ChangeDesiredFoodTyped() {
         _thoughtBubble.SetActive(true);
-        int randomFoodNum = Random.Range(0, 3);
+        int randomFoodNum = Random.Range(0, 2);
 
         _currentFoodHungerType = (Food.FoodType)randomFoodNum;
         _currentFoodSpriteRenderer.sprite = _foodSprites[randomFoodNum];
@@ -33,8 +32,11 @@ public class MonsterHunger : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
-        if (other.gameObject.GetComponent<Food>()) {
-            if (other.gameObject.GetComponent<Food>().GetFoodType() == _currentFoodHungerType) {
+        Food food = other.gameObject.GetComponent<Food>();
+
+        if (food) {
+            // human wild card
+            if (food.GetFoodType() == _currentFoodHungerType || food.GetFoodType() == Food.FoodType.Human) {
                 EatFood();
                 Destroy(other.gameObject);
             }

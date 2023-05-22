@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Food : MonoBehaviour
 {
-    public enum FoodType { Human, Cow, Chicken, Pig };
+    public enum FoodType { Cow, Chicken, Pig, Human };
 
     [SerializeField] private FoodType _foodType;
 

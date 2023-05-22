@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1186538115991453993, guid: 4f456c5d53657a64fb656909d2fe4cdb, type: 3}
       propertyPath: m_Name
-      value: Human (2)
+      value: Human
       objectReference: {fileID: 0}
     - target: {fileID: 1186538115991453993, guid: 4f456c5d53657a64fb656909d2fe4cdb, type: 3}
       propertyPath: m_Layer
@@ -71,6 +71,10 @@ PrefabInstance:
     - target: {fileID: 1186538116869795209, guid: 4f456c5d53657a64fb656909d2fe4cdb, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1186538116869795217, guid: 4f456c5d53657a64fb656909d2fe4cdb, type: 3}
+      propertyPath: _foodType
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1186538116869795219, guid: 4f456c5d53657a64fb656909d2fe4cdb, type: 3}
       propertyPath: m_Sprite
