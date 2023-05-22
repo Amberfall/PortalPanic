@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Pool;
 
 public class MonsterSpawner : MonoBehaviour{
+    
     [SerializeField] public float _spawnRate = 5f;
     [SerializeField] static private int _poolCount = 10;
     [SerializeField] private Sprite _spriteName;

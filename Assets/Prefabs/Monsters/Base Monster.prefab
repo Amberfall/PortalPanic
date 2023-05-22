@@ -86,6 +86,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 0878580bca66f7144a492479ddb55269, type: 3}
   - {fileID: 21300000, guid: 46447abb00a9c574bb8b1231dc62b318, type: 3}
   - {fileID: 21300000, guid: 44c9ae21c12367b4da808fac696f70d6, type: 3}
+  _thoughtBubble: {fileID: 5029372258388437824}
 --- !u!1 &2776847053856087240
 GameObject:
   m_ObjectHideFlags: 0
@@ -134,7 +135,7 @@ CapsuleCollider2D:
   m_GameObject: {fileID: 2776847053856087240}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 09cdadd2582c3eb4c9abbd62be8e00c9, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -237,7 +238,7 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!114 &2776847053856087235
 MonoBehaviour:
@@ -251,7 +252,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f58871b099701774f87ee4aa20faf14a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _moveSpeed: 0.8
+  _monsterType: 0
+  _moveSpeed: 1.3
 --- !u!210 &8253169099433104871
 SortingGroup:
   m_ObjectHideFlags: 0
@@ -315,7 +317,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8923741985845791284
 Transform:
   m_ObjectHideFlags: 0
