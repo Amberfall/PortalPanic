@@ -45,11 +45,19 @@ public class Throwable : MonoBehaviour
         IsAttachedToSlingShot = value;
     }
 
-   public IEnumerator ThrowDisableColliderRoutine() {
+    public IEnumerator ThrowDisableColliderRoutine()
+    {
         Physics2D.IgnoreLayerCollision(gameObject.layer, LayerMask.NameToLayer(BRIDGE_LAYER_STRING), true);
-        yield return new WaitForSeconds(.5f);
+        yield return new WaitForSeconds(0.5f);
+        
+        // check if gameobject has been eaten/destroyed during the .5f sec
+        if (ReferenceEquals(gameObject, null))
+        {
+            yield break; 
+        }
+
         Physics2D.IgnoreLayerCollision(gameObject.layer, LayerMask.NameToLayer(BRIDGE_LAYER_STRING), false);
-   }
+    }
 
     private void OnMouseUp() {
         _isActive = false;

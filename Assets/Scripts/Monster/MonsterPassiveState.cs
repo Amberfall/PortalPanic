@@ -4,41 +4,27 @@ using UnityEngine;
 
 public class MonsterPassiveState : MonsterBaseState
 {
-    private float _timer;
     private int _direction = 0;
-    private bool _pathfinding = true;
     private float _changeDirectionTimer;
 
     public override void EnterState(MonsterStateManager monster)
     {
-        // Debug.Log("enter passive");
-        this._timer = Random.Range(3f, 7f);
         this._changeDirectionTimer = Random.Range(3f, 5f);
+        ChangeMoveDir();
     }
 
     public override void UpdateState(MonsterStateManager monster)
     {
-        //monster.GetComponent<MonsterStateManager>().currentState = monster.leavingState;
+        _changeDirectionTimer -= Time.deltaTime;
 
-        this._timer-= Time.deltaTime;
-        if (this._timer <= 0){
-            // switch to angry state when timer hits zero to begin rampage
-            monster.SwitchState(monster.AngryState);
-        }else if(this._timer % _changeDirectionTimer > 0.5){
-            // move around
-            if(_pathfinding){
-                _direction = Random.Range(-1,2);
-                this._changeDirectionTimer = Random.Range(3f, 5f);
-                _pathfinding = false;
-            }
-        }else{
-            // restart pathfinding
-            _pathfinding = true;
+        if(_changeDirectionTimer <= 0f){
+            ChangeMoveDir();
+            this._changeDirectionTimer = Random.Range(3f, 5f);
         }
 
         monster.Rb2d.velocity = new Vector2(_direction * monster.MoveSpeed, monster.Rb2d.velocity.y);
 
-        if (_direction >= 0)
+        if (_direction > 0)
         {
             monster.SpriteR.flipX = true;
         }
@@ -52,5 +38,13 @@ public class MonsterPassiveState : MonsterBaseState
     public override void OnCollisionEnter(MonsterStateManager monster)
     {
         //dmonsterevil.GetComponent<MonsterStateManager>().currentState = monster.leavingState;
+    }
+
+    private void ChangeMoveDir() {
+        // sometimes not moving
+        // _direction = Random.Range(-1,2);
+
+        // always moving returns -1 or 1
+        _direction = Random.Range(0, 2) * 2 - 1;
     }
 }
