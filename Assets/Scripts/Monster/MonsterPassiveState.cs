@@ -11,11 +11,9 @@ public class MonsterPassiveState : MonsterBaseState
 
     public override void EnterState(MonsterStateManager monster)
     {
-        Debug.Log("enter passive");
-        //monster.GetComponent<MonsterStateManager>().currentState = monster.leavingState;
-        this._timer = Random.Range(1f, 6f);
+        // Debug.Log("enter passive");
+        this._timer = Random.Range(3f, 7f);
         this._changeDirectionTimer = Random.Range(1,5);
-        //Debug.Log("_changeDirectionTimer: " + _changeDirectionTimer);
         monster.SpriteR.color = Color.white;
     }
 
@@ -39,6 +37,15 @@ public class MonsterPassiveState : MonsterBaseState
             _pathfinding = true;
         }
         monster.Rb2d.velocity = new Vector2(_direction * monster.MoveSpeed, monster.Rb2d.velocity.y);
+
+        if (_direction >= 1)
+        {
+            monster.SpriteR.flipX = true;
+        }
+        else
+        {
+            monster.SpriteR.flipX = false;
+        }
     }
 
 

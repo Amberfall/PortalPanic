@@ -39,7 +39,7 @@ public class MonsterHunger : MonoBehaviour
     }
 
     private void EatFood() {
-        Debug.Log(_currentFoodHungerType + " eaten");
+        // Debug.Log(_currentFoodHungerType + " eaten");
         _monsterStateManager.SwitchState(_monsterStateManager.PassiveState);
     }
 }
