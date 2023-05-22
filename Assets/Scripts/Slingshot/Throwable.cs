@@ -7,9 +7,11 @@ public class Throwable : MonoBehaviour
     public bool IsActive { get { return _isActive; } set { _isActive = value; } }
     public bool IsAttachedToSlingShot { get; private set; }
 
-    private bool _isActive = false;
-    const string BRIDGE_LAYER_STRING = "Bridge";
 
+    private bool _isActive = false;
+    const string BRIDGE_TAG_STRING = "Bridge";
+
+    private Collider2D _bridgeCol;
     private Collider2D _col;
     private Rigidbody2D _rb;
     private Slingshot _slingshot;
@@ -18,6 +20,7 @@ public class Throwable : MonoBehaviour
         _col = GetComponent<Collider2D>();
         _rb = GetComponent<Rigidbody2D>();
         _slingshot = FindObjectOfType<Slingshot>();
+        _bridgeCol = GameObject.FindGameObjectWithTag(BRIDGE_TAG_STRING).GetComponent<Collider2D>();
     }
 
     private void Start() {
@@ -45,18 +48,13 @@ public class Throwable : MonoBehaviour
         IsAttachedToSlingShot = value;
     }
 
-    public IEnumerator ThrowDisableColliderRoutine()
+    public IEnumerator ThrowDisableBridgeColliderRoutine()
     {
-        Physics2D.IgnoreLayerCollision(gameObject.layer, LayerMask.NameToLayer(BRIDGE_LAYER_STRING), true);
-        yield return new WaitForSeconds(0.5f);
-        
-        // check if gameobject has been eaten/destroyed during the .5f sec
-        if (ReferenceEquals(gameObject, null))
-        {
-            yield break; 
-        }
+        Physics2D.IgnoreCollision(_col, _bridgeCol, true);
 
-        Physics2D.IgnoreLayerCollision(gameObject.layer, LayerMask.NameToLayer(BRIDGE_LAYER_STRING), false);
+        yield return new WaitForSeconds(.7f);
+
+        Physics2D.IgnoreCollision(_col, _bridgeCol, false);
     }
 
     private void OnMouseUp() {

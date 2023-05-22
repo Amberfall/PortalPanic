@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Walkable
   - Bounceable
+  - Bridge
   layers:
   - Default
   - TransparentFX
