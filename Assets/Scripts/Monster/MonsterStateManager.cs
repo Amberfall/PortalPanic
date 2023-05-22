@@ -57,8 +57,6 @@ public class MonsterStateManager : MonoBehaviour {
     // Destroy tile it connects with if in the angry state
     private void OnCollisionEnter2D(Collision2D other)
     {
-        Debug.Log(other.gameObject.name);
-        Debug.Log(_currentState);
 
         Tilemap tilemap = other.gameObject.GetComponent<Tilemap>();
         Portal portal = other.gameObject.GetComponent<Portal>();
@@ -75,24 +73,32 @@ public class MonsterStateManager : MonoBehaviour {
     }
 
     private void TileMapDestruction(Tilemap tilemap, Collision2D other) {
-        Vector3 collisionPoint = other.GetContact(0).point;
-        Vector3Int cellPosition = tilemap.WorldToCell(collisionPoint);
-
         switch (_monsterType)
         {
             case MonsterType.Small:
-                tilemap.SetTile(cellPosition, null);
+                Vector3 hitPosSmall = Vector3.zero;
+                foreach (ContactPoint2D hit in other.contacts)
+                {
+                    hitPosSmall.x = hit.point.x - 0.01f * hit.normal.x;
+                    hitPosSmall.y = hit.point.y - 0.01f * hit.normal.y;
+                    tilemap.SetTile(tilemap.WorldToCell(hitPosSmall), null);
+                }
                 break;
 
             case MonsterType.Large:
-                Vector3Int tileAbovePos = cellPosition + Vector3Int.up;
-                Vector3Int tileLeftPos = cellPosition + Vector3Int.left;
-                Vector3Int tileRightPos = cellPosition + Vector3Int.right;
+               Vector3 hitPosLarge = Vector3.zero;
+                foreach (ContactPoint2D hit in other.contacts)
+                {
+                    hitPosLarge.x = hit.point.x - 0.01f * hit.normal.x;
+                    hitPosLarge.y = hit.point.y - 0.01f * hit.normal.y;
 
-                tilemap.SetTile(cellPosition, null);
-                tilemap.SetTile(tileAbovePos, null);
-                tilemap.SetTile(tileLeftPos, null);
-                tilemap.SetTile(tileRightPos, null);
+                    Vector3Int cellPosition = tilemap.WorldToCell(hitPosLarge);
+
+                    tilemap.SetTile(cellPosition, null);
+                    tilemap.SetTile(cellPosition + new Vector3Int(0, 1, 0), null);
+                    tilemap.SetTile(cellPosition + new Vector3Int(-1, 0, 0), null);
+                    tilemap.SetTile(cellPosition + new Vector3Int(1, 0, 0), null);
+                }
                 break;
             
             default:

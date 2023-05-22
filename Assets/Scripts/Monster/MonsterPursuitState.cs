@@ -19,6 +19,10 @@ public class MonsterPursuitState : MonsterBaseState
             Vector3 targetDirection = _currentPursuingTarget.position - monster.transform.position;
 
             _direction = (targetDirection.x > 0) ? 1 : (targetDirection.x < 0) ? -1 : 0;
+
+            if (Vector3.Distance(monster.transform.position, _currentPursuingTarget.position) > 7f) {
+                monster.SwitchState(monster.PassiveState);
+            }
         }
 
         monster.Rb2d.velocity = new Vector2(_direction * monster.MoveSpeed, monster.Rb2d.velocity.y);
