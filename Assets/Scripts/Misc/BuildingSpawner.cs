@@ -7,6 +7,7 @@ public class BuildingSpawner : MonoBehaviour
 {
     [SerializeField] private GameObject _prefabToSpawn;
     [SerializeField] private float _timeBetweenSpawns;
+    [SerializeField] private bool _spawnAtSceneStart;
 
     private Slider _spawnSlider;
     private float _currentSpawnTime = 0f;
@@ -18,6 +19,10 @@ public class BuildingSpawner : MonoBehaviour
     private void Start() {
         StartCoroutine(SpawnPrefabRoutine());
         _currentSpawnTime = 0f;
+
+        if (_spawnAtSceneStart) {
+            Instantiate(_prefabToSpawn, transform.position, Quaternion.identity);
+        }
     }
 
     private void Update() {
@@ -28,8 +33,8 @@ public class BuildingSpawner : MonoBehaviour
     private IEnumerator SpawnPrefabRoutine() {
         while (true)
         {
-            Instantiate(_prefabToSpawn, transform.position, Quaternion.identity);
             yield return new WaitForSeconds(_timeBetweenSpawns);
+            Instantiate(_prefabToSpawn, transform.position, Quaternion.identity);
             _currentSpawnTime = 0f;
         }
     }

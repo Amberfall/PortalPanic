@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class PortalSpawnManager : MonoBehaviour
 {
-    [SerializeField] private GameObject _portalPrefab;
-    [SerializeField] private float _timeBetweenPortals = 5f;
+    [SerializeField] private GameObject _smallMonsterPortalPrefab;
+    [SerializeField] private GameObject _LargeMonsterPortalPrefab;
+    [SerializeField] private float _timeBetweenPortals = 10f;
 
     private BoxCollider2D _boxCollider2D;
 
@@ -20,16 +21,25 @@ public class PortalSpawnManager : MonoBehaviour
     private IEnumerator SpawnPortalRoutine() {
         while (true)
         {
-            yield return new WaitForSeconds(_timeBetweenPortals);
-
             Vector2 randomPoint = GetRandomPointInBoxCollider2D();
 
-            GameObject newPortal = Instantiate(_portalPrefab, randomPoint, Quaternion.identity);
+            float portalChanceNum = Random.Range(0f, 1f);
+
+            if (portalChanceNum < 2f / 3f)
+            {
+                Instantiate(_smallMonsterPortalPrefab, randomPoint, Quaternion.identity);
+            }
+            else
+            {
+                Instantiate(_LargeMonsterPortalPrefab, randomPoint, Quaternion.identity);
+            }
 
             _timeBetweenPortals -= .2f;
             if (_timeBetweenPortals <= .5f) {
                 _timeBetweenPortals = .5f;
             }
+
+            yield return new WaitForSeconds(_timeBetweenPortals);
         }
     }
 

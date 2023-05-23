@@ -2,12 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FoodMovement : MonoBehaviour
+public class CharacterMovement : MonoBehaviour
 {
-    // [SerializeField] private LayerMask _groundLayer = new LayerMask();
-    // [SerializeField] private Transform[] _feetTransforms;
-    // [SerializeField] private float _groundRaycastDistance = .35f; 
-
     const string WALKABLE_STRING = "Walkable";
 
     public float _moveSpeed = 2.0f;
@@ -45,7 +41,6 @@ public class FoodMovement : MonoBehaviour
     private void Move() {
         if (_throwable.IsAttachedToSlingShot) { return; }
 
-        // _rb.velocity = new Vector2(_direction * _moveSpeed, 0f);
         _rb.velocity = new Vector2(_direction * _moveSpeed, _rb.velocity.y);
     }
 
@@ -70,10 +65,6 @@ public class FoodMovement : MonoBehaviour
         }
     }
 
-    // if gameobject doesn't check if grounded it will conflict with slingshot rigidbody movement.  
-    // I used two feet transforms cause the pigs and cows were having issues being too chonky. Still a little clunky on open sprite shape 
-    // not sure what collision walking method will work better between these two. 
-
     private void OnCollisionStay2D(Collision2D other)
     {
         if (other.gameObject.CompareTag(WALKABLE_STRING))
@@ -89,18 +80,4 @@ public class FoodMovement : MonoBehaviour
             _isGrounded = false;
         }
     }
-
-    // private bool CheckGrounded()
-    // {
-    //     foreach (Transform footTransform in _feetTransforms)
-    //     {
-    //         RaycastHit2D hit = Physics2D.Raycast(footTransform.position, Vector2.down, _groundRaycastDistance, _groundLayer);
-
-    //         if (hit.collider) {
-    //             return true;
-    //         } 
-    //     }
-
-    //     return false;
-    // }
 }

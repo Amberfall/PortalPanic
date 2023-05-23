@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class Throwable : MonoBehaviour
 {
-    public bool TESTTEMPBOOL = false;
-
     public bool IsActive { get { return _isActive; } set { _isActive = value; } }
     public bool IsAttachedToSlingShot { get; private set; }
 
@@ -38,6 +36,11 @@ public class Throwable : MonoBehaviour
             if (Input.GetMouseButtonUp(0))
             {
                 _isActive = false;
+            }
+
+            if (!CursorManager.Instance.IsInValidZone()) {
+                _isActive = false;
+                InputManager.Instance.DropThrowable();
             }
         }
     }
