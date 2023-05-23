@@ -25,7 +25,7 @@ public class MonsterSpawner : MonoBehaviour{
     }
         
     GameObject CreatePooledItem(){
-        var monster = Instantiate(new GameObject("Monster" + _monsterPool.CountAll));
+        var monster = Instantiate(new GameObject("Monster" + _monsterPool.CountAll), this.transform);
         Debug.Log("monster: " + monster);
         monster.AddComponent<MonsterStateManager>();
         monster.AddComponent<Rigidbody2D>();

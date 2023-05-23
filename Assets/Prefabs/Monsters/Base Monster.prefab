@@ -516,7 +516,7 @@ GameObject:
   - component: {fileID: 2422727936733437986}
   m_Layer: 6
   m_Name: Base Monster
-  m_TagString: Untagged
+  m_TagString: Bounceable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

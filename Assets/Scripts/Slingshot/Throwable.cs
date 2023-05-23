@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class Throwable : MonoBehaviour
 {
+    public bool TESTTEMPBOOL = false;
+
     public bool IsActive { get { return _isActive; } set { _isActive = value; } }
     public bool IsAttachedToSlingShot { get; private set; }
-
 
     private bool _isActive = false;
     const string BRIDGE_TAG_STRING = "Bridge";
