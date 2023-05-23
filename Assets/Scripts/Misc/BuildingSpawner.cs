@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class NoObjectPoolSpawner : MonoBehaviour
+public class BuildingSpawner : MonoBehaviour
 {
     [SerializeField] private GameObject _prefabToSpawn;
     [SerializeField] private float _timeBetweenSpawns;
@@ -26,7 +26,6 @@ public class NoObjectPoolSpawner : MonoBehaviour
     }
 
     private IEnumerator SpawnPrefabRoutine() {
-
         while (true)
         {
             Instantiate(_prefabToSpawn, transform.position, Quaternion.identity);

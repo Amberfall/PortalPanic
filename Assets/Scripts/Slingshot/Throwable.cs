@@ -10,9 +10,7 @@ public class Throwable : MonoBehaviour
     public bool IsAttachedToSlingShot { get; private set; }
 
     private bool _isActive = false;
-    const string BRIDGE_TAG_STRING = "Bridge";
 
-    private Collider2D _bridgeCol;
     private Collider2D _col;
     private Rigidbody2D _rb;
     private Slingshot _slingshot;
@@ -21,7 +19,6 @@ public class Throwable : MonoBehaviour
         _col = GetComponent<Collider2D>();
         _rb = GetComponent<Rigidbody2D>();
         _slingshot = FindObjectOfType<Slingshot>();
-        _bridgeCol = GameObject.FindGameObjectWithTag(BRIDGE_TAG_STRING).GetComponent<Collider2D>();
     }
 
     private void Start() {
@@ -47,15 +44,6 @@ public class Throwable : MonoBehaviour
 
     public void AttachToSlingShot(bool value) {
         IsAttachedToSlingShot = value;
-    }
-
-    public IEnumerator ThrowDisableBridgeColliderRoutine()
-    {
-        Physics2D.IgnoreCollision(_col, _bridgeCol, true);
-
-        yield return new WaitForSeconds(.7f);
-
-        Physics2D.IgnoreCollision(_col, _bridgeCol, false);
     }
 
     private void OnMouseUp() {
