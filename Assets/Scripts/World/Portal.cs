@@ -13,7 +13,16 @@ public class Portal : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other) {
         if (other.gameObject.GetComponent<Throwable>()) {
+
+            Food food = other.gameObject.GetComponent<Food>();
+
+            if (food && food.GetFoodType() == Food.FoodType.Human)
+            {
+                LivesManager.InvokeVillagerDeath();
+            }
+
             ScoreManager.Instance.InvokeIncreaseScore();
+
             Destroy(other.gameObject);
             Destroy(this.gameObject);
         }

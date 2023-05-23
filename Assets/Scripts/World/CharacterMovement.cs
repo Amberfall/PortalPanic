@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class CharacterMovement : MonoBehaviour
 {
+    public bool IsGrounded => _isGrounded;
+
     const string WALKABLE_STRING = "Walkable";
 
-    public float _moveSpeed = 2.0f;
+    private float _moveSpeed = 2.0f;
     private float _direction;
     private bool _isGrounded = false;
 

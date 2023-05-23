@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 1186538116869795208}
   - component: {fileID: 1186538116869795217}
   - component: {fileID: 1696581041185713340}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Food Base Prefab
   m_TagString: Bounceable
   m_Icon: {fileID: 0}
