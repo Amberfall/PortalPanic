@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: -5246049380143713859}
   m_Layer: 6
   m_Name: Base Monster
-  m_TagString: Bounceable
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -175,7 +175,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34854c775867da444adaa4b74e802a83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _moveSpeed: 1.3
+  _isEnemy: 0
 --- !u!114 &-5246049380143713859
 MonoBehaviour:
   m_ObjectHideFlags: 0
