@@ -1,21 +1,72 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Pool;
 
-public class PortalSpawnManager : MonoBehaviour
+public class PortalSpawnManager : Singleton<PortalSpawnManager>
 {
-    [SerializeField] private GameObject _smallMonsterPortalPrefab;
-    [SerializeField] private GameObject _LargeMonsterPortalPrefab;
+    [SerializeField] private Portal _smallMonsterPortalPrefab;
+    [SerializeField] private Portal _largeMonsterPortalPrefab;
+
+    [SerializeField] private Monster _smallMonsterPrefab;
+    [SerializeField] private Monster _largeMonsterPrefab;
+
     [SerializeField] private float _timeBetweenPortals = 10f;
+
+    private ObjectPool<Portal> _portalPool;
 
     private BoxCollider2D _boxCollider2D;
 
-    private void Awake() {
+    protected override void Awake() {
+        base.Awake();
+
         _boxCollider2D = GetComponent<BoxCollider2D>();
     }
 
     private void Start() {
+        CreatePortalPool();
+
         StartCoroutine(SpawnPortalRoutine());
+    }
+
+    public void ReleasePortalFromPool(Portal portal) {
+        _portalPool.Release(portal);
+    }
+
+    private void CreatePortalPool() {
+        _portalPool = new ObjectPool<Portal>(() =>
+        {
+            Portal monsterPortalPrefab = GetRandomPortalPrefab();
+
+            return Instantiate(monsterPortalPrefab);
+        }, portal =>
+        {
+            portal.gameObject.SetActive(true);
+        }, portal =>
+        {
+            portal.gameObject.SetActive(false);
+        }, portal =>
+        {
+            Destroy(portal);
+        }, false, 30, 60);
+    }
+
+    private Portal GetRandomPortalPrefab()
+    {
+        Portal monsterPortalPrefab;
+
+        float monsterTypeChanceNum = Random.Range(0f, 1f);
+
+        if (monsterTypeChanceNum < 2f / 3f)
+        {
+            monsterPortalPrefab = _smallMonsterPortalPrefab;
+        }
+        else
+        {
+            monsterPortalPrefab = _largeMonsterPortalPrefab;
+        }
+
+        return monsterPortalPrefab;
     }
 
     private IEnumerator SpawnPortalRoutine() {
@@ -23,16 +74,9 @@ public class PortalSpawnManager : MonoBehaviour
         {
             Vector2 randomPoint = GetRandomPointInBoxCollider2D();
 
-            float portalChanceNum = Random.Range(0f, 1f);
+            Portal newMonster = _portalPool.Get();
 
-            if (portalChanceNum < 2f / 3f)
-            {
-                Instantiate(_smallMonsterPortalPrefab, randomPoint, Quaternion.identity);
-            }
-            else
-            {
-                Instantiate(_LargeMonsterPortalPrefab, randomPoint, Quaternion.identity);
-            }
+            newMonster.transform.position = randomPoint;
 
             _timeBetweenPortals -= .1f;
             if (_timeBetweenPortals <= 1f) {

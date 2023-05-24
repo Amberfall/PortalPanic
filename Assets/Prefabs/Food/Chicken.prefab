@@ -98,19 +98,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1186538116869795221, guid: 4f456c5d53657a64fb656909d2fe4cdb, type: 3}
       propertyPath: m_Size.x
-      value: 1.0704174
+      value: 1.4644973
       objectReference: {fileID: 0}
     - target: {fileID: 1186538116869795221, guid: 4f456c5d53657a64fb656909d2fe4cdb, type: 3}
       propertyPath: m_Size.y
-      value: 1.0704174
+      value: 1.0861868
       objectReference: {fileID: 0}
     - target: {fileID: 1186538116869795221, guid: 4f456c5d53657a64fb656909d2fe4cdb, type: 3}
       propertyPath: m_Offset.x
-      value: 0.023532867
+      value: 0.07344928
       objectReference: {fileID: 0}
     - target: {fileID: 1186538116869795221, guid: 4f456c5d53657a64fb656909d2fe4cdb, type: 3}
       propertyPath: m_Offset.y
-      value: 0.11680569
+      value: 0.124686666
+      objectReference: {fileID: 0}
+    - target: {fileID: 1186538116869795221, guid: 4f456c5d53657a64fb656909d2fe4cdb, type: 3}
+      propertyPath: m_Direction
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1186538116869795222, guid: 4f456c5d53657a64fb656909d2fe4cdb, type: 3}
       propertyPath: m_Radius
@@ -128,6 +132,10 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 27b6a7af89b00554187d9a15611828db, type: 2}
+    - target: {fileID: 1696581041185713340, guid: 4f456c5d53657a64fb656909d2fe4cdb, type: 3}
+      propertyPath: _animationsRiggedUp
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5825454121446016358, guid: 4f456c5d53657a64fb656909d2fe4cdb, type: 3}
       propertyPath: _feetTransforms.Array.size
       value: 1

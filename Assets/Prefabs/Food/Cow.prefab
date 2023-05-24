@@ -98,19 +98,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1186538116869795221, guid: 4f456c5d53657a64fb656909d2fe4cdb, type: 3}
       propertyPath: m_Size.x
-      value: 2.3918076
+      value: 2.5854516
       objectReference: {fileID: 0}
     - target: {fileID: 1186538116869795221, guid: 4f456c5d53657a64fb656909d2fe4cdb, type: 3}
       propertyPath: m_Size.y
-      value: 1.5018802
+      value: 1.5542247
       objectReference: {fileID: 0}
     - target: {fileID: 1186538116869795221, guid: 4f456c5d53657a64fb656909d2fe4cdb, type: 3}
       propertyPath: m_Offset.x
-      value: -0.08319618
+      value: -0.10674621
       objectReference: {fileID: 0}
     - target: {fileID: 1186538116869795221, guid: 4f456c5d53657a64fb656909d2fe4cdb, type: 3}
       propertyPath: m_Offset.y
-      value: -0.027455203
+      value: -0.0012884014
       objectReference: {fileID: 0}
     - target: {fileID: 1186538116869795221, guid: 4f456c5d53657a64fb656909d2fe4cdb, type: 3}
       propertyPath: m_Direction
@@ -132,6 +132,10 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: b55b46b58a227ee43b4ae921553e0194, type: 2}
+    - target: {fileID: 1696581041185713340, guid: 4f456c5d53657a64fb656909d2fe4cdb, type: 3}
+      propertyPath: _animationsRiggedUp
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5825454121446016358, guid: 4f456c5d53657a64fb656909d2fe4cdb, type: 3}
       propertyPath: _groundRaycastDistance
       value: 0.5

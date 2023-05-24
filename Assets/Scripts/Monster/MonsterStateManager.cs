@@ -59,7 +59,6 @@ public class MonsterStateManager : MonoBehaviour {
     // Destroy tile it connects with if in the angry state
     private void OnCollisionEnter2D(Collision2D other)
     {
-
         Tilemap tilemap = other.gameObject.GetComponent<Tilemap>();
         Portal portal = other.gameObject.GetComponent<Portal>();
 

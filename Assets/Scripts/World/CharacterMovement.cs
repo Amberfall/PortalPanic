@@ -6,6 +6,8 @@ public class CharacterMovement : MonoBehaviour
 {
     public bool IsGrounded => _isGrounded;
 
+    [SerializeField] private bool _animationsRiggedUp = false;
+
     const string WALKABLE_STRING = "Walkable";
     readonly int WALK_HASH = Animator.StringToHash("Walk");
     readonly int IDLE_HASH = Animator.StringToHash("Idle");
@@ -59,29 +61,41 @@ public class CharacterMovement : MonoBehaviour
         {
             _spriteRenderer.flipX = true;
 
-            _animator.SetBool(WALK_HASH, true);
-            _animator.SetBool(IDLE_HASH, false);
-            _animator.SetBool(HELD_HASH, false);
+            if (_animationsRiggedUp) {
+                _animator.SetBool(WALK_HASH, true);
+                _animator.SetBool(IDLE_HASH, false);
+                _animator.SetBool(HELD_HASH, false);
+            }
 
         }
         else if (_direction < 0) 
         {
             _spriteRenderer.flipX = false;
-            _animator.SetBool(WALK_HASH, true);
-            _animator.SetBool(IDLE_HASH, false);
-            _animator.SetBool(HELD_HASH, false);
+
+                if (_animationsRiggedUp)
+                {
+                    _animator.SetBool(WALK_HASH, true);
+                    _animator.SetBool(IDLE_HASH, false);
+                    _animator.SetBool(HELD_HASH, false);
+
+                }
         } 
         else if (_direction == 0) {
-            _animator.SetBool(IDLE_HASH, true);
-            _animator.SetBool(WALK_HASH, false);
-            _animator.SetBool(HELD_HASH, false);
+            if (_animationsRiggedUp) {
+                _animator.SetBool(IDLE_HASH, true);
+                _animator.SetBool(WALK_HASH, false);
+                _animator.SetBool(HELD_HASH, false);
+            }
+
         }
     } 
 
     public void HeldAnimation() {
-        _animator.SetBool(HELD_HASH, true);
-        _animator.SetBool(IDLE_HASH, false);
-        _animator.SetBool(WALK_HASH, false);
+        if (_animationsRiggedUp) {
+            _animator.SetBool(HELD_HASH, true);
+            _animator.SetBool(IDLE_HASH, false);
+            _animator.SetBool(WALK_HASH, false);
+        }
     }
 
     private IEnumerator ChangeDirection()

@@ -18,7 +18,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1186538116869795209, guid: 4f456c5d53657a64fb656909d2fe4cdb, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1186538116869795209, guid: 4f456c5d53657a64fb656909d2fe4cdb, type: 3}
       propertyPath: m_LocalScale.x
@@ -34,11 +34,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1186538116869795209, guid: 4f456c5d53657a64fb656909d2fe4cdb, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.2983799
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1186538116869795209, guid: 4f456c5d53657a64fb656909d2fe4cdb, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -16.735435
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1186538116869795209, guid: 4f456c5d53657a64fb656909d2fe4cdb, type: 3}
       propertyPath: m_LocalPosition.z
@@ -94,19 +94,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1186538116869795221, guid: 4f456c5d53657a64fb656909d2fe4cdb, type: 3}
       propertyPath: m_Size.x
-      value: 2.0181856
+      value: 2.1617973
       objectReference: {fileID: 0}
     - target: {fileID: 1186538116869795221, guid: 4f456c5d53657a64fb656909d2fe4cdb, type: 3}
       propertyPath: m_Size.y
-      value: 1.1093451
+      value: 1.1249615
       objectReference: {fileID: 0}
     - target: {fileID: 1186538116869795221, guid: 4f456c5d53657a64fb656909d2fe4cdb, type: 3}
       propertyPath: m_Offset.x
-      value: -0.058129553
+      value: -0.058129556
       objectReference: {fileID: 0}
     - target: {fileID: 1186538116869795221, guid: 4f456c5d53657a64fb656909d2fe4cdb, type: 3}
       propertyPath: m_Offset.y
-      value: 0.012277731
+      value: -0.011136288
       objectReference: {fileID: 0}
     - target: {fileID: 1186538116869795221, guid: 4f456c5d53657a64fb656909d2fe4cdb, type: 3}
       propertyPath: m_Direction
@@ -128,6 +128,10 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 2a6d781a7b972c14fb9341cca29802f9, type: 2}
+    - target: {fileID: 1696581041185713340, guid: 4f456c5d53657a64fb656909d2fe4cdb, type: 3}
+      propertyPath: _animationsRiggedUp
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5825454121446016358, guid: 4f456c5d53657a64fb656909d2fe4cdb, type: 3}
       propertyPath: _feetTransforms.Array.size
       value: 2

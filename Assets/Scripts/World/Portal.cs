@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Portal : MonoBehaviour
 {
-    [SerializeField] private float _timeTillMonsterSpawn = 5f;
+    // [SerializeField] private float _timeTillMonsterSpawn = 5f;
     [SerializeField] private GameObject _monsterPrefab;
 
     private int _rotatePostiveOrNegative;
@@ -34,19 +34,27 @@ public class Portal : MonoBehaviour
 
             ScoreManager.Instance.InvokeIncreaseScore();
 
-            Destroy(other.gameObject);
-            Destroy(this.gameObject);
+            if (food && !food.ReleaseFromPool())
+            {
+                Destroy(food.gameObject);
+            }
+
+            if (monster) {
+                Destroy(other.gameObject);
+            }
+
+            PortalSpawnManager.Instance.ReleasePortalFromPool(this);
         }
     }
 
     public void SpawnMonsterAnimEvent() {
         Instantiate(_monsterPrefab, transform.position, Quaternion.identity);
-        Destroy(gameObject);
+        PortalSpawnManager.Instance.ReleasePortalFromPool(this);
     }
 
-    private IEnumerator MonsterSpawnRoutine() {
-        yield return new WaitForSeconds(_timeTillMonsterSpawn);
-        Instantiate(_monsterPrefab, transform.position, Quaternion.identity);
-        Destroy(gameObject);
-    }
+    // private IEnumerator MonsterSpawnRoutine() {
+    //     yield return new WaitForSeconds(_timeTillMonsterSpawn);
+    //     Instantiate(_monsterPrefab, transform.position, Quaternion.identity);
+    //     Destroy(gameObject);
+    // }
 }

@@ -101,6 +101,9 @@ public class Monster : MonoBehaviour
             LivesManager.InvokeVillagerDeath();
         }
 
-        Destroy(food.gameObject);
+        if (!food.ReleaseFromPool())
+        {
+            Destroy(food.gameObject);
+        }
     }
 }
