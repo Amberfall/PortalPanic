@@ -22,19 +22,27 @@ public class Monster : MonoBehaviour
         ToggleFriendlyCollider(true);
     }
 
-    private void OnCollisionEnter2D(Collision2D other) {
-        if (!_hasLanded && other.gameObject.CompareTag(WALKABLE_STRING)) {
-            _hasLanded = true;
-            ToggleFriendlyCollider(false);
-
-            foreach (Food food in FindObjectsOfType<Food>())
-            {
-                food.ToggleFriendlyCollider(false);
-            }
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (!_hasLanded && other.gameObject.CompareTag(WALKABLE_STRING))
+        {
+            HandleToggleCollider();
         }
 
-        if (other.gameObject.GetComponent<Food>()) {
+        if (other.gameObject.GetComponent<Food>())
+        {
             EatFood(other.gameObject.GetComponent<Food>());
+        }
+    }
+
+    public void HandleToggleCollider()
+    {
+        _hasLanded = true;
+        ToggleFriendlyCollider(false);
+
+        foreach (Food food in FindObjectsOfType<Food>())
+        {
+            food.ToggleNewlySpawnedInEnemyCollider(false);
         }
     }
 

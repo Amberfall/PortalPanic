@@ -9,16 +9,12 @@ public class InputManager : Singleton<InputManager>
     private GameObject _currentHeldObject;
 
     private void Update() {
-       QuitApplication();
-       FoodPickUpInteraction();
-
-        if ((Input.GetMouseButtonUp(0) && _currentHeldObject))
-        {
-            DropThrowable();
-        }
+        QuitApplication();
+        ThrowablePickupInteraction();
+        DropThrowable();
     }
 
-    private void FoodPickUpInteraction() {
+    private void ThrowablePickupInteraction() {
         if (Input.GetMouseButtonDown(0) && CursorManager.Instance.IsInValidZone()) {
             RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero, Mathf.Infinity, _interactableLayer);
 
@@ -31,12 +27,21 @@ public class InputManager : Singleton<InputManager>
                 throwable.IsActive = true;
                 _currentHeldObject = throwable.gameObject;
             }
+
+            Monster monster = hit.collider.GetComponent<Monster>();
+            
+            if (monster && !monster.HasLanded) {
+                monster.HandleToggleCollider();
+            }
         }
     }
 
     public void DropThrowable() {
-        _currentHeldObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-        _currentHeldObject = null;
+        if ((Input.GetMouseButtonUp(0) && _currentHeldObject))
+        {
+            _currentHeldObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+            _currentHeldObject = null;
+        }
     }
 
     private void QuitApplication() {

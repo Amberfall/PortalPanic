@@ -9,10 +9,15 @@ public class ScoreManager : Singleton<ScoreManager>
     public static event Action OnPlayerScore;
 
     [SerializeField] private TMP_Text _scoreText;
+    [SerializeField] private TMP_Text _comboText;
     [SerializeField] private int _portalCloseBaseScoreAmount = 1;
 
-    private int _currentMultiplier = 1;
+    private int _currentCombo = 1;
     private int _currentScore = 0;
+
+    private void Start() {
+        UpdateText();
+    }
 
     private void OnEnable() {
         OnPlayerScore += OnPlayerScoreHandler;
@@ -26,24 +31,30 @@ public class ScoreManager : Singleton<ScoreManager>
         OnPlayerScore?.Invoke();
     }
 
-    public void HandleScoreMultiplier(int amount) {
-        _currentMultiplier += amount;
+    public void IncreaseComboAmount() {
+        _currentCombo += 1;
     }
 
-    public void ResetScoreMultiplier() {
-        _currentMultiplier = 1;
+    public void ResetCombo() {
+        _currentCombo = 1;
+        UpdateText();
     }
 
     private void OnPlayerScoreHandler() {
         IncreaseScore();
-        UpdateScoreText();
+        IncreaseComboAmount();
+        UpdateText();
     }
 
     private void IncreaseScore() {
-        _currentScore = _currentScore + (_portalCloseBaseScoreAmount * _currentMultiplier);
+        _currentScore = _currentScore + (_portalCloseBaseScoreAmount * _currentCombo);
     }
 
-    public void UpdateScoreText() {
-        _scoreText.text = "Score: " + _currentScore.ToString("d3");
+    public void UpdateText() {
+        string scoreString = _currentScore.ToString();
+        scoreString = scoreString.PadLeft(3, '0');
+
+        _scoreText.text = "Score: " + scoreString;
+        _comboText.text = "Combo: x" + _currentCombo.ToString();
     }
 }

@@ -23,10 +23,10 @@ public class Food : MonoBehaviour
 
     private void Start()
     {
-        ToggleFriendlyCollider(true);
+        ToggleNewlySpawnedInEnemyCollider(true);
     }
 
-    public void ToggleFriendlyCollider(bool value)
+    public void ToggleNewlySpawnedInEnemyCollider(bool value)
     {
         foreach (Monster monster in FindObjectsOfType<Monster>())
         {

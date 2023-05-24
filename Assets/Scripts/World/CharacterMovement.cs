@@ -67,6 +67,14 @@ public class CharacterMovement : MonoBehaviour
         }
     }
 
+    private void OnCollisionEnter2D(Collision2D other) {
+        if (other.gameObject.CompareTag(WALKABLE_STRING) && _throwable.IsInAirFromSlingshot)
+        {
+            _throwable.IsInAirFromSlingshot = false;
+            ScoreManager.Instance.ResetCombo();
+        }
+    }
+
     private void OnCollisionStay2D(Collision2D other)
     {
         if (other.gameObject.CompareTag(WALKABLE_STRING))

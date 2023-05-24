@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class CursorManager : Singleton<CursorManager>
 {
@@ -35,6 +36,7 @@ public class CursorManager : Singleton<CursorManager>
         Open,
         Closed,
         NotAllowed,
+        Arrow,
     }
 
     private void Start()
@@ -70,6 +72,13 @@ public class CursorManager : Singleton<CursorManager>
 
     private void DetectCursorType()
     {
+        if (EventSystem.current.IsPointerOverGameObject())
+        {
+            _disableCursor = false;
+            SetActiveCursorType(CursorType.Arrow);
+            return;
+        }
+        
         if (!IsInValidZone())
         {
             SetActiveCursorType(CursorType.NotAllowed);

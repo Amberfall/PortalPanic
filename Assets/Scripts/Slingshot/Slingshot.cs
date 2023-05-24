@@ -66,6 +66,8 @@ public class Slingshot : MonoBehaviour
         Vector3 throwableForce = (_currentPosition - _idlePosition.position) * -_slingShotForce;
         _currentThrowableItem.GetComponent<Rigidbody2D>().velocity = throwableForce;
         _currentThrowableItem.AttachToSlingShot(false);
+        _currentThrowableItem.IsInAirFromSlingshot = true;
+        _currentThrowableItem.DetachFromSlingShot();
         _currentThrowableItem = null;
     }
 
