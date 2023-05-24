@@ -25,6 +25,7 @@ public class InputManager : Singleton<InputManager>
             if (hit.collider != null && throwable)
             {
                 throwable.IsActive = true;
+                hit.collider.GetComponent<CharacterMovement>().HeldAnimation();
                 _currentHeldObject = throwable.gameObject;
             }
 

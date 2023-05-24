@@ -34,9 +34,9 @@ public class PortalSpawnManager : MonoBehaviour
                 Instantiate(_LargeMonsterPortalPrefab, randomPoint, Quaternion.identity);
             }
 
-            _timeBetweenPortals -= .2f;
-            if (_timeBetweenPortals <= .5f) {
-                _timeBetweenPortals = .5f;
+            _timeBetweenPortals -= .1f;
+            if (_timeBetweenPortals <= 1f) {
+                _timeBetweenPortals = 1f;
             }
 
             yield return new WaitForSeconds(_timeBetweenPortals);

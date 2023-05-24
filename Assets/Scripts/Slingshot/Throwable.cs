@@ -12,12 +12,14 @@ public class Throwable : MonoBehaviour
     private bool _isInAirFromSlingshot = false;
     private bool _hasCheckedYAxisForCombo = true;
 
+    private CharacterMovement _characterMovement;
     private Collider2D _col;
     private Rigidbody2D _rb;
     private Slingshot _slingshot;
     private Camera _mainCam;
 
     private void Awake() {
+        _characterMovement = GetComponent<CharacterMovement>();
         _col = GetComponent<Collider2D>();
         _rb = GetComponent<Rigidbody2D>();
         _slingshot = FindObjectOfType<Slingshot>();
@@ -78,6 +80,7 @@ public class Throwable : MonoBehaviour
         if (other.gameObject.GetComponent<Slingshot>() && !IsAttachedToSlingShot && _isActive) {
             _slingshot.SetCurrentThrowableItem(this);
             AttachToSlingShot(true);
+            _characterMovement.HeldAnimation();
         } 
     }
 }
