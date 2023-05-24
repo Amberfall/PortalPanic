@@ -5,7 +5,10 @@ using UnityEngine.Tilemaps;
 
 public class Monster : MonoBehaviour
 {
+    public enum MonsterType { Small, Large };
     public bool HasLanded => _hasLanded;
+
+    [SerializeField] private MonsterType _monsterType;
 
     const string FRIENDLY_STRING = "Friendly";
     const string WALKABLE_STRING = "Walkable";
@@ -26,6 +29,7 @@ public class Monster : MonoBehaviour
     {
         if (!_hasLanded && other.gameObject.CompareTag(WALKABLE_STRING))
         {
+            MonsterScreenShake();
             HandleToggleCollider();
         }
 
@@ -43,6 +47,33 @@ public class Monster : MonoBehaviour
         foreach (Food food in FindObjectsOfType<Food>())
         {
             food.ToggleNewlySpawnedInEnemyCollider(false);
+        }
+    }
+
+    private void MonsterScreenShake() {
+        if (_monsterType == MonsterType.Small) {
+            ScreenShakeManager.Instance.SmallMonsterScreenShake();
+        }
+
+        if (_monsterType == MonsterType.Large)
+        {
+            ScreenShakeManager.Instance.LargeMonsterScreenShake();
+        }
+
+        foreach (Food food in FindObjectsOfType<Food>())
+        {
+            if (food.GetComponent<CharacterMovement>().IsGrounded) {
+
+                if (_monsterType == MonsterType.Small)
+                {
+                    food.GetComponent<Rigidbody2D>().velocity = new Vector2(0f, Random.Range(2f, 3.5f));
+                }
+
+                if (_monsterType == MonsterType.Large)
+                {
+                    food.GetComponent<Rigidbody2D>().velocity = new Vector2(0f, Random.Range(3.5f, 5f));
+                }
+            }
         }
     }
 

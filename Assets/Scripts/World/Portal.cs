@@ -7,11 +7,22 @@ public class Portal : MonoBehaviour
     [SerializeField] private float _timeTillMonsterSpawn = 5f;
     [SerializeField] private GameObject _monsterPrefab;
 
+    private int _rotatePostiveOrNegative;
+
     private void Start() {
-        StartCoroutine(MonsterSpawnRoutine());
+        // StartCoroutine(MonsterSpawnRoutine());
+        _rotatePostiveOrNegative = (Random.Range(0, 2) * 2) - 1;
+    }
+
+    private void Update() {
+        transform.Rotate(Vector3.forward * _rotatePostiveOrNegative, 55f * Time.deltaTime);
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
+        Monster monster = other.gameObject.GetComponent<Monster>();
+
+        if (monster && !monster.HasLanded) { return; }
+
         if (other.gameObject.GetComponent<Throwable>()) {
 
             Food food = other.gameObject.GetComponent<Food>();
@@ -26,6 +37,11 @@ public class Portal : MonoBehaviour
             Destroy(other.gameObject);
             Destroy(this.gameObject);
         }
+    }
+
+    public void SpawnMonsterAnimEvent() {
+        Instantiate(_monsterPrefab, transform.position, Quaternion.identity);
+        Destroy(gameObject);
     }
 
     private IEnumerator MonsterSpawnRoutine() {

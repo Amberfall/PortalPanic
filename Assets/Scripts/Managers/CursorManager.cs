@@ -6,6 +6,8 @@ using UnityEngine.EventSystems;
 
 public class CursorManager : Singleton<CursorManager>
 {
+    public float YValueNotAllowedZoneValue => _yValueNotAllowedZoneValue;
+
     public event EventHandler<OnCursorChangedEventArgs> OnCursorChanged;
     public class OnCursorChangedEventArgs : EventArgs
     {

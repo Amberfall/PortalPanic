@@ -71,7 +71,6 @@ public class CharacterMovement : MonoBehaviour
         if (other.gameObject.CompareTag(WALKABLE_STRING) && _throwable.IsInAirFromSlingshot)
         {
             _throwable.IsInAirFromSlingshot = false;
-            ScoreManager.Instance.ResetCombo();
         }
     }
 

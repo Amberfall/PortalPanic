@@ -10,15 +10,18 @@ public class Throwable : MonoBehaviour
 
     private bool _isActive = false;
     private bool _isInAirFromSlingshot = false;
+    private bool _hasCheckedYAxisForCombo = true;
 
     private Collider2D _col;
     private Rigidbody2D _rb;
     private Slingshot _slingshot;
+    private Camera _mainCam;
 
     private void Awake() {
         _col = GetComponent<Collider2D>();
         _rb = GetComponent<Rigidbody2D>();
         _slingshot = FindObjectOfType<Slingshot>();
+        _mainCam = Camera.main;
     }
 
     private void Start() {
@@ -45,6 +48,8 @@ public class Throwable : MonoBehaviour
                 InputManager.Instance.DropThrowable();
             }
         }
+
+        CheckBreakComboBonusDistanceY();
     }
 
     public void AttachToSlingShot(bool value) {
@@ -56,8 +61,17 @@ public class Throwable : MonoBehaviour
         _col.enabled = true;
     }
 
-    private void OnMouseUp() {
-        _isActive = false;
+    private void CheckBreakComboBonusDistanceY() {
+        if (transform.position.y > CursorManager.Instance.YValueNotAllowedZoneValue && _hasCheckedYAxisForCombo && _isInAirFromSlingshot)
+        {
+            _hasCheckedYAxisForCombo = false;
+        }
+        
+        if (transform.position.y < CursorManager.Instance.YValueNotAllowedZoneValue && !_hasCheckedYAxisForCombo)
+        {
+            _hasCheckedYAxisForCombo = true;
+            ScoreManager.Instance.ResetCombo();
+        }
     }
 
     private void OnTriggerStay2D(Collider2D other) {
