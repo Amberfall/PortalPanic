@@ -14,15 +14,17 @@ public class Monster : MonoBehaviour
     const string WALKABLE_STRING = "Walkable";
 
     private bool _hasLanded = false;
+    private Collider2D _col;
 
     private CharacterMovement _characterMovement;
 
     private void Awake() {
+        _col = GetComponent<Collider2D>();
         _characterMovement = GetComponent<CharacterMovement>();
     }
 
     private void Start() {
-        ToggleFriendlyCollider(true);
+        ToggleFoodCollider(true);
     }
 
     private void OnCollisionEnter2D(Collision2D other)
@@ -30,23 +32,14 @@ public class Monster : MonoBehaviour
         if (!_hasLanded && other.gameObject.CompareTag(WALKABLE_STRING))
         {
             MonsterScreenShake();
-            HandleToggleCollider();
+
+            _hasLanded = true;
+            ToggleFoodCollider(false);
         }
 
         if (other.gameObject.GetComponent<Food>())
         {
             EatFood(other.gameObject.GetComponent<Food>());
-        }
-    }
-
-    public void HandleToggleCollider()
-    {
-        _hasLanded = true;
-        ToggleFriendlyCollider(false);
-
-        foreach (Food food in FindObjectsOfType<Food>())
-        {
-            food.ToggleNewlySpawnedInEnemyCollider(false);
         }
     }
 
@@ -77,21 +70,24 @@ public class Monster : MonoBehaviour
         }
     }
 
-    private void ToggleFriendlyCollider(bool value) {
-        Collider2D myCollider = GetComponent<Collider2D>();
+    public void ToggleFoodCollider(bool value) {
 
         foreach (Food food in FindObjectsOfType<Food>())
         {
             if (food.gameObject.layer == LayerMask.NameToLayer(FRIENDLY_STRING))
             {
                 Collider2D otherCollider = food.GetComponent<Collider2D>();
+
                 if (otherCollider != null)
                 {
-                    Physics2D.IgnoreCollision(myCollider, otherCollider, value);
+                    Physics2D.IgnoreCollision(_col, otherCollider, value);
                 }
             }
+
         }
     }
+
+    
 
     private void EatFood(Food food) {
         if (!_hasLanded) { return; }

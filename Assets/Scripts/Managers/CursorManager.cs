@@ -14,9 +14,9 @@ public class CursorManager : Singleton<CursorManager>
         public CursorType _cursorType;
     }
 
+    [SerializeField] private LayerMask _interactableLayer = new LayerMask();
     [SerializeField] private float _yValueNotAllowedZoneValue = -10f;
     [SerializeField] private List<CursorAnimation> _cursorAnimationList;
-
 
     private int _currentFrame;
     private float _frameTimer;
@@ -39,11 +39,6 @@ public class CursorManager : Singleton<CursorManager>
         Closed,
         NotAllowed,
         Arrow,
-    }
-
-    private void Start()
-    {
-        SetActiveCursorType(CursorType.Open);
     }
 
     private void Update()
@@ -74,26 +69,34 @@ public class CursorManager : Singleton<CursorManager>
 
     private void DetectCursorType()
     {
-        if (EventSystem.current.IsPointerOverGameObject())
-        {
-            _disableCursor = false;
-            SetActiveCursorType(CursorType.Arrow);
+        if (InputManager.Instance.CurrentHeldObject) {
+            SetActiveCursorType(CursorType.Closed);
             return;
         }
-        
+
         if (!IsInValidZone())
         {
             SetActiveCursorType(CursorType.NotAllowed);
+            return;
         }
-        else
-        {
+
+        RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero, Mathf.Infinity, _interactableLayer);
+
+        if (hit) {
             if (Input.GetMouseButton(0))
             {
                 SetActiveCursorType(CursorType.Closed);
             } else {
                 SetActiveCursorType(CursorType.Open);
             }
+        } else {
+            SetActiveCursorType(CursorType.Arrow);
         }
+
+        if (Slingshot.Instance.CurrentThrowableItem) {
+            SetActiveCursorType(CursorType.Closed);
+        }
+
     }
 
     public bool IsInValidZone() {

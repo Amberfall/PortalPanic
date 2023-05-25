@@ -18,6 +18,11 @@ public class Food : MonoBehaviour
         _col = GetComponent<Collider2D>();
     }
 
+    private void Start()
+    {
+        ToggleMonsterCollider(true);
+    }
+
     public FoodType GetFoodType() {
         return _foodType;
     }
@@ -35,12 +40,7 @@ public class Food : MonoBehaviour
         return false;
     }
 
-    private void Start()
-    {
-        ToggleNewlySpawnedInEnemyCollider(true);
-    }
-
-    public void ToggleNewlySpawnedInEnemyCollider(bool value)
+    public void ToggleMonsterCollider(bool value)
     {
         foreach (Monster monster in FindObjectsOfType<Monster>())
         {
@@ -48,11 +48,12 @@ public class Food : MonoBehaviour
             {
                 Collider2D otherCollider = monster.GetComponent<Collider2D>();
 
-                if (otherCollider != null && !monster.HasLanded)
+                if (otherCollider != null)
                 {
                     Physics2D.IgnoreCollision(_col, otherCollider, value);
                 }
             }
+            
         }
     }
 }
