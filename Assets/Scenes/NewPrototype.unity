@@ -3174,7 +3174,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 732241525}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 27f5652afa3b0aa44bb1e23eaf14d728, type: 3}
   m_Name: 
@@ -4615,7 +4615,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1185926039330749776, guid: 0d2e58d03f3ad914ba6ece30f20fe4d4, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1185926039497720484, guid: 0d2e58d03f3ad914ba6ece30f20fe4d4, type: 3}
       propertyPath: m_Pivot.x
@@ -4711,11 +4711,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2088106753094631616, guid: 0d2e58d03f3ad914ba6ece30f20fe4d4, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2088106753094631616, guid: 0d2e58d03f3ad914ba6ece30f20fe4d4, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
