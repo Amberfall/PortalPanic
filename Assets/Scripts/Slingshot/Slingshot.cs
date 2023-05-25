@@ -2,8 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Slingshot : MonoBehaviour
+public class Slingshot : Singleton<Slingshot>
 {
+    public Throwable CurrentThrowableItem => _currentThrowableItem;
+
     [SerializeField] private float _slingElasticityStrength = 1.5f;
     [SerializeField] private float _slingElasticitySpeed = 10f;
     [SerializeField] private AnimationCurve _curve;
@@ -45,7 +47,9 @@ public class Slingshot : MonoBehaviour
         if (_currentThrowableItem && Input.GetMouseButtonDown(1)) {
             _slingStartPosition = _center.position;
             _currentThrowableItem.AttachToSlingShot(false);
+            _currentThrowableItem.DetachFromSlingShot();
             _currentThrowableItem = null;
+
             StartCoroutine(ShootThrowableRoutine());
             // _currentThrowableItem.IsActive = true;
         }
@@ -124,7 +128,9 @@ public class Slingshot : MonoBehaviour
     }
 
     private void SetStrips(Vector3 position) {
-        _lineRenderers[0].SetPosition(0, position);
-        _lineRenderers[1].SetPosition(0, position);
+        float offsetValue = .8f;
+
+        _lineRenderers[0].SetPosition(0, position + new Vector3(-offsetValue, 0 , 0));
+        _lineRenderers[1].SetPosition(0, position + new Vector3(offsetValue, 0, 0));
     }
 }

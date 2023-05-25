@@ -43,12 +43,10 @@ public class Throwable : MonoBehaviour
             if (Input.GetMouseButtonUp(0))
             {
                 _isActive = false;
+                _rb.velocity = Vector2.zero;
             }
 
-            if (!CursorManager.Instance.IsInValidZone()) {
-                _isActive = false;
-                InputManager.Instance.DropThrowable();
-            }
+            ClampThrowableIfNotInValidZone();
         }
 
         CheckBreakComboBonusDistanceY();
@@ -61,6 +59,15 @@ public class Throwable : MonoBehaviour
 
     public void DetachFromSlingShot() {
         _col.enabled = true;
+    }
+
+    private void ClampThrowableIfNotInValidZone() {
+        if (!CursorManager.Instance.IsInValidZone())
+        {
+            Vector3 clampedPos = transform.position;
+            clampedPos.y = Mathf.Clamp(clampedPos.y, float.NegativeInfinity, CursorManager.Instance.YValueNotAllowedZoneValue);
+            transform.position = clampedPos;
+        }
     }
 
     private void CheckBreakComboBonusDistanceY() {

@@ -176,6 +176,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34854c775867da444adaa4b74e802a83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _animationsRiggedUp: 0
 --- !u!114 &-5246049380143713859
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -189,6 +190,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _monsterType: 0
+  _smokePoofPrefab: {fileID: 5404254632805516191, guid: 5ca26dba29264ea4e9638220697726ba, type: 3}
 --- !u!95 &-8101453713045738259
 Animator:
   serializedVersion: 5

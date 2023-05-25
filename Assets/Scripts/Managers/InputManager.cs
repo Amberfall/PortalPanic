@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class InputManager : Singleton<InputManager>
 {
+    public GameObject CurrentHeldObject => _currentHeldObject;
+
     [SerializeField] private LayerMask _interactableLayer = new LayerMask();
 
     private GameObject _currentHeldObject;
@@ -11,7 +13,6 @@ public class InputManager : Singleton<InputManager>
     private void Update() {
         QuitApplication();
         ThrowablePickupInteraction();
-        DropThrowable();
     }
 
     private void ThrowablePickupInteraction() {
@@ -31,16 +32,38 @@ public class InputManager : Singleton<InputManager>
 
             Monster monster = hit.collider.GetComponent<Monster>();
             
-            if (monster && !monster.HasLanded) {
-                monster.HandleToggleCollider();
+            if (monster) {
+                monster.ToggleFoodCollider(true);
+                monster.HasLanded = true;
+            }
+
+            Food food = hit.collider.GetComponent<Food>();
+
+            if (food) {
+                food.ToggleMonsterCollider(true);
             }
         }
+
+        DropThrowable();
     }
 
     public void DropThrowable() {
-        if ((Input.GetMouseButtonUp(0) && _currentHeldObject))
+        if ((Input.GetMouseButtonUp(0)) && _currentHeldObject)
         {
-            _currentHeldObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+            Monster monster = _currentHeldObject.GetComponent<Monster>();
+
+            if (monster)
+            {
+                monster.ToggleFoodCollider(false);
+            }
+
+            Food food = _currentHeldObject.GetComponent<Food>();
+
+            if (food)
+            {
+                food.ToggleMonsterCollider(false);
+            }
+
             _currentHeldObject = null;
         }
     }
