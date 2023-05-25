@@ -34,6 +34,7 @@ public class InputManager : Singleton<InputManager>
             
             if (monster) {
                 monster.ToggleFoodCollider(true);
+                monster.HasLanded = true;
             }
 
             Food food = hit.collider.GetComponent<Food>();

@@ -128,7 +128,9 @@ public class Slingshot : Singleton<Slingshot>
     }
 
     private void SetStrips(Vector3 position) {
-        _lineRenderers[0].SetPosition(0, position);
-        _lineRenderers[1].SetPosition(0, position);
+        float offsetValue = .8f;
+
+        _lineRenderers[0].SetPosition(0, position + new Vector3(-offsetValue, 0 , 0));
+        _lineRenderers[1].SetPosition(0, position + new Vector3(offsetValue, 0, 0));
     }
 }

@@ -6,9 +6,11 @@ using UnityEngine.Tilemaps;
 public class Monster : MonoBehaviour
 {
     public enum MonsterType { Small, Large };
-    public bool HasLanded => _hasLanded;
+
+    public bool HasLanded { get { return _hasLanded; } set { _hasLanded = value; } }
 
     [SerializeField] private MonsterType _monsterType;
+    [SerializeField] private GameObject _smokePoofPrefab;
 
     const string FRIENDLY_STRING = "Friendly";
     const string WALKABLE_STRING = "Walkable";
@@ -51,6 +53,8 @@ public class Monster : MonoBehaviour
         if (_monsterType == MonsterType.Large)
         {
             ScreenShakeManager.Instance.LargeMonsterScreenShake();
+            GameObject smokePrefab = Instantiate(_smokePoofPrefab, transform.position + new Vector3(0f, 1.5f, 0f), Quaternion.identity);
+            Invoke("DestroySmokePrefab", 2f);
         }
 
         foreach (Food food in FindObjectsOfType<Food>())
@@ -68,6 +72,10 @@ public class Monster : MonoBehaviour
                 }
             }
         }
+    }
+
+    private void DestroySmokePrefab(GameObject smokePrefab) {
+        Destroy(smokePrefab);
     }
 
     public void ToggleFoodCollider(bool value) {
@@ -90,7 +98,6 @@ public class Monster : MonoBehaviour
     
 
     private void EatFood(Food food) {
-        if (!_hasLanded) { return; }
 
         if (food.GetFoodType() == Food.FoodType.Human)
         {

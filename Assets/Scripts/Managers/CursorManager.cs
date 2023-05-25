@@ -69,6 +69,11 @@ public class CursorManager : Singleton<CursorManager>
 
     private void DetectCursorType()
     {
+        if (EventSystem.current.IsPointerOverGameObject()) {
+            SetActiveCursorType(CursorType.Arrow);
+            return;
+        }
+
         if (InputManager.Instance.CurrentHeldObject) {
             SetActiveCursorType(CursorType.Closed);
             return;
