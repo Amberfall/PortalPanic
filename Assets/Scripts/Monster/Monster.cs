@@ -53,8 +53,11 @@ public class Monster : MonoBehaviour
         if (_monsterType == MonsterType.Large)
         {
             ScreenShakeManager.Instance.LargeMonsterScreenShake();
-            GameObject smokePrefab = Instantiate(_smokePoofPrefab, transform.position + new Vector3(0f, 1.5f, 0f), Quaternion.identity);
-            Invoke("DestroySmokePrefab", 2f);
+
+            if (_smokePoofPrefab != null) {
+                GameObject smokePrefab = Instantiate(_smokePoofPrefab, transform.position + new Vector3(0f, 1.5f, 0f), Quaternion.identity);
+                Invoke("DestroySmokePrefab", 2f);
+            }
         }
 
         foreach (Food food in FindObjectsOfType<Food>())
