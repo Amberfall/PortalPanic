@@ -15,10 +15,16 @@ public class Slingshot : Singleton<Slingshot>
     [SerializeField] private Transform _idlePosition;
 
     private Throwable _currentThrowableItem;
-    private Vector3 _currentPosition, _slingStartPosition;
+    private Vector3 _currentPosition, _slingStartPosition, _throwableForce;
+    private TrajectoryLine _trajectoryLine;
     private float _slingShotForce;
     private bool _isSlinging = false;
     private bool _isAttached = false;
+
+    protected override void Awake() {
+        base.Awake();
+        _trajectoryLine = GetComponent<TrajectoryLine>();
+    }
 
     private void Start() {
         SetStrips(_idlePosition.position);
@@ -28,6 +34,12 @@ public class Slingshot : Singleton<Slingshot>
     private void Update() {
         // have sling follow throwable item (mouse) that is currently attached
         if (_currentThrowableItem && !_isSlinging && _isAttached) {
+            float stretchForceToAdd = Vector3.Distance(_currentPosition, _idlePosition.position);
+            _slingShotForce = _slingElasticityStrength * stretchForceToAdd;
+            _throwableForce = (_currentPosition - _idlePosition.position) * -_slingShotForce;
+
+            _trajectoryLine.Velocity = _throwableForce;
+            // _projection.SimulateTrajectory(_currentThrowableItem, _idlePosition.position, _throwableForce);
             Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             _currentPosition = mousePosition;
             _currentPosition = _idlePosition.position + Vector3.ClampMagnitude(_currentPosition - _idlePosition.position, _maxStetchLength);
@@ -67,8 +79,8 @@ public class Slingshot : Singleton<Slingshot>
 
         float stretchForceToAdd = Vector3.Distance(_currentPosition, _idlePosition.position);
         _slingShotForce = _slingElasticityStrength * stretchForceToAdd;
-        Vector3 throwableForce = (_currentPosition - _idlePosition.position) * -_slingShotForce;
-        _currentThrowableItem.GetComponent<Rigidbody2D>().velocity = throwableForce;
+        _throwableForce = (_currentPosition - _idlePosition.position) * -_slingShotForce;
+        _currentThrowableItem.GetComponent<Rigidbody2D>().velocity = _throwableForce;
         _currentThrowableItem.AttachToSlingShot(false);
         _currentThrowableItem.IsInAirFromSlingshot = true;
         _currentThrowableItem.DetachFromSlingShot();

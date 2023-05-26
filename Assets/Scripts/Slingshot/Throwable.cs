@@ -17,6 +17,7 @@ public class Throwable : MonoBehaviour
     private Rigidbody2D _rb;
     private Slingshot _slingshot;
     private Camera _mainCam;
+    private bool _isGhost;
 
     private void Awake() {
         _characterMovement = GetComponent<CharacterMovement>();
@@ -59,6 +60,12 @@ public class Throwable : MonoBehaviour
 
     public void DetachFromSlingShot() {
         _col.enabled = true;
+    }
+
+    public void Init(Vector3 velocity, bool isGhost)
+    {
+        _isGhost = isGhost;
+        _rb.AddForce(velocity, ForceMode2D.Impulse);
     }
 
     private void ClampThrowableIfNotInValidZone() {

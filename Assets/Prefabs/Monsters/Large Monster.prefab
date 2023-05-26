@@ -8,6 +8,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -8101453713045738259, guid: c8d5411eed0029b45ba795d76f63a77d, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: f0d3e452bcc1562469d46fcfd270df0e, type: 2}
     - target: {fileID: -5246049380143713859, guid: c8d5411eed0029b45ba795d76f63a77d, type: 3}
       propertyPath: _monsterType
       value: 1
@@ -15,6 +19,14 @@ PrefabInstance:
     - target: {fileID: -5246049380143713859, guid: c8d5411eed0029b45ba795d76f63a77d, type: 3}
       propertyPath: _smokePoofPrefab
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1106472556298552299, guid: c8d5411eed0029b45ba795d76f63a77d, type: 3}
+      propertyPath: _hasIdle
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1106472556298552299, guid: c8d5411eed0029b45ba795d76f63a77d, type: 3}
+      propertyPath: _animationsRiggedUp
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2561059626819683403, guid: c8d5411eed0029b45ba795d76f63a77d, type: 3}
       propertyPath: m_Size.x
@@ -47,7 +59,7 @@ PrefabInstance:
     - target: {fileID: 2776847053856087232, guid: c8d5411eed0029b45ba795d76f63a77d, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: b0f6256250e3c4e40a28fbc8eb322aec, type: 3}
+      objectReference: {fileID: -1857296789, guid: ea5bb3ade9e40c34bb2a0fea8c1a75d9, type: 3}
     - target: {fileID: 2776847053856087232, guid: c8d5411eed0029b45ba795d76f63a77d, type: 3}
       propertyPath: m_WasSpriteAssigned
       value: 1
@@ -70,7 +82,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2776847053856087239, guid: c8d5411eed0029b45ba795d76f63a77d, type: 3}
       propertyPath: m_Size.y
-      value: 2.6732123
+      value: 2.6387548
       objectReference: {fileID: 0}
     - target: {fileID: 2776847053856087239, guid: c8d5411eed0029b45ba795d76f63a77d, type: 3}
       propertyPath: m_Offset.x
@@ -78,7 +90,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2776847053856087239, guid: c8d5411eed0029b45ba795d76f63a77d, type: 3}
       propertyPath: m_Offset.y
-      value: 0.45481312
+      value: 0.07004595
       objectReference: {fileID: 0}
     - target: {fileID: 2776847053856087240, guid: c8d5411eed0029b45ba795d76f63a77d, type: 3}
       propertyPath: m_Name
@@ -90,7 +102,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2776847053856087241, guid: c8d5411eed0029b45ba795d76f63a77d, type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2776847053856087241, guid: c8d5411eed0029b45ba795d76f63a77d, type: 3}
       propertyPath: m_LocalScale.x
@@ -106,11 +118,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2776847053856087241, guid: c8d5411eed0029b45ba795d76f63a77d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -2.22
       objectReference: {fileID: 0}
     - target: {fileID: 2776847053856087241, guid: c8d5411eed0029b45ba795d76f63a77d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -9.306381
       objectReference: {fileID: 0}
     - target: {fileID: 2776847053856087241, guid: c8d5411eed0029b45ba795d76f63a77d, type: 3}
       propertyPath: m_LocalPosition.z
@@ -234,9 +246,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47e4ee30b35971f488fa9602de316fc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _hungerTimeTillAngry: 10
-  _timeBetweenHunger: 5
-  _currentFoodSpriteRenderer: {fileID: 0}
-  _foodSprites: []
-  _thoughtBubble: {fileID: 0}
-  _hungerSlider: {fileID: 0}
