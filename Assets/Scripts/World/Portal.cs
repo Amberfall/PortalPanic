@@ -29,7 +29,7 @@ public class Portal : MonoBehaviour
 
             if (food && food.GetFoodType() == Food.FoodType.Human)
             {
-                LivesManager.InvokeVillagerDeath();
+                LivesManager.InvokeHumanDeath();
             }
 
             ScoreManager.Instance.InvokeIncreaseScore();

@@ -7,8 +7,6 @@ public class Food : MonoBehaviour
 {
     public enum FoodType { Cow, Chicken, Pig, Human };
 
-    const string MONSTER_STRING = "Monster";
-
     [SerializeField] private FoodType _foodType;
 
     private Collider2D _col;
@@ -16,11 +14,6 @@ public class Food : MonoBehaviour
 
     private void Awake() {
         _col = GetComponent<Collider2D>();
-    }
-
-    private void Start()
-    {
-        ToggleMonsterCollider(true);
     }
 
     public FoodType GetFoodType() {
@@ -38,22 +31,5 @@ public class Food : MonoBehaviour
         }
 
         return false;
-    }
-
-    public void ToggleMonsterCollider(bool value)
-    {
-        foreach (Monster monster in FindObjectsOfType<Monster>())
-        {
-            if (monster.gameObject.layer == LayerMask.NameToLayer(MONSTER_STRING))
-            {
-                Collider2D otherCollider = monster.GetComponent<Collider2D>();
-
-                if (otherCollider != null)
-                {
-                    Physics2D.IgnoreCollision(_col, otherCollider, value);
-                }
-            }
-            
-        }
     }
 }

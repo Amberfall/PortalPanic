@@ -12,7 +12,6 @@ public class Monster : MonoBehaviour
     [SerializeField] private MonsterType _monsterType;
     [SerializeField] private GameObject _smokePoofPrefab;
 
-    const string FRIENDLY_STRING = "Friendly";
     const string WALKABLE_STRING = "Walkable";
 
     private bool _hasLanded = false;
@@ -25,10 +24,6 @@ public class Monster : MonoBehaviour
         _characterMovement = GetComponent<CharacterMovement>();
     }
 
-    private void Start() {
-        ToggleFoodCollider(true);
-    }
-
     private void OnCollisionEnter2D(Collision2D other)
     {
         if (!_hasLanded && other.gameObject.CompareTag(WALKABLE_STRING))
@@ -36,12 +31,6 @@ public class Monster : MonoBehaviour
             MonsterScreenShake();
 
             _hasLanded = true;
-            ToggleFoodCollider(false);
-        }
-
-        if (other.gameObject.GetComponent<Food>())
-        {
-            EatFood(other.gameObject.GetComponent<Food>());
         }
     }
 
@@ -79,37 +68,5 @@ public class Monster : MonoBehaviour
 
     private void DestroySmokePrefab(GameObject smokePrefab) {
         Destroy(smokePrefab);
-    }
-
-    public void ToggleFoodCollider(bool value) {
-
-        foreach (Food food in FindObjectsOfType<Food>())
-        {
-            if (food.gameObject.layer == LayerMask.NameToLayer(FRIENDLY_STRING))
-            {
-                Collider2D otherCollider = food.GetComponent<Collider2D>();
-
-                if (otherCollider != null)
-                {
-                    Physics2D.IgnoreCollision(_col, otherCollider, value);
-                }
-            }
-
-        }
-    }
-
-    
-
-    private void EatFood(Food food) {
-
-        if (food.GetFoodType() == Food.FoodType.Human)
-        {
-            LivesManager.InvokeVillagerDeath();
-        }
-
-        if (!food.ReleaseFromPool())
-        {
-            Destroy(food.gameObject);
-        }
     }
 }
