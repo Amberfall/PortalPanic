@@ -33,14 +33,7 @@ public class InputManager : Singleton<InputManager>
             Monster monster = hit.collider.GetComponent<Monster>();
             
             if (monster) {
-                monster.ToggleFoodCollider(true);
                 monster.HasLanded = true;
-            }
-
-            Food food = hit.collider.GetComponent<Food>();
-
-            if (food) {
-                food.ToggleMonsterCollider(true);
             }
         }
 
@@ -50,20 +43,6 @@ public class InputManager : Singleton<InputManager>
     public void DropThrowable() {
         if ((Input.GetMouseButtonUp(0)) && _currentHeldObject)
         {
-            Monster monster = _currentHeldObject.GetComponent<Monster>();
-
-            if (monster)
-            {
-                monster.ToggleFoodCollider(false);
-            }
-
-            Food food = _currentHeldObject.GetComponent<Food>();
-
-            if (food)
-            {
-                food.ToggleMonsterCollider(false);
-            }
-
             _currentHeldObject = null;
         }
     }
