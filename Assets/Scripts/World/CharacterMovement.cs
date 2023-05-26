@@ -4,15 +4,18 @@ using UnityEngine;
 
 public class CharacterMovement : MonoBehaviour
 {
+    public bool AnimationsRiggedUp => _animationsRiggedUp;
+
     public bool IsGrounded => _isGrounded;
 
     [SerializeField] private bool _animationsRiggedUp = false;
+    [SerializeField] private bool _hasIdle = true;
 
     const string WALKABLE_STRING = "Walkable";
     readonly int WALK_HASH = Animator.StringToHash("Walk");
     readonly int IDLE_HASH = Animator.StringToHash("Idle");
     readonly int HELD_HASH = Animator.StringToHash("Held");
-
+    readonly int EAT_HASH = Animator.StringToHash("Eat");
 
     private float _moveSpeed = 2.0f;
     private int _direction;
@@ -22,17 +25,19 @@ public class CharacterMovement : MonoBehaviour
     private Throwable _throwable;
     private SpriteRenderer _spriteRenderer;
     private Animator _animator;
+    private MonsterHunger _monsterHunger;
 
     private void Awake() {
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _throwable = GetComponent<Throwable>();
         _rb = GetComponent<Rigidbody2D>();
         _animator = GetComponent<Animator>();
+        _monsterHunger = GetComponentInChildren<MonsterHunger>();
     }
 
     private void Start()
     {
-        _direction = Random.Range(-1, 2);
+        GetDir();
 
         StartCoroutine(ChangeDirection());
     }
@@ -48,23 +53,40 @@ public class CharacterMovement : MonoBehaviour
         }
     }
 
+    public void EatFoodAnimEvent() {
+        _monsterHunger.EatFoodAnimEvent();
+    }
+
+    public void EndEating() {
+        _monsterHunger.IsEating = false;
+        _animator.SetBool(WALK_HASH, true);
+        _animator.SetBool(EAT_HASH, false);
+
+    }
+
     private void Move() {
-        if (_throwable.IsAttachedToSlingShot) { return; }
+        if (_throwable.IsAttachedToSlingShot || (_monsterHunger && _monsterHunger.IsEating)) { return; }
 
         _rb.velocity = new Vector2(_direction * _moveSpeed, _rb.velocity.y);
     }
 
     private void HandleAnimations() {
-        if (_throwable.IsInAirFromSlingshot || _throwable.IsAttachedToSlingShot || _throwable.IsActive) { return; }
+        if (_throwable.IsInAirFromSlingshot || _throwable.IsAttachedToSlingShot || _throwable.IsActive || (_monsterHunger && _monsterHunger.IsEating)) { return; }
 
         if (_direction > 0)
         {
             _spriteRenderer.flipX = true;
 
             if (_animationsRiggedUp) {
+               
                 _animator.SetBool(WALK_HASH, true);
                 _animator.SetBool(IDLE_HASH, false);
                 _animator.SetBool(HELD_HASH, false);
+
+                if (_monsterHunger)
+                {
+                    _animator.SetBool(EAT_HASH, false);
+                }
             }
 
         }
@@ -77,6 +99,10 @@ public class CharacterMovement : MonoBehaviour
                     _animator.SetBool(WALK_HASH, true);
                     _animator.SetBool(IDLE_HASH, false);
                     _animator.SetBool(HELD_HASH, false);
+                if (_monsterHunger)
+                {
+                    _animator.SetBool(EAT_HASH, false);
+                }
 
                 }
         } 
@@ -85,6 +111,10 @@ public class CharacterMovement : MonoBehaviour
                 _animator.SetBool(IDLE_HASH, true);
                 _animator.SetBool(WALK_HASH, false);
                 _animator.SetBool(HELD_HASH, false);
+                if (_monsterHunger)
+                {
+                    _animator.SetBool(EAT_HASH, false);
+                }
             }
 
         }
@@ -95,6 +125,10 @@ public class CharacterMovement : MonoBehaviour
             _animator.SetBool(HELD_HASH, true);
             _animator.SetBool(IDLE_HASH, false);
             _animator.SetBool(WALK_HASH, false);
+            if (_monsterHunger)
+            {
+                _animator.SetBool(EAT_HASH, false);
+            }
         }
     }
 
@@ -103,7 +137,7 @@ public class CharacterMovement : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(Random.Range(2f, 5f));
-            _direction = Random.Range(-1, 2);
+            GetDir();
         }
     }
 
@@ -129,5 +163,14 @@ public class CharacterMovement : MonoBehaviour
         {
             _isGrounded = false;
         }
+    }
+
+    private void GetDir() {
+        if (_hasIdle) {
+            _direction = Random.Range(-1, 2);
+        } else {
+            _direction = Random.Range(0, 2) * 2 - 1;
+        }
+
     }
 }
