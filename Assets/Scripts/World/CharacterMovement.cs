@@ -108,9 +108,10 @@ public class CharacterMovement : MonoBehaviour
     }
 
     private void OnCollisionEnter2D(Collision2D other) {
-        if (other.gameObject.CompareTag(WALKABLE_STRING) && _throwable.IsInAirFromSlingshot)
+        if (other.gameObject.CompareTag(WALKABLE_STRING) && (_throwable.IsInAirFromSlingshot || !_isGrounded))
         {
             _throwable.IsInAirFromSlingshot = false;
+            _isGrounded = true;
         }
     }
 

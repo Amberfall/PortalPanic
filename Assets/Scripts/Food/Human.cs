@@ -5,10 +5,6 @@ using UnityEngine;
 public class Human : MonoBehaviour
 {
     private void Start() {
-        
-    }
-
-    private void Update() {
-        
+        LivesManager.Instance.AddVillagerLife();
     }
 }

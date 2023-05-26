@@ -10,18 +10,22 @@ public class BuildingSpawner : MonoBehaviour
     [SerializeField] private float _timeBetweenSpawns;
     [SerializeField] private bool _spawnAtSceneStart;
 
-    private ObjectPool<Food> _pool;
+    readonly int SPAWN_HASH = Animator.StringToHash("Spawn");
 
+    private ObjectPool<Food> _pool;
     private Slider _spawnSlider;
     private float _currentSpawnTime = 0f;
+    private Animator _animator;
+
+    private bool _isSpawning = false;
 
     private void Awake() {
         _spawnSlider = GetComponentInChildren<Slider>();
+        _animator = GetComponent<Animator>();
     }
 
     private void Start() {
         CreatePool();
-        StartCoroutine(SpawnPrefabRoutine());
 
         if (_spawnAtSceneStart) {
             Spawn();
@@ -29,8 +33,17 @@ public class BuildingSpawner : MonoBehaviour
     }
 
     private void Update() {
+        if (_isSpawning) { return; }
+
         _currentSpawnTime += Time.deltaTime;
         _spawnSlider.value = (_currentSpawnTime / _timeBetweenSpawns);
+
+        if (_currentSpawnTime >= _timeBetweenSpawns) {
+            _isSpawning = true;
+            _animator.SetTrigger(SPAWN_HASH);
+            _spawnSlider.gameObject.SetActive(false);
+            _currentSpawnTime = 0f;
+        }
     }
 
     public void ReleaseFoodFromPool(Food food)
@@ -55,18 +68,11 @@ public class BuildingSpawner : MonoBehaviour
         }, false, 30, 60);
     }
 
-    private IEnumerator SpawnPrefabRoutine() {
-        while (true)
-        {
-            yield return new WaitForSeconds(_timeBetweenSpawns);
-            Spawn();
-            _currentSpawnTime = 0f;
-        }
-    }
-
-    private void Spawn() {
+    public void Spawn() {
+        _isSpawning = false;
         Food newFood = _pool.Get();
         newFood.transform.position = this.transform.position;
         newFood.SetBuildingSpawner(this);
+        _spawnSlider.gameObject.SetActive(false);
     }
 }

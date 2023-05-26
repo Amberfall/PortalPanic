@@ -7,18 +7,9 @@ public class LivesManager : Singleton<LivesManager>
 
     [SerializeField] private GameObject _livesImagePrefab;
     [SerializeField] private Transform _livesTransformContainer;
-    [SerializeField] private int _startingLives = 3;
-    [SerializeField] private Transform _livesContainer;
     [SerializeField] private GameObject _gameOverContainer;
 
     private int _currentLives;
-
-    protected override void Awake()
-    {
-        base.Awake();
-        
-        _currentLives = _startingLives;
-    }
 
     private void OnEnable()
     {
@@ -36,23 +27,26 @@ public class LivesManager : Singleton<LivesManager>
     }
 
     public void AddVillagerLife() {
-        Instantiate(_livesImagePrefab, _livesTransformContainer);
+        GameObject newLife = Instantiate(_livesImagePrefab, _livesTransformContainer);
+        
+        _currentLives++;
     }
 
     public void HumanDeathHandler()
     {
         _currentLives--;
-        UpdateUI();
+        DestroyLifeImageUI();
         CheckGameOver();
     }
 
-    private void UpdateUI()
+    private void DestroyLifeImageUI()
     {
-        for (int i = 0; i < _currentLives; i++)
+        foreach (Transform child in _livesTransformContainer)
         {
-            if (i >= _currentLives && _livesContainer.GetChild(i).gameObject.activeInHierarchy)
-            {
-                _livesContainer.GetChild(i).gameObject.SetActive(false);
+            int childIndex = child.GetSiblingIndex();
+
+            if (childIndex >= _currentLives) {
+                Destroy(child.gameObject);
             }
         }
     }
