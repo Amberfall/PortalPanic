@@ -13,6 +13,7 @@ public class Throwable : MonoBehaviour
     private bool _hasCheckedYAxisForCombo = true;
 
     private CharacterMovement _characterMovement;
+    private CharacterAnimationsController _characterAnimationsController;
     private Collider2D _col;
     private Rigidbody2D _rb;
     private Slingshot _slingshot;
@@ -21,6 +22,7 @@ public class Throwable : MonoBehaviour
 
     private void Awake() {
         _characterMovement = GetComponent<CharacterMovement>();
+        _characterAnimationsController = GetComponent<CharacterAnimationsController>();
         _col = GetComponent<Collider2D>();
         _rb = GetComponent<Rigidbody2D>();
         _slingshot = FindObjectOfType<Slingshot>();
@@ -62,12 +64,6 @@ public class Throwable : MonoBehaviour
         _col.enabled = true;
     }
 
-    public void Init(Vector3 velocity, bool isGhost)
-    {
-        _isGhost = isGhost;
-        _rb.AddForce(velocity, ForceMode2D.Impulse);
-    }
-
     private void ClampThrowableIfNotInValidZone() {
         if (!CursorManager.Instance.IsInValidZone())
         {
@@ -94,7 +90,6 @@ public class Throwable : MonoBehaviour
         if (other.gameObject.GetComponent<Slingshot>() && !IsAttachedToSlingShot && _isActive) {
             _slingshot.SetCurrentThrowableItem(this);
             AttachToSlingShot(true);
-            _characterMovement.HeldAnimation();
         } 
     }
 }

@@ -5,6 +5,7 @@ using UnityEngine;
 public class Slingshot : Singleton<Slingshot>
 {
     public Throwable CurrentThrowableItem => _currentThrowableItem;
+    public bool IsSlinging => _isSlinging;
 
     [SerializeField] private float _slingElasticityStrength = 1.5f;
     [SerializeField] private float _slingElasticitySpeed = 10f;

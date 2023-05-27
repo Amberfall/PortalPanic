@@ -28,6 +28,11 @@ public class TrajectoryLine : MonoBehaviour
 
     private void Update()
     {
+        if (_slingShot.IsSlinging) { 
+            _lineRenderer.enabled = false;
+            return;
+        }
+        
         if (_slingShot.CurrentThrowableItem) { 
             DrawTrajectory();
         } else {

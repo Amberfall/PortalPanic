@@ -5,67 +5,71 @@ using UnityEngine.UI;
 
 public class MonsterHunger : MonoBehaviour
 {
+    // public Food FoodInHand => _foodInHand;
     public bool IsEating { get { return _isEating; } set { _isEating = value; } }
 
-    readonly int EAT_HASH = Animator.StringToHash("Eat");
-    readonly int WALK_HASH = Animator.StringToHash("Walk");
-    readonly int IDLE_HASH = Animator.StringToHash("Idle");
+    [SerializeField] private Transform _foodPlaceholderTransform;
+    [SerializeField] private bool _smallMonsterTempBoolNoAnimation;
 
     private bool _isEating = false;
 
     private Throwable _throwable;
     private CharacterMovement _characterMovement;
-    private Animator _animator;
-    private Food _food;
-
+    private CharacterAnimationsController _characterAnimationsController;
+    private Food _foodInHand;
+    private Monster _monster;
 
     private void Awake() {
-        _animator = GetComponentInParent<Animator>();
         _throwable = GetComponentInParent<Throwable>();
         _characterMovement = GetComponentInParent<CharacterMovement>();
+        _characterAnimationsController = GetComponentInParent<CharacterAnimationsController>();
+        _monster = GetComponentInParent<Monster>();
     }
 
     private void OnTriggerStay2D(Collider2D other) {
-        _food = other.gameObject.GetComponent<Food>();
+        if (_isEating || _foodInHand || _smallMonsterTempBoolNoAnimation) { return; }
 
-        if (_food && CanEat(other) && !_isEating)
+        _foodInHand = other.gameObject.GetComponent<Food>();
+
+        if (_foodInHand && CanEat(other))
         {
             EatFood();
         }
     }
 
     public void EatFoodAnimEvent() {
-        if (_food && _food.GetFoodType() == Food.FoodType.Human)
+        if (_foodInHand.GetFoodType() == Food.FoodType.Human)
         {
             LivesManager.InvokeHumanDeath();
         }
 
-        if (!_food.ReleaseFromPool())
+        if (!_foodInHand.ReleaseFromPool())
         {
-            Destroy(_food.gameObject);
+            Destroy(_foodInHand.gameObject);
         }
+        
+        _foodInHand = null;
+    }
+
+    private IEnumerator CanEatRoutine() {
+        yield return new WaitForSeconds(3.5f);
+        _isEating = false;
     }
 
     private void EatFood()
     {
-        if (GetComponentInParent<CharacterMovement>().AnimationsRiggedUp) {
-            _isEating = true;
-            _animator.SetBool(EAT_HASH, true);
-            _animator.SetBool(WALK_HASH, false);
-            _animator.SetBool(IDLE_HASH, false);
-        }
+        StartCoroutine(CanEatRoutine());
+        _isEating = true;
+        _characterAnimationsController.CharacterEat();
+        _foodInHand.GetEaten(_foodPlaceholderTransform);
     }
     
     private bool CanEat(Collider2D other) {
-        Food food = other.gameObject.GetComponent<Food>();
-
-        if (!_characterMovement.IsGrounded || _throwable.IsActive || food.GetComponent<Throwable>().IsActive)
+        if (_throwable.IsActive || _foodInHand.GetComponent<Throwable>().IsActive)
         {
             return false;
         }
         
         return true;
     }
-
-
 }

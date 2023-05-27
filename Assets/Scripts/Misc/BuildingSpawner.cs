@@ -8,7 +8,6 @@ public class BuildingSpawner : MonoBehaviour
 {
     [SerializeField] private Food _prefabToSpawn;
     [SerializeField] private float _timeBetweenSpawns;
-    [SerializeField] private bool _spawnAtSceneStart;
 
     readonly int SPAWN_HASH = Animator.StringToHash("Spawn");
 
@@ -19,6 +18,8 @@ public class BuildingSpawner : MonoBehaviour
 
     private bool _isSpawning = false;
 
+    private int tempInt = 0;
+
     private void Awake() {
         _spawnSlider = GetComponentInChildren<Slider>();
         _animator = GetComponent<Animator>();
@@ -26,10 +27,6 @@ public class BuildingSpawner : MonoBehaviour
 
     private void Start() {
         CreatePool();
-
-        if (_spawnAtSceneStart) {
-            Spawn();
-        }
     }
 
     private void Update() {
@@ -68,11 +65,12 @@ public class BuildingSpawner : MonoBehaviour
         }, false, 30, 60);
     }
 
-    public void Spawn() {
+    public void SpawnAnimEvent() {
         _isSpawning = false;
         Food newFood = _pool.Get();
-        newFood.transform.position = this.transform.position;
-        newFood.SetBuildingSpawner(this);
+        newFood.Init(this);
+        // GameObject newFood = Instantiate(_prefabToSpawn, transform.position, Quaternion.identity);
         _spawnSlider.gameObject.SetActive(false);
     }
+    
 }
