@@ -95,7 +95,7 @@ public class CharacterMovement : MonoBehaviour
         {
             _throwable.IsInAirFromSlingshot = false;
             _isGrounded = true;
-            _characterAnimationsController.CharacterWalk();
+            GetDir();
         }
 
         if (other.gameObject.CompareTag(LEVEL_BORDER_COLLIDER_STRING)) {
@@ -104,7 +104,7 @@ public class CharacterMovement : MonoBehaviour
     }
 
     private bool IsMonsterEating() {
-        if (_monsterHunger && _monsterHunger.IsEating) {
+        if (_monsterHunger && (_monsterHunger.IsEating || _monsterHunger.FoodInHand)) {
             return true;
         }
 
@@ -128,7 +128,7 @@ public class CharacterMovement : MonoBehaviour
     }
 
     private void GetDir() {
-        if (_throwable.IsActive || IsMonsterEating()) { return; }
+        if (_throwable.IsActive || IsMonsterEating() || _throwable.IsInAirFromSlingshot || _throwable.IsAttachedToSlingShot) { return; }
 
         if (_hasIdle) {
             _direction = Random.Range(-1, 2);

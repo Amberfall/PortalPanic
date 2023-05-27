@@ -18,7 +18,6 @@ public class BuildingSpawner : MonoBehaviour
     private Animator _animator;
     private HumanBuilding _humanBuilding;
 
-
     private void Awake() {
         _humanBuilding = GetComponent<HumanBuilding>();
         _spawnSlider = GetComponentInChildren<Slider>();
@@ -26,7 +25,9 @@ public class BuildingSpawner : MonoBehaviour
     }
 
     private void Start() {
-        CreatePool();
+        if (!_humanBuilding) { 
+            CreatePool();
+        }
 
         if (_humanBuilding) {
             _isSpawning = true;
@@ -77,12 +78,14 @@ public class BuildingSpawner : MonoBehaviour
 
     public void SpawnAnimEvent() {
         _isSpawning = false;
-        Food newFood = _pool.Get();
-        newFood.Init(this);
 
         if (_humanBuilding) {
+            Instantiate(_prefabToSpawn, transform.position, Quaternion.identity);
             _humanBuilding.ResetHumanBuilding();
             _isSpawning = true;
+        } else {
+            Food newFood = _pool.Get();
+            newFood.Init(this);
         }
     }
 }

@@ -27,8 +27,6 @@ public class InputManager : Singleton<InputManager>
             Monster monster = hit.collider.GetComponent<Monster>();
             Food food = hit.collider.GetComponent<Food>();
 
-            if (monster && monster.GetComponentInChildren<MonsterHunger>().FoodInHand) { return; }
-
             if (hit.collider != null && throwable)
             {
                 throwable.IsActive = true;
@@ -37,6 +35,8 @@ public class InputManager : Singleton<InputManager>
             }
             
             if (monster) {
+                monster.GetComponentInChildren<MonsterHunger>().DropFoodInHandInterruption();
+
                 monster.HasLanded = true;
             }
 
@@ -52,6 +52,7 @@ public class InputManager : Singleton<InputManager>
     private void DropThrowable() {
         if ((Input.GetMouseButtonUp(0)) && _currentHeldObject)
         {
+
             if (_currentHeldObject.GetComponent<Food>()) {
                 HumanBuilding.Instance.DropFood();
             }

@@ -26,13 +26,11 @@ public class Portal : MonoBehaviour
 
             Food food = other.gameObject.GetComponent<Food>();
 
-           
-
             ScoreManager.Instance.InvokeIncreaseScore();
 
             if (food && !food.ReleaseFromPool())
             {
-                Destroy(other.gameObject);
+                food.Die();
             }
 
             if (monster) {

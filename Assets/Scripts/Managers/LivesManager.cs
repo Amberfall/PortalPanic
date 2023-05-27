@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using System;
 using UnityEngine;
 
@@ -42,13 +44,26 @@ public class LivesManager : Singleton<LivesManager>
 
     private void DestroyLifeImageUI()
     {
+        List<GameObject> objectsToDestroy = new List<GameObject>();
+
         foreach (Transform child in _livesTransformContainer)
         {
+            if (child == null) // if the GameObject has been marked for destruction, it will be null
+            {
+                continue; // skip this iteration of the loop
+            }
+
             int childIndex = child.GetSiblingIndex();
 
-            if (childIndex >= _currentLives) {
-                Destroy(child.gameObject);
+            if (childIndex >= _currentLives)
+            {
+                objectsToDestroy.Add(child.gameObject);
             }
+        }
+
+        foreach (GameObject obj in objectsToDestroy)
+        {
+            Destroy(obj);
         }
     }
 

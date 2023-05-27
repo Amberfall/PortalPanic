@@ -27,21 +27,34 @@ public class Food : MonoBehaviour
         _characterAnimationsController = GetComponent<CharacterAnimationsController>();
     }
 
-    private void OnDestroy() {
-        if (_foodType == FoodType.Human) {
-            Debug.Log("On Destroy");
+    public void Die()
+    {
+        if (_foodType == FoodType.Human)
+        {
+            LivesManager.InvokeHumanDeath();
         }
+
+        Destroy(this.gameObject);
     }
 
     public void Init(BuildingSpawner buildingSpawner) {
         _buildingSpawner = buildingSpawner;
-        transform.SetParent(null);
         transform.position = buildingSpawner.transform.position;
+        FoodReset();
+    }
+
+    public void FoodReset() {
+        transform.SetParent(null);
         _rb.isKinematic = false;
         _rb.velocity = Vector3.zero;
-        _col.enabled = true;
+        StartCoroutine(ColliderEnabledEndOfFrameRoutine());
         _isGettingEaten = false;
         _throwable.Init();
+    }
+
+    private IEnumerator ColliderEnabledEndOfFrameRoutine() {
+        yield return null;
+        _col.enabled = true;
     }
 
     public void GetEaten(Transform foodPlaceholderTransform) {

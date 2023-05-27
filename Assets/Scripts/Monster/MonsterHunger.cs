@@ -26,7 +26,7 @@ public class MonsterHunger : MonoBehaviour
     }
 
     private void OnTriggerStay2D(Collider2D other) {
-        if (_isEating || _foodInHand || _throwable.IsActive || !_monster.HasLanded || _throwable.IsInAirFromSlingshot) { return; }
+        if (_isEating || _foodInHand || _throwable.IsActive || !_monster.HasLanded || _throwable.IsInAirFromSlingshot || _throwable.IsAttachedToSlingShot) { return; }
 
         _foodInHand = other.gameObject.GetComponent<Food>();
 
@@ -36,15 +36,18 @@ public class MonsterHunger : MonoBehaviour
         }
     }
 
-    public void EatFoodAnimEvent() {
-        if (_foodInHand.GetFoodType() == Food.FoodType.Human)
-        {
-            LivesManager.InvokeHumanDeath();
+    public void DropFoodInHandInterruption() {
+        if (_foodInHand) {
+            _foodInHand.FoodReset();
+            _foodInHand = null;
+            _isEating = false;
         }
+    }
 
-        if (!_foodInHand.ReleaseFromPool())
+    public void EatFoodAnimEvent() {
+        if (_foodInHand && !_foodInHand.ReleaseFromPool())
         {
-            Destroy(_foodInHand.gameObject);
+            _foodInHand.Die();
         }
         
         _foodInHand = null;
