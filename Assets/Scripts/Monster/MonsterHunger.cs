@@ -52,7 +52,8 @@ public class MonsterHunger : MonoBehaviour
     }
 
     private IEnumerator CanEatRoutine() {
-        yield return new WaitForSeconds(3.8f);
+        
+        yield return new WaitForSeconds(10f);
         _isEating = false;
     }
 
