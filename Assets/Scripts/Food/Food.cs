@@ -58,9 +58,10 @@ public class Food : MonoBehaviour
     }
 
     public void GetEaten(Transform foodPlaceholderTransform) {
-        Col.enabled = false;
+        _col.enabled = false;
         transform.SetParent(foodPlaceholderTransform);
-        Rb.isKinematic = true;
+        _rb.isKinematic = true;
+        _rb.velocity = Vector3.zero;
         transform.localPosition = Vector3.zero;
         IsGettingEaten = true;
         _characterAnimationsController.CharacterHeld();

@@ -100,7 +100,7 @@ public class Portal : MonoBehaviour
 
             Food food = other.gameObject.GetComponent<Food>();
 
-            ScoreManager.Instance.InvokeIncreaseScore();
+            ScoreManager.Instance.InvokeIncreaseScore(this.transform);
 
             if (food && !food.ReleaseFromPool())
             {
