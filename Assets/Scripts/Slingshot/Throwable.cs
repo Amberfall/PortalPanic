@@ -63,6 +63,11 @@ public class Throwable : MonoBehaviour
     public void AttachToSlingShot(bool value) {
         IsAttachedToSlingShot = value;
         _col.enabled = false;
+
+        if (GetComponent<Monster>()) {
+            GetComponent<Monster>().GetComponentInChildren<MonsterHunger>().DropFoodInHandInterruption();
+            _characterAnimationsController.CharacterHeld();
+        }
     }
 
     public void DetachFromSlingShot() {

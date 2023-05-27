@@ -40,7 +40,6 @@ public class Slingshot : Singleton<Slingshot>
             _throwableForce = (_currentPosition - _idlePosition.position) * -_slingShotForce;
 
             _trajectoryLine.Velocity = _throwableForce;
-            // _projection.SimulateTrajectory(_currentThrowableItem, _idlePosition.position, _throwableForce);
             Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             _currentPosition = mousePosition;
             _currentPosition = _idlePosition.position + Vector3.ClampMagnitude(_currentPosition - _idlePosition.position, _maxStetchLength);
@@ -64,7 +63,6 @@ public class Slingshot : Singleton<Slingshot>
             _currentThrowableItem = null;
 
             StartCoroutine(ShootThrowableRoutine());
-            // _currentThrowableItem.IsActive = true;
         }
     }
 
