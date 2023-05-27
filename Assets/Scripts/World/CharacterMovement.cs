@@ -56,7 +56,7 @@ public class CharacterMovement : MonoBehaviour
     }
 
     private void Move() {
-        if (_throwable.IsAttachedToSlingShot || IsMonsterEating()) { return; }
+        if (_throwable.IsAttachedToSlingShot || IsMonsterEating() || _throwable.IsInAirFromSlingshot || _throwable.IsActive) { return; }
 
         _rb.velocity = new Vector2(_direction * _moveSpeed, _rb.velocity.y);
     }

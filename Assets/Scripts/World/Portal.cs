@@ -4,17 +4,88 @@ using UnityEngine;
 
 public class Portal : MonoBehaviour
 {
-    // [SerializeField] private float _timeTillMonsterSpawn = 5f;
     [SerializeField] private GameObject _monsterPrefab;
 
-    private int _rotatePostiveOrNegative;
+    [SerializeField] private float _frameTime = .15f;
+    [SerializeField] private int _cycleIterations = 3;
 
-    private void Start() {
-        _rotatePostiveOrNegative = (Random.Range(0, 2) * 2) - 1;
+    [SerializeField] private Sprite[] _spawnSprites;
+    [SerializeField] private Sprite[] _portalSmallCycle;
+    [SerializeField] private Sprite[] _portalTransition;
+    [SerializeField] private Sprite[] _portalLargeCycle;
+    [SerializeField] private Sprite[] _portalClose;
+    [SerializeField] private Sprite[] _portalInterupt;
+
+    private float _startingColliderRadius = .77f;
+
+    private SpriteRenderer _spriteRenderer;
+    private CircleCollider2D _collider;
+
+    private void Awake() {
+        _spriteRenderer = GetComponent<SpriteRenderer>();
+        _collider = GetComponent<CircleCollider2D>();
     }
 
-    private void Update() {
-        transform.Rotate(Vector3.forward * _rotatePostiveOrNegative, 55f * Time.deltaTime);
+    private void OnEnable() {
+        StopAllCoroutines();
+        _collider.enabled = true;
+        _collider.radius = _startingColliderRadius;
+        StartCoroutine(PortalRoutine());
+    }
+
+    private IEnumerator PortalRoutine() {
+        for (int i = 0; i < _spawnSprites.Length; i++)
+        {
+            _spriteRenderer.sprite = _spawnSprites[i];
+            yield return new WaitForSeconds(_frameTime);
+        }
+
+        for (int j = 0; j < _cycleIterations; j++)
+        {
+            for (int i = 0; i < _portalSmallCycle.Length; i++)
+            {
+                _spriteRenderer.sprite = _portalSmallCycle[i];
+                yield return new WaitForSeconds(_frameTime);
+            }
+        }
+
+        for (int i = 0; i < _portalTransition.Length; i++)
+        {
+            _spriteRenderer.sprite = _portalTransition[i];
+            yield return new WaitForSeconds(_frameTime);
+            _collider.radius += .17f;
+        }
+
+        for (int j = 0; j < _cycleIterations; j++)
+        {
+            for (int i = 0; i < _portalLargeCycle.Length; i++)
+            {
+                _spriteRenderer.sprite = _portalLargeCycle[i];
+                yield return new WaitForSeconds(_frameTime);
+            }
+        }
+
+        for (int i = 0; i < _portalClose.Length; i++)
+        {
+            if (i == 3)
+            {
+                _collider.enabled = false;
+            }
+            _spriteRenderer.sprite = _portalClose[i];
+            yield return new WaitForSeconds(_frameTime);
+        }
+
+        SpawnMonster();
+    }
+
+    public IEnumerator InteruptPortal() {
+        for (int i = 0; i < _portalInterupt.Length; i++)
+        {
+            _spriteRenderer.sprite = _portalInterupt[i];
+            yield return new WaitForSeconds(_frameTime);
+        }
+
+        PortalSpawnManager.Instance.ReleasePortalFromPool(this);
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
@@ -23,6 +94,9 @@ public class Portal : MonoBehaviour
         if (monster && !monster.HasLanded) { return; }
 
         if (other.gameObject.GetComponent<Throwable>()) {
+
+            StopAllCoroutines();
+            StartCoroutine(InteruptPortal());
 
             Food food = other.gameObject.GetComponent<Food>();
 
@@ -37,14 +111,11 @@ public class Portal : MonoBehaviour
                 Destroy(other.gameObject);
             }
 
-            PortalSpawnManager.Instance.ReleasePortalFromPool(this);
         }
     }
 
-    public void SpawnMonsterAnimEvent() {
+    private void SpawnMonster() {
         Instantiate(_monsterPrefab, transform.position, Quaternion.identity);
         PortalSpawnManager.Instance.ReleasePortalFromPool(this);
     }
-
-  
 }

@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 5187686408546172533}
   - component: {fileID: 7839120289267787800}
   - component: {fileID: 3612769189673348996}
-  - component: {fileID: -7528228007161656074}
   m_Layer: 0
   m_Name: Large Monster Portal
   m_TagString: Untagged
@@ -76,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -927934630, guid: a12daf34e266db74c8b296a13c2e33ae, type: 3}
+  m_Sprite: {fileID: -895122390, guid: e3f3fc4578083e64fb2fe203528649f5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -135,23 +134,40 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _monsterPrefab: {fileID: 6646739399799464113, guid: 3899b5fbe6eca584d88fb6018d424ad5, type: 3}
---- !u!95 &-7528228007161656074
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5187686408546172532}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 0309ebeee3516704b980fec932de3cc7, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
+  _frameTime: 0.14
+  _cycleIterations: 9
+  _spawnSprites:
+  - {fileID: -895122390, guid: e3f3fc4578083e64fb2fe203528649f5, type: 3}
+  - {fileID: -1842445941, guid: e3f3fc4578083e64fb2fe203528649f5, type: 3}
+  - {fileID: 779343605, guid: e3f3fc4578083e64fb2fe203528649f5, type: 3}
+  - {fileID: 1808950400, guid: e3f3fc4578083e64fb2fe203528649f5, type: 3}
+  - {fileID: -492053726, guid: e3f3fc4578083e64fb2fe203528649f5, type: 3}
+  - {fileID: -1585851006, guid: e3f3fc4578083e64fb2fe203528649f5, type: 3}
+  - {fileID: 1747326515, guid: e3f3fc4578083e64fb2fe203528649f5, type: 3}
+  - {fileID: -1380887713, guid: e3f3fc4578083e64fb2fe203528649f5, type: 3}
+  _portalSmallCycle:
+  - {fileID: -2083795540, guid: f21f6594d0dcfbf49a3fc4164843e4c6, type: 3}
+  - {fileID: 763603585, guid: f21f6594d0dcfbf49a3fc4164843e4c6, type: 3}
+  - {fileID: 1055869309, guid: f21f6594d0dcfbf49a3fc4164843e4c6, type: 3}
+  _portalTransition:
+  - {fileID: -692886407, guid: d67d686c1471b644887e3146fc7f0095, type: 3}
+  - {fileID: 323927204, guid: d67d686c1471b644887e3146fc7f0095, type: 3}
+  - {fileID: 1206926225, guid: d67d686c1471b644887e3146fc7f0095, type: 3}
+  - {fileID: -1187877753, guid: d67d686c1471b644887e3146fc7f0095, type: 3}
+  - {fileID: -1276577225, guid: d67d686c1471b644887e3146fc7f0095, type: 3}
+  _portalLargeCycle:
+  - {fileID: -927934630, guid: a12daf34e266db74c8b296a13c2e33ae, type: 3}
+  - {fileID: 925210549, guid: a12daf34e266db74c8b296a13c2e33ae, type: 3}
+  - {fileID: 1118450332, guid: a12daf34e266db74c8b296a13c2e33ae, type: 3}
+  _portalClose:
+  - {fileID: -1194047280, guid: 71850f1947f1a0542a5e09dc9a28741e, type: 3}
+  - {fileID: -193653687, guid: 71850f1947f1a0542a5e09dc9a28741e, type: 3}
+  - {fileID: 41188191, guid: 71850f1947f1a0542a5e09dc9a28741e, type: 3}
+  - {fileID: -1597614538, guid: 71850f1947f1a0542a5e09dc9a28741e, type: 3}
+  - {fileID: -124606552, guid: 71850f1947f1a0542a5e09dc9a28741e, type: 3}
+  - {fileID: 630782576, guid: 71850f1947f1a0542a5e09dc9a28741e, type: 3}
+  _portalInterupt:
+  - {fileID: 41188191, guid: 71850f1947f1a0542a5e09dc9a28741e, type: 3}
+  - {fileID: -1597614538, guid: 71850f1947f1a0542a5e09dc9a28741e, type: 3}
+  - {fileID: -124606552, guid: 71850f1947f1a0542a5e09dc9a28741e, type: 3}
+  - {fileID: 630782576, guid: 71850f1947f1a0542a5e09dc9a28741e, type: 3}
