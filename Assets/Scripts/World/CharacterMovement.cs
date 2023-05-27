@@ -4,11 +4,8 @@ using UnityEngine;
 
 public class CharacterMovement : MonoBehaviour
 {
-    public bool AnimationsRiggedUp => _animationsRiggedUp;
-
     public bool IsGrounded => _isGrounded;
 
-    [SerializeField] private bool _animationsRiggedUp = false;
     [SerializeField] private bool _hasIdle = true;
 
     const string WALKABLE_STRING = "Walkable";
@@ -93,7 +90,7 @@ public class CharacterMovement : MonoBehaviour
     }
 
     private void OnCollisionEnter2D(Collision2D other) {
-        if (other.gameObject.CompareTag(WALKABLE_STRING) && !IsMonsterEating())
+        if (other.gameObject.CompareTag(WALKABLE_STRING) && !IsMonsterEating() && !_throwable.IsActive)
         {
             _throwable.IsInAirFromSlingshot = false;
             _isGrounded = true;
@@ -126,13 +123,13 @@ public class CharacterMovement : MonoBehaviour
     }
 
     private void GetDir() {
+        if (_throwable.IsActive || IsMonsterEating()) { return; }
+
         if (_hasIdle) {
             _direction = Random.Range(-1, 2);
         } else {
             _direction = Random.Range(0, 2) * 2 - 1;
         }
-
-        if (IsMonsterEating()) { return; }
 
         if (_direction == 0)
         {
