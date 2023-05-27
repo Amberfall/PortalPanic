@@ -27,7 +27,7 @@ public class MonsterHunger : MonoBehaviour
     }
 
     private void OnTriggerStay2D(Collider2D other) {
-        if (_isEating || _foodInHand || _smallMonsterTempBoolNoAnimation) { return; }
+        if (_isEating || _foodInHand || _smallMonsterTempBoolNoAnimation || _throwable.IsActive || !_monster.HasLanded) { return; }
 
         _foodInHand = other.gameObject.GetComponent<Food>();
 
@@ -52,14 +52,15 @@ public class MonsterHunger : MonoBehaviour
     }
 
     private IEnumerator CanEatRoutine() {
-        yield return new WaitForSeconds(3.5f);
+        
+        yield return new WaitForSeconds(10f);
         _isEating = false;
     }
 
     private void EatFood()
     {
-        StartCoroutine(CanEatRoutine());
         _isEating = true;
+        StartCoroutine(CanEatRoutine());
         _characterAnimationsController.CharacterEat();
         _foodInHand.GetEaten(_foodPlaceholderTransform);
     }

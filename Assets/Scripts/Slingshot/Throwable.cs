@@ -18,7 +18,6 @@ public class Throwable : MonoBehaviour
     private Rigidbody2D _rb;
     private Slingshot _slingshot;
     private Camera _mainCam;
-    private bool _isGhost;
 
     private void Awake() {
         _characterMovement = GetComponent<CharacterMovement>();

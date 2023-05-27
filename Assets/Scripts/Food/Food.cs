@@ -18,8 +18,10 @@ public class Food : MonoBehaviour
     private Rigidbody2D _rb;
     private BuildingSpawner _buildingSpawner;
     private CharacterAnimationsController _characterAnimationsController;
+    private Throwable _throwable;
 
     private void Awake() {
+        _throwable = GetComponent<Throwable>();
         _rb = GetComponent<Rigidbody2D>();
         _col = GetComponent<Collider2D>();
         _characterAnimationsController = GetComponent<CharacterAnimationsController>();
@@ -35,6 +37,7 @@ public class Food : MonoBehaviour
         _rb.velocity = Vector3.zero;
         _col.enabled = true;
         _isGettingEaten = false;
+        _throwable.IsActive = false;
     }
 
     public void GetEaten(Transform foodPlaceholderTransform) {
