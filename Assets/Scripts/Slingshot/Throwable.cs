@@ -14,7 +14,7 @@ public class Throwable : MonoBehaviour
 
     private CharacterMovement _characterMovement;
     private CharacterAnimationsController _characterAnimationsController;
-    private Collider2D _col;
+    private Collider2D _collider;
     private Rigidbody2D _rb;
     private Slingshot _slingshot;
     private Camera _mainCam;
@@ -22,7 +22,7 @@ public class Throwable : MonoBehaviour
     private void Awake() {
         _characterMovement = GetComponent<CharacterMovement>();
         _characterAnimationsController = GetComponent<CharacterAnimationsController>();
-        _col = GetComponent<Collider2D>();
+        _collider = GetComponent<Collider2D>();
         _rb = GetComponent<Rigidbody2D>();
         _slingshot = FindObjectOfType<Slingshot>();
         _mainCam = Camera.main;
@@ -62,7 +62,7 @@ public class Throwable : MonoBehaviour
 
     public void AttachToSlingShot(bool value) {
         IsAttachedToSlingShot = value;
-        _col.enabled = false;
+        _collider.enabled = false;
 
         if (GetComponent<Monster>()) {
             GetComponent<Monster>().GetComponentInChildren<MonsterHunger>().DropFoodInHandInterruption();
@@ -71,7 +71,7 @@ public class Throwable : MonoBehaviour
     }
 
     public void DetachFromSlingShot() {
-        _col.enabled = true;
+        _collider.enabled = true;
     }
 
     private void ClampThrowableIfNotInValidZone() {

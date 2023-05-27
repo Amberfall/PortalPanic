@@ -25,7 +25,6 @@ public class LivesManager : Singleton<LivesManager>
 
     public static void InvokeHumanDeath()
     {
-        Debug.Log("invoke death");
         OnHumanDeath?.Invoke();
     }
 
