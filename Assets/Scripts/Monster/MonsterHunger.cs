@@ -5,11 +5,10 @@ using UnityEngine.UI;
 
 public class MonsterHunger : MonoBehaviour
 {
-    // public Food FoodInHand => _foodInHand;
+    public Food FoodInHand => _foodInHand;
     public bool IsEating { get { return _isEating; } set { _isEating = value; } }
 
     [SerializeField] private Transform _foodPlaceholderTransform;
-    [SerializeField] private bool _smallMonsterTempBoolNoAnimation;
 
     private bool _isEating = false;
 
@@ -27,7 +26,7 @@ public class MonsterHunger : MonoBehaviour
     }
 
     private void OnTriggerStay2D(Collider2D other) {
-        if (_isEating || _foodInHand || _smallMonsterTempBoolNoAnimation || _throwable.IsActive || !_monster.HasLanded) { return; }
+        if (_isEating || _foodInHand || _throwable.IsActive || !_monster.HasLanded || _throwable.IsInAirFromSlingshot) { return; }
 
         _foodInHand = other.gameObject.GetComponent<Food>();
 
@@ -53,7 +52,7 @@ public class MonsterHunger : MonoBehaviour
 
     private IEnumerator CanEatRoutine() {
         
-        yield return new WaitForSeconds(10f);
+        yield return new WaitForSeconds(3.5f);
         _isEating = false;
     }
 

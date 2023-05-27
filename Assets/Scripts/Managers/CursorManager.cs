@@ -69,7 +69,7 @@ public class CursorManager : Singleton<CursorManager>
 
     private void DetectCursorType()
     {
-        if (EventSystem.current.IsPointerOverGameObject()) {
+        if (EventSystem.current.IsPointerOverGameObject() || ScoreManager.Instance.GameOver) {
             SetActiveCursorType(CursorType.Arrow);
             return;
         }
@@ -100,7 +100,7 @@ public class CursorManager : Singleton<CursorManager>
             SetActiveCursorType(CursorType.Arrow);
         }
 
-        if (hit && hit.collider.GetComponent<Monster>() && hit.collider.GetComponent<Monster>().GetComponentInChildren<MonsterHunger>().IsEating)
+        if (hit && hit.collider.GetComponent<Monster>() && hit.collider.GetComponent<Monster>().GetComponentInChildren<MonsterHunger>().FoodInHand)
         {
             SetActiveCursorType(CursorType.Arrow);
         }

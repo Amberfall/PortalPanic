@@ -54,6 +54,12 @@ public class Throwable : MonoBehaviour
         CheckBreakComboBonusDistanceY();
     }
 
+    public void Init() {
+        _isInAirFromSlingshot = false;
+        _hasCheckedYAxisForCombo = true;
+        _isActive = false;
+    }
+
     public void AttachToSlingShot(bool value) {
         IsAttachedToSlingShot = value;
         _col.enabled = false;

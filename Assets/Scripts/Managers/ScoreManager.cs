@@ -6,6 +6,7 @@ using System;
 
 public class ScoreManager : Singleton<ScoreManager>
 {
+    public bool GameOver { get { return _gameOver; } set { _gameOver = value; } }
     public static event Action OnPlayerScore;
 
     [SerializeField] private TMP_Text _scoreText;
@@ -14,6 +15,8 @@ public class ScoreManager : Singleton<ScoreManager>
 
     private int _currentCombo = 1;
     private int _currentScore = 0;
+
+    private bool _gameOver = false;
 
     private void Start() {
         UpdateText();

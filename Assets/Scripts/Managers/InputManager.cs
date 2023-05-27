@@ -16,6 +16,8 @@ public class InputManager : Singleton<InputManager>
     }
 
     private void ThrowablePickupInteraction() {
+        if (ScoreManager.Instance.GameOver) { return; }
+
         if (Input.GetMouseButtonDown(0) && CursorManager.Instance.IsInValidZone()) {
             RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero, Mathf.Infinity, _interactableLayer);
 
@@ -25,7 +27,7 @@ public class InputManager : Singleton<InputManager>
             Monster monster = hit.collider.GetComponent<Monster>();
             Food food = hit.collider.GetComponent<Food>();
 
-            if (monster && monster.GetComponentInChildren<MonsterHunger>().IsEating) { return; }
+            if (monster && monster.GetComponentInChildren<MonsterHunger>().FoodInHand) { return; }
 
             if (hit.collider != null && throwable)
             {

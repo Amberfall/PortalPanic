@@ -9,6 +9,7 @@ public class CharacterMovement : MonoBehaviour
     [SerializeField] private bool _hasIdle = true;
 
     const string WALKABLE_STRING = "Walkable";
+    const string LEVEL_BORDER_COLLIDER_STRING = "LevelBorderCollider";
 
     private float _moveSpeed = 2.0f;
     private int _direction;
@@ -95,6 +96,10 @@ public class CharacterMovement : MonoBehaviour
             _throwable.IsInAirFromSlingshot = false;
             _isGrounded = true;
             _characterAnimationsController.CharacterWalk();
+        }
+
+        if (other.gameObject.CompareTag(LEVEL_BORDER_COLLIDER_STRING)) {
+            _direction *= -1;
         }
     }
 

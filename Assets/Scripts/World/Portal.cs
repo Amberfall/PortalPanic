@@ -26,10 +26,7 @@ public class Portal : MonoBehaviour
 
             Food food = other.gameObject.GetComponent<Food>();
 
-            if (food && food.GetFoodType() == Food.FoodType.Human)
-            {
-                LivesManager.InvokeHumanDeath();
-            }
+           
 
             ScoreManager.Instance.InvokeIncreaseScore();
 

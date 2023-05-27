@@ -27,17 +27,21 @@ public class Food : MonoBehaviour
         _characterAnimationsController = GetComponent<CharacterAnimationsController>();
     }
 
-    public void Init(BuildingSpawner buildingSpawner) {
-        // Debug.Log(transform.position);
+    private void OnDestroy() {
+        if (_foodType == FoodType.Human) {
+            Debug.Log("On Destroy");
+        }
+    }
 
-        transform.SetParent(null);
+    public void Init(BuildingSpawner buildingSpawner) {
         _buildingSpawner = buildingSpawner;
+        transform.SetParent(null);
         transform.position = buildingSpawner.transform.position;
         _rb.isKinematic = false;
         _rb.velocity = Vector3.zero;
         _col.enabled = true;
         _isGettingEaten = false;
-        _throwable.IsActive = false;
+        _throwable.Init();
     }
 
     public void GetEaten(Transform foodPlaceholderTransform) {

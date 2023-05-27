@@ -23,6 +23,7 @@ public class LivesManager : Singleton<LivesManager>
 
     public static void InvokeHumanDeath()
     {
+        Debug.Log("invoke death");
         OnHumanDeath?.Invoke();
     }
 
@@ -56,6 +57,7 @@ public class LivesManager : Singleton<LivesManager>
         if (_currentLives <= 0)
         {
             _gameOverContainer.SetActive(true);
+            ScoreManager.Instance.GameOver = true;
         }
     }
 }
