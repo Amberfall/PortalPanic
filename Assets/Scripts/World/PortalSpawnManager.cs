@@ -55,16 +55,17 @@ public class PortalSpawnManager : Singleton<PortalSpawnManager>
     {
         Portal monsterPortalPrefab;
 
-        float monsterTypeChanceNum = Random.Range(0f, 1f);
+        // float monsterTypeChanceNum = Random.Range(0f, 1f);
 
-        if (monsterTypeChanceNum < 2f / 3f)
-        {
-            monsterPortalPrefab = _smallMonsterPortalPrefab;
-        }
-        else
-        {
-            monsterPortalPrefab = _largeMonsterPortalPrefab;
-        }
+        // if (monsterTypeChanceNum < 2f / 3f)
+        // {
+        //     monsterPortalPrefab = _smallMonsterPortalPrefab;
+        // }
+        // else
+        // {
+        //     monsterPortalPrefab = _largeMonsterPortalPrefab;
+        // }
+        monsterPortalPrefab = _largeMonsterPortalPrefab;
 
         return monsterPortalPrefab;
     }

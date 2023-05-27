@@ -94,14 +94,16 @@ public class CursorManager : Singleton<CursorManager>
             } else {
                 SetActiveCursorType(CursorType.Open);
             }
+        } else if (Slingshot.Instance.CurrentThrowableItem) {
+            SetActiveCursorType(CursorType.Closed);
         } else {
             SetActiveCursorType(CursorType.Arrow);
         }
 
-        if (Slingshot.Instance.CurrentThrowableItem) {
-            SetActiveCursorType(CursorType.Closed);
+        if (hit && hit.collider.GetComponent<Monster>() && hit.collider.GetComponent<Monster>().GetComponentInChildren<MonsterHunger>().IsEating)
+        {
+            SetActiveCursorType(CursorType.Arrow);
         }
-
     }
 
     public bool IsInValidZone() {

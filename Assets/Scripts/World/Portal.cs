@@ -10,7 +10,6 @@ public class Portal : MonoBehaviour
     private int _rotatePostiveOrNegative;
 
     private void Start() {
-        // StartCoroutine(MonsterSpawnRoutine());
         _rotatePostiveOrNegative = (Random.Range(0, 2) * 2) - 1;
     }
 
@@ -36,7 +35,7 @@ public class Portal : MonoBehaviour
 
             if (food && !food.ReleaseFromPool())
             {
-                Destroy(food.gameObject);
+                Destroy(other.gameObject);
             }
 
             if (monster) {
@@ -52,9 +51,5 @@ public class Portal : MonoBehaviour
         PortalSpawnManager.Instance.ReleasePortalFromPool(this);
     }
 
-    // private IEnumerator MonsterSpawnRoutine() {
-    //     yield return new WaitForSeconds(_timeTillMonsterSpawn);
-    //     Instantiate(_monsterPrefab, transform.position, Quaternion.identity);
-    //     Destroy(gameObject);
-    // }
+  
 }

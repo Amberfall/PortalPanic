@@ -22,15 +22,16 @@ public class InputManager : Singleton<InputManager>
             if (hit.collider == null) { return; }
 
             Throwable throwable = hit.collider.gameObject.GetComponent<Throwable>();
+            Monster monster = hit.collider.GetComponent<Monster>();
+
+            if (monster && monster.GetComponentInChildren<MonsterHunger>().IsEating) { return; }
 
             if (hit.collider != null && throwable)
             {
                 throwable.IsActive = true;
-                hit.collider.GetComponent<CharacterMovement>().HeldAnimation();
+                hit.collider.GetComponent<CharacterAnimationsController>().CharacterHeld();
                 _currentHeldObject = throwable.gameObject;
             }
-
-            Monster monster = hit.collider.GetComponent<Monster>();
             
             if (monster) {
                 monster.HasLanded = true;

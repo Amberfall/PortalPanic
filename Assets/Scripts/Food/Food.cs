@@ -5,23 +5,49 @@ using UnityEditor;
 
 public class Food : MonoBehaviour
 {
+    public bool IsGettingEaten { get { return _isGettingEaten; } set { _isGettingEaten = value; } }
+
+    public Collider2D Col => _col;
+    public Rigidbody2D Rb => _rb;
     public enum FoodType { Cow, Chicken, Pig, Human };
 
     [SerializeField] private FoodType _foodType;
 
+    private bool _isGettingEaten = false;
     private Collider2D _col;
+    private Rigidbody2D _rb;
     private BuildingSpawner _buildingSpawner;
+    private CharacterAnimationsController _characterAnimationsController;
 
     private void Awake() {
+        _rb = GetComponent<Rigidbody2D>();
         _col = GetComponent<Collider2D>();
+        _characterAnimationsController = GetComponent<CharacterAnimationsController>();
+    }
+
+    public void Init(BuildingSpawner buildingSpawner) {
+        // Debug.Log(transform.position);
+
+        transform.SetParent(null);
+        _buildingSpawner = buildingSpawner;
+        transform.position = buildingSpawner.transform.position;
+        _rb.isKinematic = false;
+        _rb.velocity = Vector3.zero;
+        _col.enabled = true;
+        _isGettingEaten = false;
+    }
+
+    public void GetEaten(Transform foodPlaceholderTransform) {
+        Col.enabled = false;
+        transform.SetParent(foodPlaceholderTransform);
+        Rb.isKinematic = true;
+        transform.localPosition = Vector3.zero;
+        IsGettingEaten = true;
+        _characterAnimationsController.CharacterHeld();
     }
 
     public FoodType GetFoodType() {
         return _foodType;
-    }
-
-    public void SetBuildingSpawner(BuildingSpawner buildingSpawner) {
-        _buildingSpawner = buildingSpawner;
     }
 
     public bool ReleaseFromPool() {

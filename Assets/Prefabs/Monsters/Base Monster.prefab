@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 1106472556298552299}
   - component: {fileID: -5246049380143713859}
   - component: {fileID: -8101453713045738259}
+  - component: {fileID: -6680846734773606103}
   m_Layer: 6
   m_Name: Base Monster
   m_TagString: Untagged
@@ -178,6 +179,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _animationsRiggedUp: 0
+  _hasIdle: 1
 --- !u!114 &-5246049380143713859
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -212,6 +214,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+--- !u!114 &-6680846734773606103
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2776847053856087240}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 683be47e67663014a90a71087d80d92b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &9004052484150966083
 GameObject:
   m_ObjectHideFlags: 0
