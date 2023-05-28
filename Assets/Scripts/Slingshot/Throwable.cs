@@ -45,7 +45,7 @@ public class Throwable : MonoBehaviour
             if (Input.GetMouseButtonUp(0))
             {
                 _isActive = false;
-                _rb.velocity = Vector2.zero;
+                // _rb.velocity = Vector2.zero;
             }
 
             ClampThrowableIfNotInValidZone();
@@ -74,6 +74,38 @@ public class Throwable : MonoBehaviour
 
     public void DetachFromSlingShot() {
         _collider.enabled = true;
+    }
+
+    public void Sling(Vector3 throwableForce) {
+        _rb.velocity = throwableForce;
+        AttachToSlingShot(false);
+        _isInAirFromSlingshot = true;
+        DetachFromSlingShot();
+
+        Food food = GetComponent<Food>();
+        Monster monster = GetComponent<Monster>();
+
+        if (food) {
+            switch (food.GetFoodType())
+            {
+                case Food.FoodType.Chicken:
+                    AudioManager.Instance.Play("Chicken Sling");
+                    break;
+                case Food.FoodType.Pig:
+                    AudioManager.Instance.Play("Pig Sling");
+                    break;
+                case Food.FoodType.Cow:
+                    AudioManager.Instance.Play("Cow Sling");
+                    break;
+                case Food.FoodType.Human:
+                    AudioManager.Instance.Play("Human Sling");
+                    break;
+            }
+        }
+
+        if (monster) {
+            AudioManager.Instance.Play("Monster Sling");
+        }
     }
 
     private void ClampThrowableIfNotInValidZone() {

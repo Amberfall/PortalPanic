@@ -76,13 +76,11 @@ public class Slingshot : Singleton<Slingshot>
     private void Throw() {
         if (!_currentThrowableItem) { return; }
 
+
         float stretchForceToAdd = Vector3.Distance(_currentPosition, _idlePosition.position);
         _slingShotForce = _slingElasticityStrength * stretchForceToAdd;
         _throwableForce = (_currentPosition - _idlePosition.position) * -_slingShotForce;
-        _currentThrowableItem.GetComponent<Rigidbody2D>().velocity = _throwableForce;
-        _currentThrowableItem.AttachToSlingShot(false);
-        _currentThrowableItem.IsInAirFromSlingshot = true;
-        _currentThrowableItem.DetachFromSlingShot();
+        _currentThrowableItem.Sling(_throwableForce);
         _currentThrowableItem = null;
     }
 
@@ -106,6 +104,7 @@ public class Slingshot : Singleton<Slingshot>
     }
 
     private IEnumerator ShootThrowableRoutine() {
+        AudioManager.Instance.Play("Sling");
         _isSlinging = true;
         float firstKeyTime = _curve.keys[1].time;
         float duration = 1.0f;

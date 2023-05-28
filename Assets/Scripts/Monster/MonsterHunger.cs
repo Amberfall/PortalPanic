@@ -54,6 +54,8 @@ public class MonsterHunger : MonoBehaviour
         _foodInHand = null;
     }
 
+    
+
     private IEnumerator CanEatRoutine() {
         
         yield return new WaitForSeconds(3.5f);
@@ -62,6 +64,7 @@ public class MonsterHunger : MonoBehaviour
 
     private void EatFood()
     {
+
         _isEating = true;
         StartCoroutine(CanEatRoutine());
         _characterAnimationsController.CharacterEat();

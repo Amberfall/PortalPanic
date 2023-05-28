@@ -19,16 +19,16 @@ public class CharacterMovement : MonoBehaviour
     private Throwable _throwable;
     private SpriteRenderer _spriteRenderer;
     private MonsterHunger _monsterHunger;
-    private Food _food;
     private CharacterAnimationsController _characterAnimationsController;
+    private Food _food;
 
     private void Awake() {
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _throwable = GetComponent<Throwable>();
         _rb = GetComponent<Rigidbody2D>();
         _monsterHunger = GetComponentInChildren<MonsterHunger>();
-        _food = GetComponent<Food>();
         _characterAnimationsController = GetComponent<CharacterAnimationsController>();
+        _food = GetComponent<Food>();
     }
 
     private void Start()
@@ -47,13 +47,7 @@ public class CharacterMovement : MonoBehaviour
         }
     }
 
-    public void EatFoodAnimEvent() {
-        _monsterHunger.EatFoodAnimEvent();
-    }
-
-    public void EndEatingAnimEvent() {
-        _characterAnimationsController.CharacterWalk();
-    }
+    
 
     private void Move() {
         if (_throwable.IsAttachedToSlingShot || IsMonsterEating() || _throwable.IsInAirFromSlingshot || _throwable.IsActive) { return; }

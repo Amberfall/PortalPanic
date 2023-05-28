@@ -6,11 +6,11 @@ using UnityEngine.Audio;
 [System.Serializable]
 public class Sound
 {
-    public enum AudioTypes { sfx, music };
+    public enum AudioTypes { SFX, Music };
     public AudioTypes audioType;
 
     public string name;
-    public AudioClip clip;
+    public AudioClip[] clips;
     public bool loop;
 
     [Range(0f, 2f)]

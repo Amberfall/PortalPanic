@@ -71,6 +71,8 @@ public class Portal : MonoBehaviour
             if (i == 3)
             {
                 _collider.enabled = false;
+                AudioManager.Instance.Play("Portal Close");
+
             }
 
             _spriteRenderer.sprite = _portalClose[i];
@@ -85,6 +87,8 @@ public class Portal : MonoBehaviour
     public IEnumerator InteruptPortal() {
 
         Instantiate(_portalClosingBlipVFX, transform.position, Quaternion.identity);
+        AudioManager.Instance.Play("Portal Close");
+
 
         for (int i = 0; i < _portalInterupt.Length; i++)
         {

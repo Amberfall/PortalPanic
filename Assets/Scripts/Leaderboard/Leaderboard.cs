@@ -14,6 +14,7 @@ public class Leaderboard : MonoBehaviour
 
     private void Start()
     {
+        _playerNameInputField.characterLimit = 10;
         StartCoroutine(SetupRoutine());
     }
 
@@ -22,6 +23,7 @@ public class Leaderboard : MonoBehaviour
     }
 
     private IEnumerator SubmitButtonRoutine() {
+        _playerNameInputField.gameObject.SetActive(false);
         yield return SetPlayerName();
         yield return SubmitScoreRoutine(ScoreManager.Instance.CurrentScore);
         yield return FetchTopHighScoresRoutine();

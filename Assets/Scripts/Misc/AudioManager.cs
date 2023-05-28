@@ -2,35 +2,31 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
-using System;
 
 public class AudioManager : Singleton<AudioManager>
 {
-    public Sound[] sounds;
+    public Sound[] _sounds;
 
-    [SerializeField] private AudioMixerGroup musicMixerGroup;
-    [SerializeField] private AudioMixerGroup sfxMixerGroup;
+    [SerializeField] private AudioMixerGroup _musicMixerGroup;
+    [SerializeField] private AudioMixerGroup _sfxMixerGroup;
 
     protected override void Awake()
     {
         base.Awake();
 
-        foreach (Sound s in sounds)
+        foreach (Sound s in _sounds)
         {
             s.source = gameObject.AddComponent<AudioSource>();
-            s.source.clip = s.clip;
-            s.source.volume = s.volume;
-            s.source.pitch = s.pitch;
             s.source.loop = s.loop;
 
             switch (s.audioType)
             {
-                case Sound.AudioTypes.sfx:
-                    s.source.outputAudioMixerGroup = sfxMixerGroup;
+                case Sound.AudioTypes.SFX:
+                    s.source.outputAudioMixerGroup = _sfxMixerGroup;
                     break;
 
-                case Sound.AudioTypes.music:
-                    s.source.outputAudioMixerGroup = musicMixerGroup;
+                case Sound.AudioTypes.Music:
+                    s.source.outputAudioMixerGroup = _musicMixerGroup;
                     break;
             }
         }
@@ -38,24 +34,29 @@ public class AudioManager : Singleton<AudioManager>
 
     private void Start()
     {
-        // Play("Theme Music");
+        Play("Theme Music");
     }
 
     public void Play(string name)
     {
-        Sound s = Array.Find(sounds, sound => sound.name == name);
+        Sound s = System.Array.Find(_sounds, sound => sound.name == name);
         if (s == null)
         {
             Debug.LogWarning(("Sound: " + name + " not found!"));
             return;
         }
 
+        int randomNum = Random.Range(0, s.clips.Length);
+        s.source.clip = s.clips[randomNum];
+        s.source.volume = s.volume;
+        s.source.pitch = s.pitch;
+
         s.source.Play();
     }
 
     public void UpdateMixerVolume()
     {
-        musicMixerGroup.audioMixer.SetFloat("Music Volume", Mathf.Log10(AudioOptionsManager.musicVolume) * 20);
-        sfxMixerGroup.audioMixer.SetFloat("SFX Volume", Mathf.Log10(AudioOptionsManager.sfxVolume) * 20);
+        _musicMixerGroup.audioMixer.SetFloat("Music Volume", Mathf.Log10(AudioOptionsManager.musicVolume) * 20);
+        _sfxMixerGroup.audioMixer.SetFloat("SFX Volume", Mathf.Log10(AudioOptionsManager.sfxVolume) * 20);
     }
 }

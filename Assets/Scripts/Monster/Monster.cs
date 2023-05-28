@@ -18,10 +18,14 @@ public class Monster : MonoBehaviour
     private Collider2D _col;
 
     private CharacterMovement _characterMovement;
+    private MonsterHunger _monsterHunger;
+    private CharacterAnimationsController _characterAnimationsController;
 
     private void Awake() {
         _col = GetComponent<Collider2D>();
         _characterMovement = GetComponent<CharacterMovement>();
+        _monsterHunger = GetComponentInChildren<MonsterHunger>();
+        _characterAnimationsController = GetComponent<CharacterAnimationsController>();
     }
 
     private void OnCollisionEnter2D(Collision2D other)
@@ -34,6 +38,21 @@ public class Monster : MonoBehaviour
         }
     }
 
+    public void EatFoodAnimEvent()
+    {
+        _monsterHunger.EatFoodAnimEvent();
+    }
+
+    public void EndEatingAnimEvent()
+    {
+        _characterAnimationsController.CharacterWalk();
+    }
+
+    public void MonsterEatAudioAnimEvent()
+    {
+        AudioManager.Instance.Play("Monster Eat");
+    }
+
     private void MonsterScreenShake() {
         if (_monsterType == MonsterType.Small) {
             ScreenShakeManager.Instance.SmallMonsterScreenShake();
@@ -44,7 +63,8 @@ public class Monster : MonoBehaviour
             ScreenShakeManager.Instance.LargeMonsterScreenShake();
 
             if (_smokePoofPrefab != null) {
-                GameObject smokePrefab = Instantiate(_smokePoofPrefab, transform.position, Quaternion.identity);
+                Vector3 smokeOffset = new Vector3(0f, -1f, 0);
+                GameObject smokePrefab = Instantiate(_smokePoofPrefab, transform.position + smokeOffset, Quaternion.identity);
             }
         }
 
@@ -60,6 +80,7 @@ public class Monster : MonoBehaviour
                 if (_monsterType == MonsterType.Large)
                 {
                     food.GetComponent<Rigidbody2D>().velocity = new Vector2(0f, Random.Range(3.5f, 5f));
+                    AudioManager.Instance.Play("Monster Screenshake");
 
                     Human human = food.GetComponent<Human>();
 
