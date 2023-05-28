@@ -5,7 +5,6 @@ using UnityEngine.Pool;
 
 public class PortalSpawnManager : Singleton<PortalSpawnManager>
 {
-    [SerializeField] private Portal _smallMonsterPortalPrefab;
     [SerializeField] private Portal _largeMonsterPortalPrefab;
 
     [SerializeField] private Monster _smallMonsterPrefab;
@@ -55,16 +54,6 @@ public class PortalSpawnManager : Singleton<PortalSpawnManager>
     {
         Portal monsterPortalPrefab;
 
-        // float monsterTypeChanceNum = Random.Range(0f, 1f);
-
-        // if (monsterTypeChanceNum < 2f / 3f)
-        // {
-        //     monsterPortalPrefab = _smallMonsterPortalPrefab;
-        // }
-        // else
-        // {
-        //     monsterPortalPrefab = _largeMonsterPortalPrefab;
-        // }
         monsterPortalPrefab = _largeMonsterPortalPrefab;
 
         return monsterPortalPrefab;
@@ -78,6 +67,7 @@ public class PortalSpawnManager : Singleton<PortalSpawnManager>
             Portal newMonster = _portalPool.Get();
 
             newMonster.transform.position = randomPoint;
+            
 
             _timeBetweenPortals -= .1f;
             if (_timeBetweenPortals <= 1f) {
