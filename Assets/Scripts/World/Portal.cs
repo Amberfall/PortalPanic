@@ -5,6 +5,7 @@ using UnityEngine;
 public class Portal : MonoBehaviour
 {
     [SerializeField] private GameObject _monsterPrefab;
+    [SerializeField] private GameObject _portalClosingBlipVFX;
 
     [SerializeField] private float _frameTime = .15f;
     [SerializeField] private int _cycleIterations = 3;
@@ -71,14 +72,20 @@ public class Portal : MonoBehaviour
             {
                 _collider.enabled = false;
             }
+
             _spriteRenderer.sprite = _portalClose[i];
             yield return new WaitForSeconds(_frameTime);
         }
+
+        Instantiate(_portalClosingBlipVFX, transform.position, Quaternion.identity);
 
         SpawnMonster();
     }
 
     public IEnumerator InteruptPortal() {
+
+        Instantiate(_portalClosingBlipVFX, transform.position, Quaternion.identity);
+
         for (int i = 0; i < _portalInterupt.Length; i++)
         {
             _spriteRenderer.sprite = _portalInterupt[i];

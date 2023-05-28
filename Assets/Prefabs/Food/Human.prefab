@@ -137,3 +137,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba253df977671d54298851d9627f0e7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _lotsOfExclaimationsFX: {fileID: 1964004994400413296, guid: 7c8e80dbe523e8f488ac3d79f11e71f5, type: 3}
+  _exclaimationFX: {fileID: 1964004994400413296, guid: 7cd2f741bad27d24b9694ba471f75287, type: 3}

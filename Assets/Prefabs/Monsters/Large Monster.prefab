@@ -50,7 +50,7 @@ PrefabInstance:
     - target: {fileID: -5246049380143713859, guid: c8d5411eed0029b45ba795d76f63a77d, type: 3}
       propertyPath: _smokePoofPrefab
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 3157432285232776887, guid: e82619a738450e349a277649188d541a, type: 3}
     - target: {fileID: 1106472556298552299, guid: c8d5411eed0029b45ba795d76f63a77d, type: 3}
       propertyPath: _hasIdle
       value: 0
@@ -133,7 +133,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2776847053856087241, guid: c8d5411eed0029b45ba795d76f63a77d, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2776847053856087241, guid: c8d5411eed0029b45ba795d76f63a77d, type: 3}
       propertyPath: m_LocalScale.x
@@ -288,7 +288,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _foodPlaceholderTransform: {fileID: 1944377540}
-  _smallMonsterTempBoolNoAnimation: 0
 --- !u!4 &6646739399799464112 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2776847053856087241, guid: c8d5411eed0029b45ba795d76f63a77d, type: 3}

@@ -44,8 +44,7 @@ public class Monster : MonoBehaviour
             ScreenShakeManager.Instance.LargeMonsterScreenShake();
 
             if (_smokePoofPrefab != null) {
-                GameObject smokePrefab = Instantiate(_smokePoofPrefab, transform.position + new Vector3(0f, 1.5f, 0f), Quaternion.identity);
-                Invoke("DestroySmokePrefab", 2f);
+                GameObject smokePrefab = Instantiate(_smokePoofPrefab, transform.position, Quaternion.identity);
             }
         }
 
@@ -64,9 +63,5 @@ public class Monster : MonoBehaviour
                 }
             }
         }
-    }
-
-    private void DestroySmokePrefab(GameObject smokePrefab) {
-        Destroy(smokePrefab);
     }
 }
