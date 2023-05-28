@@ -54,6 +54,10 @@ public class Throwable : MonoBehaviour
         CheckBreakComboBonusDistanceY();
     }
 
+    public void SpawnMainMenuFalling() {
+        _isInAirFromSlingshot = true;
+    }
+
     public void Init() {
         _isInAirFromSlingshot = false;
         _hasCheckedYAxisForCombo = true;

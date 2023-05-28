@@ -32,10 +32,9 @@ public class AudioManager : Singleton<AudioManager>
         }
     }
 
-    private void Start()
-    {
-        Play("Theme Music");
-    }
+    
+
+    
 
     public void Play(string name)
     {

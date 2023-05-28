@@ -53,8 +53,6 @@ public class ScoreManager : Singleton<ScoreManager>
         scoreText.text = scoreAmount.ToString();
     }
 
-    
-
     private void OnPlayerScoreHandler() {
         IncreaseScore();
         IncreaseComboAmount();
@@ -69,7 +67,12 @@ public class ScoreManager : Singleton<ScoreManager>
         string scoreString = _currentScore.ToString();
         scoreString = scoreString.PadLeft(3, '0');
 
-        _scoreText.text = "Score: " + scoreString;
-        _comboText.text = "Combo: x" + _currentCombo.ToString();
+        if (_scoreText) {
+            _scoreText.text = "Score: " + scoreString;
+        }
+
+        if (_comboText) {
+            _comboText.text = "Combo: x" + _currentCombo.ToString();
+        }
     }
 }
