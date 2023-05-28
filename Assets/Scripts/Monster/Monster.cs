@@ -60,6 +60,10 @@ public class Monster : MonoBehaviour
                 if (_monsterType == MonsterType.Large)
                 {
                     food.GetComponent<Rigidbody2D>().velocity = new Vector2(0f, Random.Range(3.5f, 5f));
+
+                    Human human = food.GetComponent<Human>();
+
+                    if (human) { human.HumanShakeScreenJump(); }
                 }
             }
         }

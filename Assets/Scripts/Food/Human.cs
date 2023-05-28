@@ -12,10 +12,12 @@ public class Human : MonoBehaviour
     }
 
     public void HumanHeld() {
-        Instantiate(_lotsOfExclaimationsFX, transform);
+        GameObject vfx = Instantiate(_lotsOfExclaimationsFX, transform.position, Quaternion.identity);
+        vfx.transform.SetParent(this.transform);
     }
 
     public void HumanShakeScreenJump() {
-        Instantiate(_exclaimationFX, transform);
+        GameObject vfx = Instantiate(_exclaimationFX, transform.position, Quaternion.identity);
+        vfx.transform.SetParent(this.transform);
     }
 }
