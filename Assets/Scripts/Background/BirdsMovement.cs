@@ -10,10 +10,12 @@ public class BirdsMovement : MonoBehaviour
     float timeTillNextBird;
     public float speed = 0.5f;
     bool isMoving = false;
-    void Start()
-    {
+
+    Animator anim;
+    private void Awake() {
         startPos = transform.position;
-        timeTillNextBird = GetRandomTime();
+        anim = GetComponent<Animator>();
+        StopBird();
     }
 
     void Update()
@@ -25,14 +27,12 @@ public class BirdsMovement : MonoBehaviour
         if(!isMoving){
             timeTillNextBird -= Time.deltaTime;
             if(timeTillNextBird <= 0){
-                isMoving = true;
+                StartBird();
             }
         }
         if(isMoving){
             if(transform.position.x >= 20){
-                transform.position = startPos;
-                isMoving = false;
-                timeTillNextBird = GetRandomTime();
+                StopBird();
             }
             transform.position = Vector3.Lerp(transform.position, transform.position + Vector3.right, speed * Time.deltaTime);
         }
@@ -40,5 +40,15 @@ public class BirdsMovement : MonoBehaviour
     }
     float GetRandomTime(){
         return Random.Range(minTimeTillNextBird, maxTimeTillNextBird);
+    }
+    private void StartBird(){
+        anim.enabled = true;
+        isMoving = true;
+    }
+    private void StopBird(){
+        anim.enabled = false;
+        isMoving = false;
+        timeTillNextBird = GetRandomTime();
+        transform.position = startPos;
     }
 }
