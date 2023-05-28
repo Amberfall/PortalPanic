@@ -9,7 +9,6 @@ public class Leaderboard : MonoBehaviour
     [SerializeField] private TMP_InputField _playerNameInputField;
     [SerializeField] private TextMeshProUGUI _playerNames;
     [SerializeField] private TextMeshProUGUI _playerScores;
-    [SerializeField] private TextMeshProUGUI _scoreText;
 
     private string _leaderBoardID = "globalHighscore";
 
@@ -24,7 +23,7 @@ public class Leaderboard : MonoBehaviour
 
     private IEnumerator SubmitButtonRoutine() {
         yield return SetPlayerName();
-        // yield return SubmitScoreRoutine(_scoreToSubmit);
+        yield return SubmitScoreRoutine(ScoreManager.Instance.CurrentScore);
         yield return FetchTopHighScoresRoutine();
     } 
 
@@ -76,7 +75,7 @@ public class Leaderboard : MonoBehaviour
 
     private IEnumerator FetchTopHighScoresRoutine() {
         bool done = false;
-        LootLockerSDKManager.GetScoreList(_leaderBoardID, 10, 0, (response) => {
+        LootLockerSDKManager.GetScoreList(_leaderBoardID, 7, 0, (response) => {
             if (response.success) {
                 string tempPlayerNames = "Names\n";
                 string tempPlayerScores = "Scores\n";

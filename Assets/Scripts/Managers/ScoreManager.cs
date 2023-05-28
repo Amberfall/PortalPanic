@@ -6,6 +6,7 @@ using System;
 
 public class ScoreManager : Singleton<ScoreManager>
 {
+    public int CurrentScore => _currentScore;
     public bool GameOver { get { return _gameOver; } set { _gameOver = value; } }
     public static event Action OnPlayerScore;
 
