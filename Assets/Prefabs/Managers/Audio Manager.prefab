@@ -1,0 +1,142 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2209446065326136114
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2209446065326136115}
+  - component: {fileID: 2209446065326136116}
+  m_Layer: 0
+  m_Name: Audio Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2209446065326136115
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2209446065326136114}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2209446065326136116
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2209446065326136114}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d360a24629690474094f4277ea530ce5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _sounds:
+  - audioType: 1
+    name: Theme Music
+    clips:
+    - {fileID: 8300000, guid: 614d1ce25f15b8649be49c77f8eb162b, type: 3}
+    loop: 1
+    volume: 0.3
+    pitch: 1
+    source: {fileID: 0}
+  - audioType: 1
+    name: Title Music
+    clips:
+    - {fileID: 8300000, guid: e39e566377193c84aaefaa3d233a8298, type: 3}
+    loop: 1
+    volume: 0.466
+    pitch: 1
+    source: {fileID: 0}
+  - audioType: 0
+    name: Monster Screenshake
+    clips:
+    - {fileID: 8300000, guid: 74dfdf8b9c08cf54fb3d79db26e59766, type: 3}
+    - {fileID: 8300000, guid: a6b27f4d3bb23d64eb8286e1175c2ba9, type: 3}
+    - {fileID: 8300000, guid: 3a5d90bde2cf5054081ac386d85521ab, type: 3}
+    loop: 0
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - audioType: 0
+    name: Monster Sling
+    clips:
+    - {fileID: 8300000, guid: 957993fcd5ea4b946bba6ede47149332, type: 3}
+    loop: 0
+    volume: 0.449
+    pitch: 1
+    source: {fileID: 0}
+  - audioType: 0
+    name: Chicken Sling
+    clips:
+    - {fileID: 8300000, guid: 7c817d3cbe85b3b489522dd250c8d967, type: 3}
+    loop: 0
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - audioType: 0
+    name: Cow Sling
+    clips:
+    - {fileID: 8300000, guid: 3aea6408792be754592332d67428e5a6, type: 3}
+    loop: 0
+    volume: 0.3
+    pitch: 1
+    source: {fileID: 0}
+  - audioType: 0
+    name: Pig Sling
+    clips:
+    - {fileID: 8300000, guid: efd84d6d7a9d5c146a6bf3838df0b782, type: 3}
+    loop: 0
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - audioType: 0
+    name: Human Sling
+    clips:
+    - {fileID: 8300000, guid: 6feb6c977c963ed4ea240adc199a5f62, type: 3}
+    loop: 0
+    volume: 0.7
+    pitch: 1
+    source: {fileID: 0}
+  - audioType: 0
+    name: Monster Eat
+    clips:
+    - {fileID: 8300000, guid: f82622d0fae4d2d439b01939b961e682, type: 3}
+    loop: 0
+    volume: 2
+    pitch: 0.74
+    source: {fileID: 0}
+  - audioType: 0
+    name: Portal Close
+    clips:
+    - {fileID: 8300000, guid: 6bde85fb48311b846b218f5f3cf7815f, type: 3}
+    loop: 0
+    volume: 0.195
+    pitch: 1
+    source: {fileID: 0}
+  - audioType: 0
+    name: Sling
+    clips:
+    - {fileID: 8300000, guid: 64d009ba973f03b49b3d59aa885699b4, type: 3}
+    - {fileID: 8300000, guid: 5be94f74cf4c158449176194492f001b, type: 3}
+    - {fileID: 8300000, guid: 276a3aa317b4ade46ba80b1d706a7eed, type: 3}
+    - {fileID: 8300000, guid: 94e4dddd0b6851e43b1d604f28cdfd30, type: 3}
+    loop: 0
+    volume: 0.271
+    pitch: 1
+    source: {fileID: 0}
+  _musicMixerGroup: {fileID: 0}
+  _sfxMixerGroup: {fileID: 0}

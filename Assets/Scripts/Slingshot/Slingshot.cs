@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Slingshot : Singleton<Slingshot>
+public class Slingshot : MonoBehaviour
 {
     public Throwable CurrentThrowableItem => _currentThrowableItem;
     public bool IsSlinging => _isSlinging;
@@ -22,8 +22,8 @@ public class Slingshot : Singleton<Slingshot>
     private bool _isSlinging = false;
     private bool _isAttached = false;
 
-    protected override void Awake() {
-        base.Awake();
+    private void Awake() {
+        // base.Awake();
         _trajectoryLine = GetComponent<TrajectoryLine>();
     }
 

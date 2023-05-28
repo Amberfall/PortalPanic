@@ -32,10 +32,6 @@ public class AudioManager : Singleton<AudioManager>
         }
     }
 
-    
-
-    
-
     public void Play(string name)
     {
         Sound s = System.Array.Find(_sounds, sound => sound.name == name);

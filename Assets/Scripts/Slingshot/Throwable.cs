@@ -6,11 +6,13 @@ public class Throwable : MonoBehaviour
 {
     public bool IsActive { get { return _isActive; } set { _isActive = value; } }
     public bool IsInAirFromSlingshot { get { return _isInAirFromSlingshot; } set { _isInAirFromSlingshot = value; } }
+    public bool MainMenuFood { get { return _mainMenuFood; } set { _mainMenuFood = value; } }
     public bool IsAttachedToSlingShot { get; private set; }
 
     private bool _isActive = false;
     private bool _isInAirFromSlingshot = false;
     private bool _hasCheckedYAxisForCombo = true;
+    private bool _mainMenuFood = false;
 
     private CharacterMovement _characterMovement;
     private CharacterAnimationsController _characterAnimationsController;
@@ -45,7 +47,7 @@ public class Throwable : MonoBehaviour
             if (Input.GetMouseButtonUp(0))
             {
                 _isActive = false;
-                // _rb.velocity = Vector2.zero;
+                _rb.velocity = Vector2.zero;
             }
 
             ClampThrowableIfNotInValidZone();
@@ -55,6 +57,7 @@ public class Throwable : MonoBehaviour
     }
 
     public void SpawnMainMenuFalling() {
+        _mainMenuFood = true;
         _isInAirFromSlingshot = true;
     }
 

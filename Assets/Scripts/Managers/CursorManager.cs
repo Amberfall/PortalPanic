@@ -26,10 +26,12 @@ public class CursorManager : Singleton<CursorManager>
 
     private CursorAnimation _cursorAnimation;
     private Camera _mainCam;
+    private Slingshot _slingshot;
 
     protected override void Awake() {
         base.Awake();
 
+        _slingshot = FindObjectOfType<Slingshot>();
         _mainCam = Camera.main;
     }
 
@@ -94,7 +96,7 @@ public class CursorManager : Singleton<CursorManager>
             } else {
                 SetActiveCursorType(CursorType.Open);
             }
-        } else if (Slingshot.Instance.CurrentThrowableItem) {
+        } else if (_slingshot.CurrentThrowableItem) {
             SetActiveCursorType(CursorType.Closed);
         } else {
             SetActiveCursorType(CursorType.Arrow);

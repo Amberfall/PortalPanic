@@ -12,6 +12,8 @@ public class AnimalMainMenuPool : MonoBehaviour
     private ObjectPool<Food> _foodPool;
     private BoxCollider2D _boxCollider2D;
 
+    int _currentAnimalIndex = 0;
+
     private void Awake()
     {
         _boxCollider2D = GetComponent<BoxCollider2D>();
@@ -54,7 +56,11 @@ public class AnimalMainMenuPool : MonoBehaviour
 
         int randomNum = Random.Range(0, 3);
 
-        animalPrefab = _animalPrefabs[randomNum];
+        animalPrefab = _animalPrefabs[_currentAnimalIndex];
+        _currentAnimalIndex++;
+
+        if (_currentAnimalIndex == 3) { _currentAnimalIndex = 0; }
+
 
         return animalPrefab;
     }
@@ -68,16 +74,13 @@ public class AnimalMainMenuPool : MonoBehaviour
             Food newFood = _foodPool.Get();
 
             newFood.transform.position = randomPoint;
-            newFood.GetComponent<Throwable>().SpawnMainMenuFalling();
+            Throwable throwable = newFood.GetComponent<Throwable>();
+
+            throwable.SpawnMainMenuFalling();
 
             float finalSpin = Random.Range(0, 2) == 0 ? -_animalSpinRotationSpeed : _animalSpinRotationSpeed;
             StartCoroutine(SpinRoutine(newFood.transform, finalSpin));
 
-            // _timeBetweenSpawn -= .1f;
-            // if (_timeBetweenSpawn <= 1f)
-            // {
-            //     _timeBetweenSpawn = 1f;
-            // }
 
             yield return new WaitForSeconds(_timeBetweenSpawn);
         }

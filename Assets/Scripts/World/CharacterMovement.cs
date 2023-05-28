@@ -88,7 +88,7 @@ public class CharacterMovement : MonoBehaviour
         if (other.gameObject.CompareTag(WALKABLE_STRING) && !IsMonsterEating() && !_throwable.IsActive)
         {
             _throwable.IsInAirFromSlingshot = false;
-            // _rb.freezeRotation = true;
+            transform.rotation = Quaternion.identity;
             _isGrounded = true;
             GetDir();
         }

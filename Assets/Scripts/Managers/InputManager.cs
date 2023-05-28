@@ -30,6 +30,8 @@ public class InputManager : Singleton<InputManager>
             if (hit.collider != null && throwable)
             {
                 throwable.IsActive = true;
+                throwable.IsInAirFromSlingshot = false;
+                throwable.MainMenuFood = false;
                 hit.collider.GetComponent<CharacterAnimationsController>().CharacterHeld();
                 _currentHeldObject = throwable.gameObject;
             }
@@ -56,7 +58,6 @@ public class InputManager : Singleton<InputManager>
     private void DropThrowable() {
         if ((Input.GetMouseButtonUp(0)) && _currentHeldObject)
         {
-
             Food food = _currentHeldObject.GetComponent<Food>();
 
             if (food) {
