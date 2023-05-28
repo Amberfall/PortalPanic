@@ -42,6 +42,10 @@ public class InputManager : Singleton<InputManager>
 
             if (food) {
                 HumanBuilding.Instance.InvokePickUpAnimal(food);
+
+                Human human = food.GetComponent<Human>();
+
+                if (human) { human.HumanHeld(); }
             }
         }
 

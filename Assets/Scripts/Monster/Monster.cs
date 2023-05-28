@@ -44,8 +44,7 @@ public class Monster : MonoBehaviour
             ScreenShakeManager.Instance.LargeMonsterScreenShake();
 
             if (_smokePoofPrefab != null) {
-                GameObject smokePrefab = Instantiate(_smokePoofPrefab, transform.position + new Vector3(0f, 1.5f, 0f), Quaternion.identity);
-                Invoke("DestroySmokePrefab", 2f);
+                GameObject smokePrefab = Instantiate(_smokePoofPrefab, transform.position, Quaternion.identity);
             }
         }
 
@@ -61,12 +60,12 @@ public class Monster : MonoBehaviour
                 if (_monsterType == MonsterType.Large)
                 {
                     food.GetComponent<Rigidbody2D>().velocity = new Vector2(0f, Random.Range(3.5f, 5f));
+
+                    Human human = food.GetComponent<Human>();
+
+                    if (human) { human.HumanShakeScreenJump(); }
                 }
             }
         }
-    }
-
-    private void DestroySmokePrefab(GameObject smokePrefab) {
-        Destroy(smokePrefab);
     }
 }
