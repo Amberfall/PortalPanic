@@ -25,17 +25,18 @@ public class MonsterHunger : MonoBehaviour
         _monster = GetComponentInParent<Monster>();
     }
 
-    private void OnTriggerStay2D(Collider2D other) {
-        if (_isEating || _foodInHand || _throwable.IsActive || !_monster.HasLanded || _throwable.IsInAirFromSlingshot || _throwable.IsAttachedToSlingShot) { return; }
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        if (!CanPickUpFood()) { return; }
 
         _foodInHand = other.gameObject.GetComponent<Food>();
 
-        if (_foodInHand && CanEat(other))
-        {
+        if (_foodInHand) {
             EatFood();
         }
     }
 
+    
     public void DropFoodInHandInterruption() {
         if (_foodInHand) {
             _foodInHand.FoodReset();
@@ -66,13 +67,15 @@ public class MonsterHunger : MonoBehaviour
         _characterAnimationsController.CharacterEat();
         _foodInHand.GetEaten(_foodPlaceholderTransform);
     }
-    
-    private bool CanEat(Collider2D other) {
-        if (_throwable.IsActive || _foodInHand.GetComponent<Throwable>().IsActive)
-        {
+
+    private bool CanPickUpFood()
+    {
+        if (_isEating || _foodInHand || _throwable.IsActive || !_monster.HasLanded || _throwable.IsInAirFromSlingshot || _throwable.IsAttachedToSlingShot) {
             return false;
         }
-        
+
         return true;
     }
+
+
 }

@@ -64,8 +64,10 @@ public class Throwable : MonoBehaviour
         IsAttachedToSlingShot = value;
         _collider.enabled = false;
 
-        if (GetComponent<Monster>()) {
-            GetComponent<Monster>().GetComponentInChildren<MonsterHunger>().DropFoodInHandInterruption();
+        Monster monster = GetComponent<Monster>();
+
+        if (monster) {
+            monster.GetComponentInChildren<MonsterHunger>().DropFoodInHandInterruption();
             _characterAnimationsController.CharacterHeld();
         }
     }

@@ -57,8 +57,13 @@ public class InputManager : Singleton<InputManager>
         if ((Input.GetMouseButtonUp(0)) && _currentHeldObject)
         {
 
-            if (_currentHeldObject.GetComponent<Food>()) {
+            Food food = _currentHeldObject.GetComponent<Food>();
+
+            if (food) {
                 HumanBuilding.Instance.DropFood();
+
+                Human human = food.GetComponent<Human>();
+                if (human) { human.DestroyHumanHeldVFX(); }
             }
 
             _currentHeldObject = null;
