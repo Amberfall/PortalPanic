@@ -72,3 +72,6 @@ TagManager:
   - name: Animals
     uniqueID: 3033312693
     locked: 0
+  - name: FX
+    uniqueID: 3882891503
+    locked: 0
