@@ -92,9 +92,21 @@ PrefabInstance:
       value: 
       objectReference: {fileID: -1251098655, guid: 94edfa4e9f058194fa0fb4ee4dfdf3de, type: 3}
     - target: {fileID: 2776847053856087232, guid: c8d5411eed0029b45ba795d76f63a77d, type: 3}
+      propertyPath: m_SortingLayer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2776847053856087232, guid: c8d5411eed0029b45ba795d76f63a77d, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 1339708417
+      objectReference: {fileID: 0}
+    - target: {fileID: 2776847053856087232, guid: c8d5411eed0029b45ba795d76f63a77d, type: 3}
       propertyPath: m_WasSpriteAssigned
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2776847053856087232, guid: c8d5411eed0029b45ba795d76f63a77d, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
     - target: {fileID: 2776847053856087235, guid: c8d5411eed0029b45ba795d76f63a77d, type: 3}
       propertyPath: _monsterType
       value: 1
