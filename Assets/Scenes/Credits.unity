@@ -328,7 +328,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 312, y: -19}
+  m_AnchoredPosition: {x: 312, y: -21}
   m_SizeDelta: {x: 500, y: 220}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &128983935
@@ -1107,7 +1107,7 @@ GameObject:
   - component: {fileID: 565007333}
   - component: {fileID: 565007332}
   m_Layer: 5
-  m_Name: Colyde Text (1)
+  m_Name: Maya Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1130,7 +1130,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -90.2, y: -70.9}
+  m_AnchoredPosition: {x: -86.2, y: -70.9}
   m_SizeDelta: {x: 320, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &565007332
@@ -2568,7 +2568,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Music/sfx - colyde
+  m_text: colyde - Music/sfx
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f6eb2cd4e8724fa4a8b405b7395058cd, type: 2}
   m_sharedMaterial: {fileID: -423617998708977669, guid: f6eb2cd4e8724fa4a8b405b7395058cd, type: 2}
