@@ -73,6 +73,7 @@ public class Food : MonoBehaviour
 
     public bool ReleaseFromPool() {
         if (_buildingSpawner) {
+            transform.SetParent(null);
             _buildingSpawner.ReleaseFoodFromPool(this);
             return true;
         }

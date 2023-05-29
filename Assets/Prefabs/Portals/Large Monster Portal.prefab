@@ -32,7 +32,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 5351162442756818446}
+  - {fileID: 8200913658855640883}
+  - {fileID: 3627192932159978913}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -137,6 +138,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _monsterPrefab: {fileID: 6646739399799464113, guid: 3899b5fbe6eca584d88fb6018d424ad5, type: 3}
   _portalClosingBlipVFX: {fileID: 3687779351928375604, guid: 0a56c75444ab20d4794e50b192060848, type: 3}
+  _greenSparkles: {fileID: 7828832204765161600}
+  _yellowSparkles: {fileID: 3403742950438787602}
   _frameTime: 0.14
   _cycleIterations: 9
   _spawnSprites:
@@ -186,7 +189,82 @@ SortingGroup:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_SortAtRoot: 1
---- !u!1001 &4768246002371915077
+--- !u!1001 &4195511362816874218
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 5187686408546172538}
+    m_Modifications:
+    - target: {fileID: 607726026912656203, guid: 4a78e7a27576fed418afef977943fc08, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 607726026912656203, guid: 4a78e7a27576fed418afef977943fc08, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 607726026912656203, guid: 4a78e7a27576fed418afef977943fc08, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 607726026912656203, guid: 4a78e7a27576fed418afef977943fc08, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 607726026912656203, guid: 4a78e7a27576fed418afef977943fc08, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 607726026912656203, guid: 4a78e7a27576fed418afef977943fc08, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 607726026912656203, guid: 4a78e7a27576fed418afef977943fc08, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 607726026912656203, guid: 4a78e7a27576fed418afef977943fc08, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 607726026912656203, guid: 4a78e7a27576fed418afef977943fc08, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 607726026912656203, guid: 4a78e7a27576fed418afef977943fc08, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 607726026912656203, guid: 4a78e7a27576fed418afef977943fc08, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1514886740936248568, guid: 4a78e7a27576fed418afef977943fc08, type: 3}
+      propertyPath: m_Name
+      value: PortalSparkles Yellow
+      objectReference: {fileID: 0}
+    - target: {fileID: 1514886740936248568, guid: 4a78e7a27576fed418afef977943fc08, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4a78e7a27576fed418afef977943fc08, type: 3}
+--- !u!1 &3403742950438787602 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1514886740936248568, guid: 4a78e7a27576fed418afef977943fc08, type: 3}
+  m_PrefabInstance: {fileID: 4195511362816874218}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &3627192932159978913 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 607726026912656203, guid: 4a78e7a27576fed418afef977943fc08, type: 3}
+  m_PrefabInstance: {fileID: 4195511362816874218}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &8764123758473389176
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -240,19 +318,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1514886740936248568, guid: cc3115d587ccc3b4db24f864325614f8, type: 3}
       propertyPath: m_Name
-      value: PortalSparkles
+      value: PortalSparkles Green
       objectReference: {fileID: 0}
-    - target: {fileID: 2211590402993138799, guid: cc3115d587ccc3b4db24f864325614f8, type: 3}
-      propertyPath: m_SortingOrder
-      value: -1
+    - target: {fileID: 1514886740936248568, guid: cc3115d587ccc3b4db24f864325614f8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cc3115d587ccc3b4db24f864325614f8, type: 3}
---- !u!4 &5351162442756818446 stripped
+--- !u!1 &7828832204765161600 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1514886740936248568, guid: cc3115d587ccc3b4db24f864325614f8, type: 3}
+  m_PrefabInstance: {fileID: 8764123758473389176}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &8200913658855640883 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 607726026912656203, guid: cc3115d587ccc3b4db24f864325614f8, type: 3}
-  m_PrefabInstance: {fileID: 4768246002371915077}
+  m_PrefabInstance: {fileID: 8764123758473389176}
   m_PrefabAsset: {fileID: 0}

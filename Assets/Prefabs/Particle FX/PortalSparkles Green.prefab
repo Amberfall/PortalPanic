@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4104890481483319374}
   - component: {fileID: 2211590402993138799}
   m_Layer: 0
-  m_Name: PortalSparkles
+  m_Name: PortalSparkles Green
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -29,13 +29,18 @@ public class MonsterHunger : MonoBehaviour
     {
         if (!CanPickUpFood()) { return; }
 
+        // if (_foodPlaceholderTransform.childCount > 0) {
+        //     _foodInHand = _foodPlaceholderTransform.GetChild(0).GetComponent<Food>();
+        //     EatFood();
+        //     return;
+        // }
+
         _foodInHand = other.gameObject.GetComponent<Food>();
 
         if (_foodInHand) {
             EatFood();
         }
     }
-
     
     public void DropFoodInHandInterruption() {
         if (_foodInHand) {
