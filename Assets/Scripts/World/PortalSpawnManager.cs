@@ -115,19 +115,36 @@ public class PortalSpawnManager : Singleton<PortalSpawnManager>
 
         if (_portalsOpened > 80 && _portalsOpened <= 160)
         {
-            if (_timeBetweenPortals < .8f)
+            if (_timeBetweenPortals < .9f)
             {
-                _timeBetweenPortals = .8f;
+                _timeBetweenPortals = .9f;
             }
         }
 
         if (_portalsOpened > 160 && _portalsOpened <= 200)
         {
-            if (_timeBetweenPortals < .2f)
+            if (_timeBetweenPortals < .6f)
             {
-                _timeBetweenPortals = .2f;
+                _timeBetweenPortals = .6f;
             }
         }
+
+        if (_portalsOpened > 200 && _portalsOpened <= 300)
+        {
+            if (_timeBetweenPortals < .4f)
+            {
+                _timeBetweenPortals = .4f;
+            }
+        }
+
+        if (_portalsOpened > 300)
+        {
+            if (_timeBetweenPortals < .25f)
+            {
+                _timeBetweenPortals = .25f;
+            }
+        }
+
     }
 
     private void HardMode() {
@@ -159,17 +176,33 @@ public class PortalSpawnManager : Singleton<PortalSpawnManager>
 
         if (_portalsOpened > 80 && _portalsOpened <= 160)
         {
+            if (_timeBetweenPortals < .8f)
+            {
+                _timeBetweenPortals = .8f;
+            }
+        }
+
+        if (_portalsOpened > 160 && _portalsOpened <= 200)
+        {
             if (_timeBetweenPortals < .5f)
             {
                 _timeBetweenPortals = .5f;
             }
         }
 
-        if (_portalsOpened > 160)
+        if (_portalsOpened > 200 && _portalsOpened <= 300)
         {
-            if (_timeBetweenPortals < .1f)
+            if (_timeBetweenPortals < .35f)
             {
-                _timeBetweenPortals = .1f;
+                _timeBetweenPortals = .35f;
+            }
+        }
+
+        if (_portalsOpened > 300)
+        {
+            if (_timeBetweenPortals < .2f)
+            {
+                _timeBetweenPortals = .2f;
             }
         }
     }
