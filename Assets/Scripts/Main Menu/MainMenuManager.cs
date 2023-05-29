@@ -13,6 +13,7 @@ public class MainMenuManager : MonoBehaviour
 
     public void MainMenuButton() {
         AudioManager.Instance.Play("UI Click");
+        AudioManager.Instance.TitleMusic();
         StartCoroutine(LoadSceneRoutine());
     }
 

@@ -31,9 +31,28 @@ public class AudioManager : Singleton<AudioManager>
             }
         }
     }
-    
+
     private void Start() {
+        TitleMusic();
+    }
+
+    
+    public void TitleMusic() {
         Play("Title Music");
+        Stop("Pause Music");
+        Stop("Theme Music");
+    }
+
+    public void ThemeMusic() {
+        Play("Theme Music");
+        Stop("Title Music");
+        Stop("Pause Music");
+    }
+
+    public void PauseMusic() {
+        Play("Pause Music");
+        Stop("Title Music");
+        Stop("Theme Music");
     }
 
     public void Play(string name)

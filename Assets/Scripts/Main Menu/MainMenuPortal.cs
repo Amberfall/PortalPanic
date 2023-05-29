@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class MainMenuPortal : MonoBehaviour
 {
     [SerializeField] private bool _isHardModePortal = false;
+    [SerializeField] private bool _playPauseMusic = false;
     [SerializeField] private string _sceneToLoad = "";
     [SerializeField] private GameObject _portalClosingBlipVFX;
     [SerializeField] private Sprite[] _portalClose;
@@ -27,6 +28,14 @@ public class MainMenuPortal : MonoBehaviour
 
         if (foodComponent != null && throwableComponent != null && !throwableComponent.MainMenuFood)
         {
+            if (_isHardModePortal) {
+                HardModeManager.Instance.ToggleHardModeOn();
+            }
+
+            if (_playPauseMusic) {
+                AudioManager.Instance.PauseMusic();
+            }
+
             Destroy(other.gameObject);
             StartCoroutine(PortalCloseRoutine());
             StartCoroutine(LoadSceneRoutine());
@@ -34,9 +43,6 @@ public class MainMenuPortal : MonoBehaviour
     }
 
     private IEnumerator PortalCloseRoutine() {
-        if (_isHardModePortal) {
-            HardModeManager.Instance.ToggleHardModeOn();
-        }
 
         _animator.enabled = false;
         Instantiate(_portalClosingBlipVFX, transform.position, Quaternion.identity);

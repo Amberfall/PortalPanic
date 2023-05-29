@@ -84,7 +84,7 @@ MonoBehaviour:
     clips:
     - {fileID: 8300000, guid: 7c817d3cbe85b3b489522dd250c8d967, type: 3}
     loop: 0
-    volume: 0.475
+    volume: 0.636
     pitch: 1
     source: {fileID: 0}
   - audioType: 0
@@ -108,7 +108,7 @@ MonoBehaviour:
     clips:
     - {fileID: 8300000, guid: 6feb6c977c963ed4ea240adc199a5f62, type: 3}
     loop: 0
-    volume: 0.407
+    volume: 0.627
     pitch: 1
     source: {fileID: 0}
   - audioType: 0
@@ -155,11 +155,11 @@ MonoBehaviour:
     pitch: 1
     source: {fileID: 0}
   - audioType: 1
-    name: Relaxing Music
+    name: Pause Music
     clips:
     - {fileID: 8300000, guid: 3e547605e98629949922518d3fa61b7d, type: 3}
     loop: 0
-    volume: 0.3
+    volume: 0.695
     pitch: 1
     source: {fileID: 0}
   _musicMixerGroup: {fileID: 0}

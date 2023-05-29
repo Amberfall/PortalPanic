@@ -5297,6 +5297,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _isHardModePortal: 0
+  _playPauseMusic: 0
   _sceneToLoad: GameScene
   _portalClosingBlipVFX: {fileID: 3687779351928375604, guid: 0a56c75444ab20d4794e50b192060848, type: 3}
   _portalClose:
@@ -5767,7 +5768,7 @@ MonoBehaviour:
     m_Right: 0
     m_Top: 0
     m_Bottom: 0
-  m_ChildAlignment: 2
+  m_ChildAlignment: 4
   m_StartCorner: 1
   m_StartAxis: 0
   m_CellSize: {x: 48, y: 48}
@@ -6026,6 +6027,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _isHardModePortal: 0
+  _playPauseMusic: 1
   _sceneToLoad: Credits
   _portalClosingBlipVFX: {fileID: 3687779351928375604, guid: 0a56c75444ab20d4794e50b192060848, type: 3}
   _portalClose:
@@ -7430,6 +7432,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _isHardModePortal: 1
+  _playPauseMusic: 0
   _sceneToLoad: GameScene
   _portalClosingBlipVFX: {fileID: 3687779351928375604, guid: 0a56c75444ab20d4794e50b192060848, type: 3}
   _portalClose:
@@ -9652,6 +9655,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _isHardModePortal: 0
+  _playPauseMusic: 1
   _sceneToLoad: HighScores
   _portalClosingBlipVFX: {fileID: 3687779351928375604, guid: 0a56c75444ab20d4794e50b192060848, type: 3}
   _portalClose:

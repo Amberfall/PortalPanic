@@ -21,8 +21,7 @@ public class PortalSpawnManager : Singleton<PortalSpawnManager>
     }
 
     private void Start() {
-        AudioManager.Instance.Play("Theme Music");
-        AudioManager.Instance.Stop("Title Music");
+        AudioManager.Instance.ThemeMusic();
         CreatePortalPool();
 
         StartCoroutine(SpawnPortalRoutine());
