@@ -3604,7 +3604,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _largeMonsterPortalPrefab: {fileID: 3612769189673348996, guid: f870270b86b8c794687ccb9a8a7098c1, type: 3}
-  _timeBetweenPortals: 10
   _minusModifier: 1
 --- !u!1 &396788300
 GameObject:
@@ -6088,7 +6087,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1182055782
 Transform:
   m_ObjectHideFlags: 0

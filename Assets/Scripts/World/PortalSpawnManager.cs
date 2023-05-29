@@ -2,13 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Pool;
+using TMPro;
 
 public class PortalSpawnManager : Singleton<PortalSpawnManager>
 {
     [SerializeField] private Portal _largeMonsterPortalPrefab;
-    [SerializeField] private float _timeBetweenPortals = 10f;
     [SerializeField] private float _minusModifier = 1f;
-    
+
+    private float _timeBetweenPortals = 10f;
     private int _portalsOpened = 0;
 
     private ObjectPool<Portal> _portalPool;
@@ -24,7 +25,7 @@ public class PortalSpawnManager : Singleton<PortalSpawnManager>
         AudioManager.Instance.ThemeMusic();
         CreatePortalPool();
 
-        StartCoroutine(SpawnPortalRoutine());
+        StartCoroutine(DelayedStartSpawnPortalCoroutine());
     }
 
     public void ReleasePortalFromPool(Portal portal) {
@@ -56,6 +57,12 @@ public class PortalSpawnManager : Singleton<PortalSpawnManager>
         monsterPortalPrefab = _largeMonsterPortalPrefab;
 
         return monsterPortalPrefab;
+    }
+
+    IEnumerator DelayedStartSpawnPortalCoroutine()
+    {
+        yield return new WaitForSeconds(1f);
+        StartCoroutine(SpawnPortalRoutine());
     }
 
     private IEnumerator SpawnPortalRoutine() {
