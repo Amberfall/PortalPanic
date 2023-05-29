@@ -27,11 +27,13 @@ public class CursorManager : Singleton<CursorManager>
     private CursorAnimation _cursorAnimation;
     private Camera _mainCam;
     private Slingshot _slingshot;
+    private PauseManager _pauseManager;
 
     protected override void Awake() {
         base.Awake();
 
         _slingshot = FindObjectOfType<Slingshot>();
+        _pauseManager = FindObjectOfType<PauseManager>();
         _mainCam = Camera.main;
     }
 
@@ -71,7 +73,7 @@ public class CursorManager : Singleton<CursorManager>
 
     private void DetectCursorType()
     {
-        if (EventSystem.current.IsPointerOverGameObject() || ScoreManager.Instance.GameOver) {
+        if (EventSystem.current.IsPointerOverGameObject() || ScoreManager.Instance.GameOver || (_pauseManager && _pauseManager.IsPaused)) {
             SetActiveCursorType(CursorType.Arrow);
             return;
         }

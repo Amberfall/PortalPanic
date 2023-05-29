@@ -22,7 +22,7 @@ public class ScoreManager : Singleton<ScoreManager>
     private bool _gameOver = false;
 
     private void Start() {
-        if (HardModeManager.Instance.HardModeEnaged) {
+        if (HardModeManager.Instance.HardModeEnaged && _hardModeText != null) {
             _hardModeText.gameObject.SetActive(true);
             _currentCombo = 2;
         }

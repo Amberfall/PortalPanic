@@ -9,6 +9,13 @@ public class InputManager : Singleton<InputManager>
     [SerializeField] private LayerMask _interactableLayer = new LayerMask();
 
     private GameObject _currentHeldObject;
+    private PauseManager _pauseManager;
+
+    protected override void Awake() {
+        base.Awake();
+
+        _pauseManager = FindObjectOfType<PauseManager>();
+    }
 
     private void Update() {
         QuitApplication();
@@ -16,7 +23,7 @@ public class InputManager : Singleton<InputManager>
     }
 
     private void ThrowablePickupInteraction() {
-        if (ScoreManager.Instance.GameOver) { return; }
+        if (ScoreManager.Instance.GameOver || (_pauseManager && _pauseManager.IsPaused)) { return; }
 
         if (Input.GetMouseButtonDown(0) && CursorManager.Instance.IsInValidZone()) {
             RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero, Mathf.Infinity, _interactableLayer);
