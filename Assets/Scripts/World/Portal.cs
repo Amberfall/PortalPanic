@@ -6,6 +6,8 @@ public class Portal : MonoBehaviour
 {
     [SerializeField] private GameObject _monsterPrefab;
     [SerializeField] private GameObject _portalClosingBlipVFX;
+    [SerializeField] private GameObject _greenSparkles;
+    [SerializeField] private GameObject _yellowSparkles;
 
     [SerializeField] private float _frameTime = .15f;
     [SerializeField] private int _cycleIterations = 3;
@@ -29,6 +31,8 @@ public class Portal : MonoBehaviour
 
     private void OnEnable() {
         StopAllCoroutines();
+        _greenSparkles.SetActive(true);
+        _yellowSparkles.SetActive(false);
         _collider.enabled = true;
         _collider.radius = _startingColliderRadius;
         StartCoroutine(PortalRoutine());
@@ -49,6 +53,9 @@ public class Portal : MonoBehaviour
                 yield return new WaitForSeconds(_frameTime);
             }
         }
+
+        _greenSparkles.SetActive(false);
+        _yellowSparkles.SetActive(true);
 
         for (int i = 0; i < _portalTransition.Length; i++)
         {
