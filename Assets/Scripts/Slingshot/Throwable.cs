@@ -111,7 +111,7 @@ public class Throwable : MonoBehaviour
         }
 
         if (monster) {
-            AudioManager.Instance.Play("Monster Sling");
+            // AudioManager.Instance.Play("Monster Sling");
         }
     }
 

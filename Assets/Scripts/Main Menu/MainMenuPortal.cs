@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuPortal : MonoBehaviour
 {
+    [SerializeField] private bool _isHardModePortal = false;
     [SerializeField] private string _sceneToLoad = "";
     [SerializeField] private GameObject _portalClosingBlipVFX;
     [SerializeField] private Sprite[] _portalClose;
@@ -33,13 +34,26 @@ public class MainMenuPortal : MonoBehaviour
     }
 
     private IEnumerator PortalCloseRoutine() {
+        if (_isHardModePortal) {
+            HardModeManager.Instance.ToggleHardModeOn();
+        }
+
         _animator.enabled = false;
         Instantiate(_portalClosingBlipVFX, transform.position, Quaternion.identity);
         AudioManager.Instance.Play("Portal Close");
-        for (int i = 0; i < _portalClose.Length; i++)
-        {
-            _spriteRenderer.sprite = _portalClose[i];
-            yield return new WaitForSeconds(_frameTime);
+
+        if (_isHardModePortal) {
+            for (int i = 2; i < _portalClose.Length; i++)
+            {
+                _spriteRenderer.sprite = _portalClose[i];
+                yield return new WaitForSeconds(_frameTime);
+            }
+        } else {
+            for (int i = 0; i < _portalClose.Length; i++)
+            {
+                _spriteRenderer.sprite = _portalClose[i];
+                yield return new WaitForSeconds(_frameTime);
+            }
         }
 
         _spriteRenderer.sprite = null;
