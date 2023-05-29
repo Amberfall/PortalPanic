@@ -43,6 +43,10 @@ public class Monster : MonoBehaviour
         _monsterHunger.EatFoodAnimEvent();
     }
 
+    public void BurpAnimEvent() {
+        AudioManager.Instance.Play("Burp");
+    }
+
     public void EndEatingAnimEvent()
     {
         _characterAnimationsController.CharacterWalk();
@@ -70,12 +74,7 @@ public class Monster : MonoBehaviour
 
         foreach (Food food in FindObjectsOfType<Food>())
         {
-            if (food.GetComponent<CharacterMovement>().IsGrounded) {
-
-                if (_monsterType == MonsterType.Small)
-                {
-                    food.GetComponent<Rigidbody2D>().velocity = new Vector2(0f, Random.Range(2f, 3.5f));
-                }
+            if (food.GetComponent<CharacterMovement>().IsGrounded && !food.IsGettingEaten) {
 
                 if (_monsterType == MonsterType.Large)
                 {

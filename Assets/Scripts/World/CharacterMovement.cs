@@ -47,8 +47,6 @@ public class CharacterMovement : MonoBehaviour
         }
     }
 
-    
-
     private void Move() {
         if (_throwable.IsAttachedToSlingShot || IsMonsterEating() || _throwable.IsInAirFromSlingshot || _throwable.IsActive) { return; }
 
@@ -123,7 +121,7 @@ public class CharacterMovement : MonoBehaviour
     }
 
     private void GetDir() {
-        if (_throwable.IsActive || IsMonsterEating() || _throwable.IsInAirFromSlingshot || _throwable.IsAttachedToSlingShot) { return; }
+        if (_throwable.IsActive || IsMonsterEating() || _throwable.IsInAirFromSlingshot || _throwable.IsAttachedToSlingShot  || (_food && _food.IsGettingEaten)) { return; }
 
         if (_hasIdle) {
             _direction = Random.Range(-1, 2);
