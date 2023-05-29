@@ -85,14 +85,14 @@ public class PortalSpawnManager : Singleton<PortalSpawnManager>
             _minusModifier = .05f;
         }
 
-        if (_portalsOpened <= 20) {
+        if (_portalsOpened <= 30) {
             if (_timeBetweenPortals < 2f)
             {
                 _timeBetweenPortals = 2f;
             }
         }
 
-        if (_portalsOpened > 20 && _portalsOpened <= 80)
+        if (_portalsOpened > 30 && _portalsOpened <= 100)
         {
             if (_timeBetweenPortals < 1f)
             {
@@ -100,7 +100,7 @@ public class PortalSpawnManager : Singleton<PortalSpawnManager>
             }
         }
 
-        if (_portalsOpened > 80 && _portalsOpened <= 200)
+        if (_portalsOpened > 100 && _portalsOpened <= 200)
         {
             if (_timeBetweenPortals < .5f)
             {

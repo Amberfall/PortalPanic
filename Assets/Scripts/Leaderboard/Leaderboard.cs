@@ -4,7 +4,7 @@ using UnityEngine;
 using LootLocker.Requests;
 using TMPro;
 
-public class Leaderboard : MonoBehaviour
+public class Leaderboard : Singleton<Leaderboard>
 {
     [SerializeField] private TMP_InputField _playerNameInputField;
     [SerializeField] private TextMeshProUGUI _playerNames;

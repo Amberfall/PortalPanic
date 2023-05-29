@@ -49,9 +49,9 @@ public class LivesManager : Singleton<LivesManager>
 
         foreach (Transform child in _livesTransformContainer)
         {
-            if (child == null) // if the GameObject has been marked for destruction, it will be null
+            if (child == null) 
             {
-                continue; // skip this iteration of the loop
+                continue; 
             }
 
             int childIndex = child.GetSiblingIndex();
@@ -74,6 +74,13 @@ public class LivesManager : Singleton<LivesManager>
         {
             _gameOverContainer.SetActive(true);
             ScoreManager.Instance.GameOver = true;
+
+            Portal[] allPortals = FindObjectsOfType<Portal>();
+
+            foreach (Portal portal in allPortals)
+            {
+                PortalSpawnManager.Instance.ReleasePortalFromPool(portal);
+            }
         }
     }
 }
