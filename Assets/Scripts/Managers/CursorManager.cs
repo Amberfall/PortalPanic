@@ -96,7 +96,7 @@ public class CursorManager : Singleton<CursorManager>
             } else {
                 SetActiveCursorType(CursorType.Open);
             }
-        } else if (_slingshot.CurrentThrowableItem) {
+        } else if (_slingshot && _slingshot.CurrentThrowableItem) {
             SetActiveCursorType(CursorType.Closed);
         } else {
             SetActiveCursorType(CursorType.Arrow);

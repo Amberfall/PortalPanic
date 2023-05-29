@@ -10,10 +10,12 @@ public class MainMenuPortal : MonoBehaviour
     [SerializeField] private Sprite[] _portalClose;
     [SerializeField] private float _frameTime = .15f;
 
+    private SceneTransition _sceneTransition;
     private SpriteRenderer _spriteRenderer;
     private Animator _animator;
 
     private void Awake() {
+        _sceneTransition = FindObjectOfType<SceneTransition>();
         _animator = GetComponent<Animator>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
     }
@@ -25,17 +27,15 @@ public class MainMenuPortal : MonoBehaviour
         if (foodComponent != null && throwableComponent != null && !throwableComponent.MainMenuFood)
         {
             Destroy(other.gameObject);
+            StartCoroutine(PortalCloseRoutine());
             StartCoroutine(LoadSceneRoutine());
         }
     }
 
-    public IEnumerator LoadSceneRoutine()
-    {   
+    private IEnumerator PortalCloseRoutine() {
         _animator.enabled = false;
-
         Instantiate(_portalClosingBlipVFX, transform.position, Quaternion.identity);
         AudioManager.Instance.Play("Portal Close");
-
         for (int i = 0; i < _portalClose.Length; i++)
         {
             _spriteRenderer.sprite = _portalClose[i];
@@ -43,18 +43,20 @@ public class MainMenuPortal : MonoBehaviour
         }
 
         _spriteRenderer.sprite = null;
-        
-        StartCoroutine(CloudCloseRoutine());
     }
 
-    private IEnumerator CloudCloseRoutine() {
-        // yield return new WaitForSeconds(2f);
-        yield return null;
+    private IEnumerator LoadSceneRoutine()
+    {   
+        _sceneTransition.FadeOut();
+
+        yield return new WaitForSeconds(_sceneTransition.FadeTime);
 
         if (!string.IsNullOrEmpty(_sceneToLoad))
         {
             SceneManager.LoadScene(_sceneToLoad);
-        } else {
+        }
+        else
+        {
             Debug.Log("Scene not available");
         }
     }

@@ -30,7 +30,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2209446065326136116
 MonoBehaviour:
@@ -48,7 +48,7 @@ MonoBehaviour:
   - audioType: 1
     name: Theme Music
     clips:
-    - {fileID: 8300000, guid: 614d1ce25f15b8649be49c77f8eb162b, type: 3}
+    - {fileID: 8300000, guid: 624a9b7504db29d4a8af0186e0826dc3, type: 3}
     loop: 1
     volume: 0.3
     pitch: 1
@@ -56,7 +56,7 @@ MonoBehaviour:
   - audioType: 1
     name: Title Music
     clips:
-    - {fileID: 8300000, guid: e39e566377193c84aaefaa3d233a8298, type: 3}
+    - {fileID: 8300000, guid: 29b57b9bebcc4264fb9d71cd61d869b0, type: 3}
     loop: 1
     volume: 0.466
     pitch: 1
@@ -84,7 +84,7 @@ MonoBehaviour:
     clips:
     - {fileID: 8300000, guid: 7c817d3cbe85b3b489522dd250c8d967, type: 3}
     loop: 0
-    volume: 1
+    volume: 0.636
     pitch: 1
     source: {fileID: 0}
   - audioType: 0
@@ -100,7 +100,7 @@ MonoBehaviour:
     clips:
     - {fileID: 8300000, guid: efd84d6d7a9d5c146a6bf3838df0b782, type: 3}
     loop: 0
-    volume: 1
+    volume: 0.864
     pitch: 1
     source: {fileID: 0}
   - audioType: 0
@@ -108,7 +108,7 @@ MonoBehaviour:
     clips:
     - {fileID: 8300000, guid: 6feb6c977c963ed4ea240adc199a5f62, type: 3}
     loop: 0
-    volume: 0.7
+    volume: 0.627
     pitch: 1
     source: {fileID: 0}
   - audioType: 0
@@ -116,7 +116,7 @@ MonoBehaviour:
     clips:
     - {fileID: 8300000, guid: f82622d0fae4d2d439b01939b961e682, type: 3}
     loop: 0
-    volume: 2
+    volume: 1.873
     pitch: 0.74
     source: {fileID: 0}
   - audioType: 0
@@ -124,7 +124,7 @@ MonoBehaviour:
     clips:
     - {fileID: 8300000, guid: 6bde85fb48311b846b218f5f3cf7815f, type: 3}
     loop: 0
-    volume: 0.195
+    volume: 0.102
     pitch: 1
     source: {fileID: 0}
   - audioType: 0
@@ -135,7 +135,7 @@ MonoBehaviour:
     - {fileID: 8300000, guid: 276a3aa317b4ade46ba80b1d706a7eed, type: 3}
     - {fileID: 8300000, guid: 94e4dddd0b6851e43b1d604f28cdfd30, type: 3}
     loop: 0
-    volume: 0.271
+    volume: 0.169
     pitch: 1
     source: {fileID: 0}
   _musicMixerGroup: {fileID: 0}

@@ -31,6 +31,10 @@ public class AudioManager : Singleton<AudioManager>
             }
         }
     }
+    
+    private void Start() {
+        Play("Title Music");
+    }
 
     public void Play(string name)
     {
@@ -47,6 +51,18 @@ public class AudioManager : Singleton<AudioManager>
         s.source.pitch = s.pitch;
 
         s.source.Play();
+    }
+
+    public void Stop(string name)
+    {
+        Sound s = System.Array.Find(_sounds, sound => sound.name == name);
+        if (s == null)
+        {
+            Debug.LogWarning("Sound: " + name + " not found!");
+            return;
+        }
+
+        s.source.Stop();
     }
 
     public void UpdateMixerVolume()

@@ -14,7 +14,9 @@ public class Leaderboard : MonoBehaviour
 
     private void Start()
     {
-        _playerNameInputField.characterLimit = 10;
+        if (_playerNameInputField != null) {
+            _playerNameInputField.characterLimit = 10;
+        }
         StartCoroutine(SetupRoutine());
     }
 

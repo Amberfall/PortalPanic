@@ -11,10 +11,10 @@ public class Monster : MonoBehaviour
 
     [SerializeField] private MonsterType _monsterType;
     [SerializeField] private GameObject _smokePoofPrefab;
+    [SerializeField] private bool _hasLanded = false;
 
     const string WALKABLE_STRING = "Walkable";
 
-    private bool _hasLanded = false;
     private Collider2D _col;
 
     private CharacterMovement _characterMovement;

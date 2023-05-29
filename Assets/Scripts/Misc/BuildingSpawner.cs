@@ -31,7 +31,9 @@ public class BuildingSpawner : MonoBehaviour
 
         if (_humanBuilding) {
             _isSpawning = true;
-            _spawnSlider.gameObject.SetActive(false);
+            if (_spawnSlider != null) {
+                _spawnSlider.gameObject.SetActive(false);
+            }
         }
     }
 

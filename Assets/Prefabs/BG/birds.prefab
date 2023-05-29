@@ -36,7 +36,7 @@ Transform:
   - {fileID: 7214681470823523989}
   - {fileID: 7214681470941493439}
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &3027657618318920831
 PrefabInstance:
@@ -92,15 +92,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5628325267243594946, guid: 84b651f0e38145d4fa63440b98512bc4, type: 3}
       propertyPath: speed
-      value: 2
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 5628325267243594946, guid: 84b651f0e38145d4fa63440b98512bc4, type: 3}
       propertyPath: maxTimeTillNextBird
-      value: 100
+      value: 70
       objectReference: {fileID: 0}
     - target: {fileID: 5628325267243594946, guid: 84b651f0e38145d4fa63440b98512bc4, type: 3}
       propertyPath: minTimeTillNextBird
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5628325267243594947, guid: 84b651f0e38145d4fa63440b98512bc4, type: 3}
+      propertyPath: m_SortingOrder
+      value: -7
       objectReference: {fileID: 0}
     - target: {fileID: 5628325267243594975, guid: 84b651f0e38145d4fa63440b98512bc4, type: 3}
       propertyPath: m_Name
@@ -170,15 +174,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5628325267243594946, guid: 84b651f0e38145d4fa63440b98512bc4, type: 3}
       propertyPath: speed
-      value: 2
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 5628325267243594946, guid: 84b651f0e38145d4fa63440b98512bc4, type: 3}
       propertyPath: maxTimeTillNextBird
-      value: 100
+      value: 70
       objectReference: {fileID: 0}
     - target: {fileID: 5628325267243594946, guid: 84b651f0e38145d4fa63440b98512bc4, type: 3}
       propertyPath: minTimeTillNextBird
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5628325267243594947, guid: 84b651f0e38145d4fa63440b98512bc4, type: 3}
+      propertyPath: m_SortingOrder
+      value: -7
       objectReference: {fileID: 0}
     - target: {fileID: 5628325267243594975, guid: 84b651f0e38145d4fa63440b98512bc4, type: 3}
       propertyPath: m_Name
@@ -252,15 +260,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2004686010066034948, guid: 3fc3b34e6caba094d82c27e8c433ad86, type: 3}
       propertyPath: speed
-      value: 2
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 2004686010066034948, guid: 3fc3b34e6caba094d82c27e8c433ad86, type: 3}
       propertyPath: maxTimeTillNextBird
-      value: 100
+      value: 70
       objectReference: {fileID: 0}
     - target: {fileID: 2004686010066034948, guid: 3fc3b34e6caba094d82c27e8c433ad86, type: 3}
       propertyPath: minTimeTillNextBird
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2004686010066034950, guid: 3fc3b34e6caba094d82c27e8c433ad86, type: 3}
+      propertyPath: m_SortingOrder
+      value: -7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -330,15 +342,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2004686010066034948, guid: 3fc3b34e6caba094d82c27e8c433ad86, type: 3}
       propertyPath: speed
-      value: 2
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 2004686010066034948, guid: 3fc3b34e6caba094d82c27e8c433ad86, type: 3}
       propertyPath: maxTimeTillNextBird
-      value: 100
+      value: 70
       objectReference: {fileID: 0}
     - target: {fileID: 2004686010066034948, guid: 3fc3b34e6caba094d82c27e8c433ad86, type: 3}
       propertyPath: minTimeTillNextBird
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2004686010066034950, guid: 3fc3b34e6caba094d82c27e8c433ad86, type: 3}
+      propertyPath: m_SortingOrder
+      value: -7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -408,15 +424,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2004686010066034948, guid: 3fc3b34e6caba094d82c27e8c433ad86, type: 3}
       propertyPath: speed
-      value: 2
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 2004686010066034948, guid: 3fc3b34e6caba094d82c27e8c433ad86, type: 3}
       propertyPath: maxTimeTillNextBird
-      value: 100
+      value: 70
       objectReference: {fileID: 0}
     - target: {fileID: 2004686010066034948, guid: 3fc3b34e6caba094d82c27e8c433ad86, type: 3}
       propertyPath: minTimeTillNextBird
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2004686010066034950, guid: 3fc3b34e6caba094d82c27e8c433ad86, type: 3}
+      propertyPath: m_SortingOrder
+      value: -7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -486,15 +506,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2004686010066034948, guid: 3fc3b34e6caba094d82c27e8c433ad86, type: 3}
       propertyPath: speed
-      value: 2
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 2004686010066034948, guid: 3fc3b34e6caba094d82c27e8c433ad86, type: 3}
       propertyPath: maxTimeTillNextBird
-      value: 100
+      value: 70
       objectReference: {fileID: 0}
     - target: {fileID: 2004686010066034948, guid: 3fc3b34e6caba094d82c27e8c433ad86, type: 3}
       propertyPath: minTimeTillNextBird
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2004686010066034950, guid: 3fc3b34e6caba094d82c27e8c433ad86, type: 3}
+      propertyPath: m_SortingOrder
+      value: -7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -560,15 +584,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5628325267243594946, guid: 84b651f0e38145d4fa63440b98512bc4, type: 3}
       propertyPath: speed
-      value: 2
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 5628325267243594946, guid: 84b651f0e38145d4fa63440b98512bc4, type: 3}
       propertyPath: maxTimeTillNextBird
-      value: 100
+      value: 70
       objectReference: {fileID: 0}
     - target: {fileID: 5628325267243594946, guid: 84b651f0e38145d4fa63440b98512bc4, type: 3}
       propertyPath: minTimeTillNextBird
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5628325267243594947, guid: 84b651f0e38145d4fa63440b98512bc4, type: 3}
+      propertyPath: m_SortingOrder
+      value: -7
       objectReference: {fileID: 0}
     - target: {fileID: 5628325267243594975, guid: 84b651f0e38145d4fa63440b98512bc4, type: 3}
       propertyPath: m_Name

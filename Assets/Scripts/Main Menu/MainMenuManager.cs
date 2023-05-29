@@ -1,14 +1,28 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MainMenuManager : MonoBehaviour
 {
-    private void Start() {
-        AudioManager.Instance.Play("Title Music");
+    private SceneTransition _sceneTransition;
+
+    private void Awake() {
+        _sceneTransition = FindObjectOfType<SceneTransition>();
     }
 
-    private void Update() {
-        
+    public void MainMenuButton() {
+        StartCoroutine(LoadSceneRoutine());
+    }
+
+    private IEnumerator LoadSceneRoutine()
+    {
+        _sceneTransition.FadeOut();
+
+        yield return new WaitForSeconds(_sceneTransition.FadeTime);
+
+        SceneManager.LoadScene(0);
+
+       
     }
 }
