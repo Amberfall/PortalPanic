@@ -1452,7 +1452,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      MenuUI_49: -493619916
+      MenuUI_3: -1319720442
       MenuUI_20: -167746496
       MenuUI_7: 1641270649
       MenuUI_34: 1336178118
@@ -1513,7 +1513,7 @@ TextureImporter:
       MenuUI_21: 104957147
       MenuUI_30: -621207017
       MenuUI_33: -1159962893
-      MenuUI_3: -1319720442
+      MenuUI_49: -493619916
       MenuUI_32: -1015708055
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
