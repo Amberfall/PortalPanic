@@ -96,7 +96,7 @@ public class PortalSpawnManager : Singleton<PortalSpawnManager>
             {
                 _timeBetweenPortals = 2f;
             }
-        }
+        } 
 
         if (_portalsOpened > 30 && _portalsOpened <= 80)
         {
