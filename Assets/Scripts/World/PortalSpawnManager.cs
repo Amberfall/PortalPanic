@@ -59,7 +59,7 @@ public class PortalSpawnManager : Singleton<PortalSpawnManager>
     }
 
     private IEnumerator SpawnPortalRoutine() {
-        while (LivesManager.Instance.CurrentLives > 0)
+        while (LivesManager.Instance.CurrentLives > 0 && Time.timeScale != 0)
         {
             Vector2 randomPoint = GetRandomPointInBoxCollider2D();
 
@@ -70,7 +70,7 @@ public class PortalSpawnManager : Singleton<PortalSpawnManager>
 
             HandlePortalOpenBalance();
 
-            yield return new WaitForSecondsRealtime(_timeBetweenPortals);
+            yield return new WaitForSeconds(_timeBetweenPortals);
         }
     }
 
