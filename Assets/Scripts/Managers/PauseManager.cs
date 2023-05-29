@@ -26,6 +26,11 @@ public class PauseManager : MonoBehaviour
     // }
 
     public void PauseButton() {
+        if (_pauseContainer.activeInHierarchy) {
+            ResumeButton();
+            return;
+        }
+
         Time.timeScale = 0;
         _pauseContainer.SetActive(true);
         AudioManager.Instance.PauseMusic();
