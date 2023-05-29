@@ -378,6 +378,7 @@ MonoBehaviour:
   _scorePrefab: {fileID: 8258456124951751132, guid: 3705e13509212ff45a143b54addde11f, type: 3}
   _scoreText: {fileID: 0}
   _comboText: {fileID: 0}
+  _hardModeText: {fileID: 0}
   _portalCloseBaseScoreAmount: 10
 --- !u!1 &141592848
 GameObject:
@@ -2068,6 +2069,50 @@ MonoBehaviour:
     m_DissipationDistance: 100
     m_PropagationSpeed: 343
   m_DefaultVelocity: {x: 0.3, y: -0.35, z: 0}
+--- !u!1 &869042194
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 869042196}
+  - component: {fileID: 869042195}
+  m_Layer: 0
+  m_Name: Hard Mode Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &869042195
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 869042194}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c5724db178141440a1ac5a6d7fd2a16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &869042196
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 869042194}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 357, y: 793.8, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &920796464
 GameObject:
   m_ObjectHideFlags: 0

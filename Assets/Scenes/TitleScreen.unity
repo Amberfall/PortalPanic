@@ -4012,6 +4012,7 @@ MonoBehaviour:
   _scorePrefab: {fileID: 8258456124951751132, guid: 3705e13509212ff45a143b54addde11f, type: 3}
   _scoreText: {fileID: 0}
   _comboText: {fileID: 0}
+  _hardModeText: {fileID: 0}
   _portalCloseBaseScoreAmount: 10
 --- !u!1 &134177430
 GameObject:

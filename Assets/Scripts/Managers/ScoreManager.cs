@@ -13,6 +13,7 @@ public class ScoreManager : Singleton<ScoreManager>
     [SerializeField] private GameObject _scorePrefab;
     [SerializeField] private TMP_Text _scoreText;
     [SerializeField] private TMP_Text _comboText;
+    [SerializeField] private TMP_Text _hardModeText;
     [SerializeField] private int _portalCloseBaseScoreAmount = 1;
 
     private int _currentCombo = 1;
@@ -21,6 +22,11 @@ public class ScoreManager : Singleton<ScoreManager>
     private bool _gameOver = false;
 
     private void Start() {
+        if (HardModeManager.Instance.HardModeEnaged) {
+            _hardModeText.gameObject.SetActive(true);
+            _currentCombo = 2;
+        }
+
         UpdateText();
     }
 
@@ -38,11 +44,24 @@ public class ScoreManager : Singleton<ScoreManager>
     }
 
     public void IncreaseComboAmount() {
-        _currentCombo += 1;
+
+        if (HardModeManager.Instance.HardModeEnaged) {
+            _currentCombo += 2;
+        } else {
+            _currentCombo += 1;
+        }
     }
 
     public void ResetCombo() {
-        _currentCombo = 1;
+
+        if (HardModeManager.Instance.HardModeEnaged)
+        {
+            _currentCombo = 2;
+        }
+        else
+        {
+            _currentCombo = 1;
+        }
         UpdateText();
     }
 

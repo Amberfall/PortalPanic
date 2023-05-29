@@ -30,7 +30,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2209446065326136116
 MonoBehaviour:
@@ -152,6 +152,14 @@ MonoBehaviour:
     - {fileID: 8300000, guid: 40a135d6a36317a4bb2a03b358fa2d1b, type: 3}
     loop: 0
     volume: 0.424
+    pitch: 1
+    source: {fileID: 0}
+  - audioType: 1
+    name: Relaxing Music
+    clips:
+    - {fileID: 8300000, guid: 3e547605e98629949922518d3fa61b7d, type: 3}
+    loop: 0
+    volume: 0.3
     pitch: 1
     source: {fileID: 0}
   _musicMixerGroup: {fileID: 0}
