@@ -21,11 +21,14 @@ public class InputManager : Singleton<InputManager>
         if (Input.GetMouseButtonDown(0) && CursorManager.Instance.IsInValidZone()) {
             RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero, Mathf.Infinity, _interactableLayer);
 
+
             if (hit.collider == null) { return; }
 
             Throwable throwable = hit.collider.gameObject.GetComponent<Throwable>();
             Monster monster = hit.collider.GetComponent<Monster>();
             Food food = hit.collider.GetComponent<Food>();
+
+            if (food && food.IsGettingEaten) { return; }
 
             if (hit.collider != null && throwable)
             {

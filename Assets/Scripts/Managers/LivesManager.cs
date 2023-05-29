@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class LivesManager : Singleton<LivesManager>
 {
+    public int CurrentLives => _currentLives;
+
     public static event Action OnHumanDeath;
 
     [SerializeField] private GameObject _livesImagePrefab;

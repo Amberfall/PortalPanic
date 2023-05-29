@@ -9,6 +9,7 @@ public class Leaderboard : MonoBehaviour
     [SerializeField] private TMP_InputField _playerNameInputField;
     [SerializeField] private TextMeshProUGUI _playerNames;
     [SerializeField] private TextMeshProUGUI _playerScores;
+    [SerializeField] private GameObject _loadingText;
 
     private string _leaderBoardID = "globalHighscore";
 
@@ -101,6 +102,7 @@ public class Leaderboard : MonoBehaviour
                 _playerNames.text = tempPlayerNames;
                 _playerScores.text = tempPlayerScores;
                 Debug.Log("Successfully loaded player high scores.");
+                _loadingText.SetActive(false);
             } else {
                 Debug.Log("Failed" + response.Error);
                 done = true;

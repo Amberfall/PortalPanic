@@ -858,7 +858,7 @@ GameObject:
   - component: {fileID: 423113769}
   - component: {fileID: 423113768}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Backdrop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -904,7 +904,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 656e25497dd881c44a6972f0b492c97b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c871a509b012a7a44a2933be8e08bd0c, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2187,6 +2187,7 @@ MonoBehaviour:
   _playerNameInputField: {fileID: 0}
   _playerNames: {fileID: 0}
   _playerScores: {fileID: 0}
+  _loadingText: {fileID: 0}
 --- !u!114 &1182055784
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -6,14 +6,12 @@ using UnityEngine.Pool;
 public class PortalSpawnManager : Singleton<PortalSpawnManager>
 {
     [SerializeField] private Portal _largeMonsterPortalPrefab;
-
-    [SerializeField] private Monster _smallMonsterPrefab;
-    [SerializeField] private Monster _largeMonsterPrefab;
-
     [SerializeField] private float _timeBetweenPortals = 10f;
+    [SerializeField] private float _minusModifier = 1f;
+    
+    private int _portalsOpened = 0;
 
     private ObjectPool<Portal> _portalPool;
-
     private BoxCollider2D _boxCollider2D;
 
     protected override void Awake() {
@@ -62,22 +60,62 @@ public class PortalSpawnManager : Singleton<PortalSpawnManager>
     }
 
     private IEnumerator SpawnPortalRoutine() {
-        while (true)
+        while (LivesManager.Instance.CurrentLives > 0)
         {
             Vector2 randomPoint = GetRandomPointInBoxCollider2D();
 
             Portal newMonster = _portalPool.Get();
+            _portalsOpened++;
 
             newMonster.transform.position = randomPoint;
-            
 
-            _timeBetweenPortals -= .1f;
-            if (_timeBetweenPortals <= 1f) {
-                _timeBetweenPortals = 1f;
-            }
+            HandlePortalOpenBalance();
 
             yield return new WaitForSeconds(_timeBetweenPortals);
         }
+    }
+
+    private void HandlePortalOpenBalance() {
+        Debug.Log(_portalsOpened);
+       
+        _timeBetweenPortals -= _minusModifier;
+        _minusModifier -= .06f;
+
+        if (_minusModifier <= .05f) {
+            _minusModifier = .05f;
+        }
+
+        if (_portalsOpened <= 20) {
+            if (_timeBetweenPortals < 2f)
+            {
+                _timeBetweenPortals = 2f;
+            }
+        }
+
+        if (_portalsOpened > 20 && _portalsOpened <= 80)
+        {
+            if (_timeBetweenPortals < 1f)
+            {
+                _timeBetweenPortals = 1f;
+            }
+        }
+
+        if (_portalsOpened > 80 && _portalsOpened <= 200)
+        {
+            if (_timeBetweenPortals < .5f)
+            {
+                _timeBetweenPortals = .5f;
+            }
+        }
+
+        if (_portalsOpened > 200)
+        {
+            if (_timeBetweenPortals < .1f)
+            {
+                _timeBetweenPortals = .1f;
+            }
+        }
+
     }
 
     private Vector2 GetRandomPointInBoxCollider2D()
