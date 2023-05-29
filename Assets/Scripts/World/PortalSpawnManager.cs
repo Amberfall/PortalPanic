@@ -70,7 +70,7 @@ public class PortalSpawnManager : Singleton<PortalSpawnManager>
 
             HandlePortalOpenBalance();
 
-            yield return new WaitForSeconds(_timeBetweenPortals);
+            yield return new WaitForSecondsRealtime(_timeBetweenPortals);
         }
     }
 
