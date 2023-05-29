@@ -75,23 +75,74 @@ public class PortalSpawnManager : Singleton<PortalSpawnManager>
     }
 
     private void HandlePortalOpenBalance() {
-        Debug.Log(_portalsOpened);
-       
-        _timeBetweenPortals -= _minusModifier;
-        _minusModifier -= .06f;
+       NormalMode();
+       HardMode();
+    }
 
-        if (_minusModifier <= .05f) {
-            _minusModifier = .05f;
+    private void NormalMode() {
+        if (HardModeManager.Instance.HardModeEnaged) { return; }
+
+        _timeBetweenPortals -= _minusModifier;
+        _minusModifier -= .04f;
+
+        if (_minusModifier <= .03f)
+        {
+            _minusModifier = .03f;
         }
 
-        if (_portalsOpened <= 30) {
+        if (_portalsOpened <= 30)
+        {
             if (_timeBetweenPortals < 2f)
             {
                 _timeBetweenPortals = 2f;
             }
         }
 
-        if (_portalsOpened > 30 && _portalsOpened <= 100)
+        if (_portalsOpened > 30 && _portalsOpened <= 80)
+        {
+            if (_timeBetweenPortals < 1.5f)
+            {
+                _timeBetweenPortals = 1.5f;
+            }
+        }
+
+        if (_portalsOpened > 80 && _portalsOpened <= 160)
+        {
+            if (_timeBetweenPortals < .8f)
+            {
+                _timeBetweenPortals = .8f;
+            }
+        }
+
+        if (_portalsOpened > 160 && _portalsOpened <= 200)
+        {
+            if (_timeBetweenPortals < .2f)
+            {
+                _timeBetweenPortals = .2f;
+            }
+        }
+    }
+
+    private void HardMode() {
+        if (!HardModeManager.Instance.HardModeEnaged) { return; }
+
+        _timeBetweenPortals -= _minusModifier;
+        _minusModifier -= .06f;
+
+        if (_minusModifier <= .05f)
+        {
+            _minusModifier = .05f;
+        }
+
+        if (_portalsOpened <= 30)
+        {
+            if (_timeBetweenPortals < 2f)
+            {
+                _timeBetweenPortals = 2f;
+            }
+        }
+
+        if (_portalsOpened > 30 && _portalsOpened <= 80)
         {
             if (_timeBetweenPortals < 1f)
             {
@@ -99,7 +150,7 @@ public class PortalSpawnManager : Singleton<PortalSpawnManager>
             }
         }
 
-        if (_portalsOpened > 100 && _portalsOpened <= 200)
+        if (_portalsOpened > 80 && _portalsOpened <= 160)
         {
             if (_timeBetweenPortals < .5f)
             {
@@ -107,14 +158,13 @@ public class PortalSpawnManager : Singleton<PortalSpawnManager>
             }
         }
 
-        if (_portalsOpened > 200)
+        if (_portalsOpened > 160)
         {
             if (_timeBetweenPortals < .1f)
             {
                 _timeBetweenPortals = .1f;
             }
         }
-
     }
 
     private Vector2 GetRandomPointInBoxCollider2D()

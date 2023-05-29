@@ -15,16 +15,6 @@ public class PauseManager : MonoBehaviour
     private bool _isSoundActive = true;
     private bool _isPaused = false;
 
-    // private void Update() {
-    //     if (Input.GetKeyDown(KeyCode.Space)) {
-    //         if (_pauseContainer != null && _pauseContainer.activeInHierarchy) {
-    //             ResumeButton();
-    //         } else {
-    //             PauseButton();
-    //         }
-    //     }
-    // }
-
     public void PauseButton() {
         if (_pauseContainer.activeInHierarchy) {
             ResumeButton();
