@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using TMPro;
-using UnityEngine.UI;
 
 public class HumanBuilding : Singleton<HumanBuilding>
 {
@@ -11,6 +10,7 @@ public class HumanBuilding : Singleton<HumanBuilding>
     public static event Action PickUpAnimal;
 
     [SerializeField] private Sprite _highlightedSprite;
+    [SerializeField] private GameObject _buildingLight;
     [SerializeField] private TMP_Text _requiredAnimalText;
     [SerializeField] private GameObject _slider;
     [SerializeField] private GameObject _humanSprite;
@@ -47,15 +47,21 @@ public class HumanBuilding : Singleton<HumanBuilding>
     }
 
     private void Update() {
+        
+
         if (Input.GetMouseButtonUp(0) && _foodBeingHeld) {
+
             RaycastHit2D[] hitArray = Physics2D.RaycastAll(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero, Mathf.Infinity);
 
             foreach (var item in hitArray)
             {
                 if (item.transform.gameObject == this.gameObject && CheckValidAnimal()) {
                     InvokeAddAnimalToBuilding();
+                    AudioManager.Instance.Play("UI Click");
                 }
             }
+
+            _foodBeingHeld = null;
         }
     }
 
@@ -71,8 +77,8 @@ public class HumanBuilding : Singleton<HumanBuilding>
     }
 
     public void DropFood() {
-        _foodBeingHeld = null;
         _spriteRenderer.sprite = _defaultBuildingSprite;
+        _buildingLight.SetActive(false);
     }
 
     public void ResetHumanBuilding() {
@@ -115,6 +121,7 @@ public class HumanBuilding : Singleton<HumanBuilding>
     private void PickUpAnimalHandler() {
         if (CheckValidAnimal()) {
             _spriteRenderer.sprite = _highlightedSprite;
+            _buildingLight.SetActive(true);
         }
     }
 

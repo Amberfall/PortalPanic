@@ -908,8 +908,8 @@ TilemapRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 57344555
+  m_SortingLayer: 4
   m_SortingOrder: 2
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
@@ -3056,7 +3056,7 @@ Transform:
   - {fileID: 6404343811229220596}
   - {fileID: 6404343810721538549}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &316323838
 MonoBehaviour:
@@ -4287,6 +4287,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _highlightedSprite: {fileID: 21300000, guid: 800aff8ebcc1d70438b39605ee7b5513, type: 3}
+  _buildingLight: {fileID: 79344195}
   _requiredAnimalText: {fileID: 1816701999}
   _slider: {fileID: 1750231839}
   _humanSprite: {fileID: 1757968214}
@@ -5162,7 +5163,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.7294118}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -5284,7 +5285,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
     - target: {fileID: 4634837810609108320, guid: f33d5d4aeab85454086d1697401d7daf, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4634837810609108320, guid: f33d5d4aeab85454086d1697401d7daf, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5727,7 +5728,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2579781964506948123, guid: b7c8dcc5a1477ad40855353076a1a843, type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 2579781964506948123, guid: b7c8dcc5a1477ad40855353076a1a843, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5795,7 +5796,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1182055782
 Transform:
   m_ObjectHideFlags: 0
@@ -6085,7 +6086,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.7294118}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -6143,7 +6144,7 @@ Transform:
   - {fileID: 185345840}
   - {fileID: 732241526}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1431504388
 PrefabInstance:
@@ -6696,7 +6697,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.7294118}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -7711,7 +7712,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.7294118}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -7984,7 +7985,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 2150773298
+    rgba: 4281479730
   m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3

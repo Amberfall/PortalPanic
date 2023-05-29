@@ -30,7 +30,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2209446065326136116
 MonoBehaviour:
@@ -68,7 +68,7 @@ MonoBehaviour:
     - {fileID: 8300000, guid: a6b27f4d3bb23d64eb8286e1175c2ba9, type: 3}
     - {fileID: 8300000, guid: 3a5d90bde2cf5054081ac386d85521ab, type: 3}
     loop: 0
-    volume: 1
+    volume: 0.754
     pitch: 1
     source: {fileID: 0}
   - audioType: 0
@@ -84,7 +84,7 @@ MonoBehaviour:
     clips:
     - {fileID: 8300000, guid: 7c817d3cbe85b3b489522dd250c8d967, type: 3}
     loop: 0
-    volume: 0.636
+    volume: 0.475
     pitch: 1
     source: {fileID: 0}
   - audioType: 0
@@ -92,7 +92,7 @@ MonoBehaviour:
     clips:
     - {fileID: 8300000, guid: 3aea6408792be754592332d67428e5a6, type: 3}
     loop: 0
-    volume: 0.3
+    volume: 0.093
     pitch: 1
     source: {fileID: 0}
   - audioType: 0
@@ -108,7 +108,7 @@ MonoBehaviour:
     clips:
     - {fileID: 8300000, guid: 6feb6c977c963ed4ea240adc199a5f62, type: 3}
     loop: 0
-    volume: 0.627
+    volume: 0.407
     pitch: 1
     source: {fileID: 0}
   - audioType: 0
@@ -136,6 +136,22 @@ MonoBehaviour:
     - {fileID: 8300000, guid: 94e4dddd0b6851e43b1d604f28cdfd30, type: 3}
     loop: 0
     volume: 0.169
+    pitch: 1
+    source: {fileID: 0}
+  - audioType: 0
+    name: UI Click
+    clips:
+    - {fileID: 8300000, guid: ef6a08d0993836243975334181105350, type: 3}
+    loop: 0
+    volume: 0.424
+    pitch: 0.7
+    source: {fileID: 0}
+  - audioType: 0
+    name: Burp
+    clips:
+    - {fileID: 8300000, guid: 40a135d6a36317a4bb2a03b358fa2d1b, type: 3}
+    loop: 0
+    volume: 0.424
     pitch: 1
     source: {fileID: 0}
   _musicMixerGroup: {fileID: 0}

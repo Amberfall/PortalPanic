@@ -66,11 +66,11 @@ TagManager:
   - name: Monsters
     uniqueID: 1339708417
     locked: 0
-  - name: People
-    uniqueID: 2220871775
-    locked: 0
   - name: Animals
     uniqueID: 3033312693
+    locked: 0
+  - name: People
+    uniqueID: 2220871775
     locked: 0
   - name: FX
     uniqueID: 3882891503

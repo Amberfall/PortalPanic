@@ -3773,8 +3773,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 38.1
+  m_fontSizeBase: 38.1
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -3901,6 +3901,67 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 199716165}
   m_CullTransparentMesh: 1
+--- !u!1001 &287220830
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3027657618953083270, guid: 75353f9bd572ea2428608fa508d7b094, type: 3}
+      propertyPath: m_Name
+      value: birds
+      objectReference: {fileID: 0}
+    - target: {fileID: 3027657618953083321, guid: 75353f9bd572ea2428608fa508d7b094, type: 3}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 3027657618953083321, guid: 75353f9bd572ea2428608fa508d7b094, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3027657618953083321, guid: 75353f9bd572ea2428608fa508d7b094, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3027657618953083321, guid: 75353f9bd572ea2428608fa508d7b094, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3027657618953083321, guid: 75353f9bd572ea2428608fa508d7b094, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3027657618953083321, guid: 75353f9bd572ea2428608fa508d7b094, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3027657618953083321, guid: 75353f9bd572ea2428608fa508d7b094, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3027657618953083321, guid: 75353f9bd572ea2428608fa508d7b094, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3027657618953083321, guid: 75353f9bd572ea2428608fa508d7b094, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3027657618953083321, guid: 75353f9bd572ea2428608fa508d7b094, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3027657618953083321, guid: 75353f9bd572ea2428608fa508d7b094, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 75353f9bd572ea2428608fa508d7b094, type: 3}
 --- !u!1 &335650551
 GameObject:
   m_ObjectHideFlags: 3
@@ -4676,7 +4737,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Stephen Hubbard
+  m_text: 'Stephen Hubbard
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2d07ac56b97b3d04caab710318489662, type: 2}
   m_sharedMaterial: {fileID: -7000343348313830239, guid: 2d07ac56b97b3d04caab710318489662, type: 2}
@@ -4703,8 +4766,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 38.1
+  m_fontSizeBase: 38.1
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -4715,7 +4778,7 @@ MonoBehaviour:
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
-  m_lineSpacing: 0
+  m_lineSpacing: -30.35
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
@@ -4888,6 +4951,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _highlightedSprite: {fileID: 21300000, guid: 800aff8ebcc1d70438b39605ee7b5513, type: 3}
+  _buildingLight: {fileID: 0}
   _requiredAnimalText: {fileID: 0}
   _slider: {fileID: 0}
   _humanSprite: {fileID: 0}
@@ -5376,8 +5440,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 38.1
+  m_fontSizeBase: 38.1
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -5388,7 +5452,7 @@ MonoBehaviour:
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
-  m_lineSpacing: -36.7
+  m_lineSpacing: -30.35
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
@@ -5967,7 +6031,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Colyde
+  m_text: 'Angel Rivera
+
+    Aka Colyde'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2d07ac56b97b3d04caab710318489662, type: 2}
   m_sharedMaterial: {fileID: -7000343348313830239, guid: 2d07ac56b97b3d04caab710318489662, type: 2}
@@ -5994,8 +6060,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 38.1
+  m_fontSizeBase: 38.1
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -6006,7 +6072,7 @@ MonoBehaviour:
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
-  m_lineSpacing: 0
+  m_lineSpacing: -30.35
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
@@ -6153,7 +6219,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.7294118}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -6665,8 +6731,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 38.1
+  m_fontSizeBase: 38.1
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -6776,7 +6842,7 @@ MonoBehaviour:
   m_StartCorner: 0
   m_StartAxis: 0
   m_CellSize: {x: 100, y: 100}
-  m_Spacing: {x: 98.06, y: 0}
+  m_Spacing: {x: 89.4, y: 0}
   m_Constraint: 0
   m_ConstraintCount: 2
 --- !u!1 &2066343229
@@ -6840,7 +6906,7 @@ MonoBehaviour:
   m_StartCorner: 0
   m_StartAxis: 0
   m_CellSize: {x: 100, y: 100}
-  m_Spacing: {x: 98.06, y: 0}
+  m_Spacing: {x: 89.4, y: 0}
   m_Constraint: 0
   m_ConstraintCount: 2
 --- !u!1 &2070892424
@@ -6928,8 +6994,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 38.1
+  m_fontSizeBase: 38.1
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -7077,26 +7143,6 @@ PrefabInstance:
     - target: {fileID: 2209446065326136115, guid: f8bb35a109b6cdd41bdd9513b5ebb0ee, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2209446065326136116, guid: f8bb35a109b6cdd41bdd9513b5ebb0ee, type: 3}
-      propertyPath: _sounds.Array.data[4].volume
-      value: 0.636
-      objectReference: {fileID: 0}
-    - target: {fileID: 2209446065326136116, guid: f8bb35a109b6cdd41bdd9513b5ebb0ee, type: 3}
-      propertyPath: _sounds.Array.data[6].volume
-      value: 0.864
-      objectReference: {fileID: 0}
-    - target: {fileID: 2209446065326136116, guid: f8bb35a109b6cdd41bdd9513b5ebb0ee, type: 3}
-      propertyPath: _sounds.Array.data[7].volume
-      value: 0.627
-      objectReference: {fileID: 0}
-    - target: {fileID: 2209446065326136116, guid: f8bb35a109b6cdd41bdd9513b5ebb0ee, type: 3}
-      propertyPath: _sounds.Array.data[8].volume
-      value: 1.873
-      objectReference: {fileID: 0}
-    - target: {fileID: 2209446065326136116, guid: f8bb35a109b6cdd41bdd9513b5ebb0ee, type: 3}
-      propertyPath: _sounds.Array.data[9].volume
-      value: 0.102
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

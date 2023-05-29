@@ -12,6 +12,7 @@ public class MainMenuManager : MonoBehaviour
     }
 
     public void MainMenuButton() {
+        AudioManager.Instance.Play("UI Click");
         StartCoroutine(LoadSceneRoutine());
     }
 
@@ -22,7 +23,5 @@ public class MainMenuManager : MonoBehaviour
         yield return new WaitForSeconds(_sceneTransition.FadeTime);
 
         SceneManager.LoadScene(0);
-
-       
     }
 }
